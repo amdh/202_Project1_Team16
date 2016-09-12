@@ -2,3 +2,4 @@
 Aditya Parashar
 Jay
 Arpita Dixit
+Chaya Malik
