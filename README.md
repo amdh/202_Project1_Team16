@@ -1,6 +1,19 @@
 # 202_Project1_Team16
 [![Stories in Ready](https://badge.waffle.io/amdh/202_Project1_Team16.png?label=ready&title=Ready)](http://waffle.io/amdh/202_Project1_Team16)
 
+Team :
+Aditya Parashar
+Amruta Dhondage
+Arpita Dixit
+Chaya Malik
+Jay Nirgudkar
+
+Project Description :
+
+Design a multiplayer game based on FSA.
+
+Implementing FSA for treasure hunt.
+
 
 
 image:: https://graphs.waffle.io/amdh/202_Project1_Team16/throughput.svg 
