@@ -14,6 +14,7 @@ Design a multiplayer game based on FSA.
 
 Implementing FSA for treasure hunt.
 
+Treasure hunt application for Pirates.
 
 
 image:: https://graphs.waffle.io/amdh/202_Project1_Team16/throughput.svg 
