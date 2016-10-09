@@ -22,5 +22,14 @@ public class Pirates extends Actor
     public void act() 
     {
         // Add your action code here.
+       // move(1);
+        int mouseX, mouseY ;
+
+        if(Greenfoot.mouseDragged(this)) {          
+            MouseInfo mouse = Greenfoot.getMouseInfo();  
+            mouseX=mouse.getX();  
+            mouseY=mouse.getY();  
+            setLocation(mouseX, mouseY);  
+        } 
     }    
 }
