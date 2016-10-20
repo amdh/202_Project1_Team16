@@ -12,7 +12,7 @@ public class Pirates extends Actor
     public Pirates()
     {
          GreenfootImage image = getImage() ; 
-        image.scale( 150, 100 ) ; 
+        image.scale( 150, 200 ) ; 
     }
     
     /**

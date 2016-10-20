@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.awt.Color;
+import java.util.*;
 /**
  * Write a description of class Message here.
  * 
@@ -15,5 +16,10 @@ public class Message extends Actor
     public void act() 
     {
         // Add your action code here.
-    }    
+    }
+    
+    public void display(String msg){
+         setImage(new GreenfootImage(msg, 30, Color.black, Color.yellow)); 
+    }
 }
+

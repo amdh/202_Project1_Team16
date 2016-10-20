@@ -18,5 +18,6 @@ public class Place extends Actor
         
     }    
     
+    public void draw(){}
    
 }

@@ -22,7 +22,9 @@ public class StartGame extends Button
     }    
     
     public void startAction(){
-       getWorldOfType(PirateWorld.class).setFirstPlace();
+        PirateWorld world = getWorldOfType(PirateWorld.class);
+        Place p = world.getBasePlace();
+       world.setState(p);
        //getWorld().addObject(new CopacabanaBrazil(),0,0);
     }
 }
