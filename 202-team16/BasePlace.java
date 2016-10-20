@@ -16,48 +16,71 @@ public class BasePlace extends Place
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
-    String correctAnswerPath;
+
     int life = 0;
+    int hint = 1;
 
     AnswerOption ansOP1;
     AnswerOption ansOP2;
     AnswerOption ansOP3;
     AnswerOption ansOP4;
+    PirateWorld world ;
 
     public BasePlace(){
-        backgroundImgPath = "images/base.jpg";
-        textHintPath = "";
+        backgroundImgPath = "images/baseplace/base.jpg";
+        textHintPath = "Smallest continent in the world?";
         soundHintPath="";
-        imageHintpath = "";
-        answerOption1Path = "images/boat1.png";
-        answerOption2Path = "";
-        answerOption3Path = "";
-        answerOption4Path = "";
-        correctAnswerPath = "";
+        imageHintpath = "images/baseplace/AusHintImage.jpg";
+        answerOption1Path = "images/baseplace/AusCorrectop.jpg";
+        answerOption2Path = "images/baseplace/Ausincorrectop2.jpg";
+        answerOption3Path = "images/baseplace/Ausincorrectop3.jpg";
+        answerOption4Path = "images/baseplace/Ausincorrectop1.jpg";
 
     }
     public void act() 
     {
-        // Add your action code here.
+        if(Greenfoot.mouseClicked(ansOP1)){
+
+            System.out.println("weeee answer clicked is correct");
+            //move to next stage
+
+        }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
+            System.out.println(" eee  answer clicked is incorrect");
+            //remove life and repaint the screen
+            world.removeLife();
+            if(hint==2){
+                 System.out.println("you are asking for 2nd hint");
+                world.showHint2(imageHintpath,"National Animal of...?");
+            }
+            else if(hint==3){
+                //playsound
+                System.out.println("you are asking for 3rd hint");
+            }
+            
+            
+        }
     }    
 
     public void draw(){
-        PirateWorld world = getWorldOfType(PirateWorld.class);
+        world =  getWorldOfType(PirateWorld.class);
+        world.removeObject(world.getObjects(StartGame.class).get(0));
+
+        world.setBackground(backgroundImgPath);
+
+        world.setLife();
+        world.setPirate();
+
         List<Life> pirateLife = world.getLife();
         life = pirateLife.size();
-        world.setBackground(backgroundImgPath);
-        world.showText("Kangaroo is the nation animal of ...",200,200 );
 
-        Greenfoot.delay(10);
-        Pirates p = world.getPirate();
-        world.addObject(p,50,600);
+        world.showHint1(textHintPath);
+        hint= hint+1;
 
-        ansOP1 = new  AnswerOption(answerOption1Path);
-        ansOP2 = new  AnswerOption(answerOption2Path);
-        ansOP3 = new  AnswerOption(answerOption3Path);
-        ansOP4 = new  AnswerOption(answerOption4Path);
-        ansOP1.getImage().scale(50,50);
-        world.addObject(ansOP1,100,50);
+        ansOP1 = new  AnswerOption(answerOption1Path,true);
+        ansOP2 = new  AnswerOption(answerOption2Path,false);
+        ansOP3 = new  AnswerOption(answerOption3Path,false);
+        ansOP4 = new  AnswerOption(answerOption4Path,false);
+        world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
         showHurdle();
     }

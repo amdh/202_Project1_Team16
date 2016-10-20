@@ -8,18 +8,31 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class AnswerOption extends Actor
 {
-    /**
-     * Act - do whatever the AnswerOption wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    boolean isCorrectAnswer;
     
-    public AnswerOption(String img){
+    public AnswerOption(String img, boolean isCorrect){
+        this.isCorrectAnswer = isCorrect;
         setImage(img);
         //getImage().scale(50,50);
     }
     
+     public AnswerOption(String img){
+        this.isCorrectAnswer = false;
+        setImage(img);
+       
+    }
+    
     public void act() 
     {
-        // Add your action code here.
+       if(Greenfoot.mouseClicked(this)){
+            if(isCorrectAnswer()){
+              System.out.println(" answer clicked is correct");  
+            }
+           
+        }
     }    
+    
+    public boolean isCorrectAnswer(){
+        return isCorrectAnswer;
+    }
 }
