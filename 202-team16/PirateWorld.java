@@ -22,8 +22,9 @@ public class PirateWorld extends World
     PlaceInterface Australia;
     PlaceInterface France;
     PlaceInterface CopacabanaBrazil;
+    Place basePlace;
     
-    PlaceInterface state = MumbaiIndia;
+    Place state;
     
     
     Life pirateBoat;
@@ -33,7 +34,7 @@ public class PirateWorld extends World
         super(1500  , 880   , 1);
         prepare(); 
         
-        France = new France();
+        basePlace = new BasePlace();
         
     }
 
@@ -64,9 +65,11 @@ public class PirateWorld extends World
     }
     
     
-    public void setState(PlaceInterface state)
+    public void setState(Place state)
     {
         this.state = state;
+        addObject(state,0,0);
+        state.draw();
     }
     
     public PlaceInterface getMumbaiIndia() {
@@ -97,23 +100,15 @@ public class PirateWorld extends World
         return CapeTownAfrica;
     }
     
-    
+    public Place getBasePlace(){
+        return basePlace;
+    }
 
     public void start(){
         Greenfoot.playSound("sounds/theme.mp3");
     }
 
-    public void setFirstPlace(){
-        removeObject(startGame);
-        //  setBackground()
-       
-        setState(France);
-        //addObject(new France(),0,0);
-        state.draw();
-        
-        
-        
-    }
+
 
     
     public void setFrance(){
@@ -129,6 +124,18 @@ public class PirateWorld extends World
 
         removeObject(button);
         addObject(place,0,0);
+        state.draw();
 
+    }
+    
+    
+    public List<Life> getLife()
+    {
+        return LivesLeft;
+    }
+    
+    public Pirates getPirate()
+    {
+        return pirate;
     }
 }
