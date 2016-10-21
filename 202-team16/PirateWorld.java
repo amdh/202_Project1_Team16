@@ -15,13 +15,13 @@ public class PirateWorld extends World
 
     List<Life> LivesLeft = new ArrayList<Life>();
 
-    PlaceInterface MumbaiIndia;
-    PlaceInterface GoldengateBridge;
-    PlaceInterface CapeTownAfrica;
-    PlaceInterface NewYork;
-    PlaceInterface Australia;
-    PlaceInterface France;
-    PlaceInterface CopacabanaBrazil;
+    Place MumbaiIndia;
+    Place GoldengateBridge;
+    Place CapeTownAfrica;
+    Place NewYork;
+    Place Australia;
+    Place France;
+    Place CopacabanaBrazil;
     Place basePlace;
     Place state;
 
@@ -33,6 +33,7 @@ public class PirateWorld extends World
         super(1500  , 880   , 1);
         prepare(); 
 
+        Australia = new Australia();
         basePlace = new BasePlace();
         message = new Message();
     }
@@ -67,31 +68,31 @@ public class PirateWorld extends World
         state.draw();
     }
 
-    public PlaceInterface getMumbaiIndia() {
+    public Place getMumbaiIndia() {
         return MumbaiIndia;
     }
 
-    public PlaceInterface getGoldengateBridge() {
+    public Place getGoldengateBridge() {
         return GoldengateBridge;
     }
 
-    public PlaceInterface getAustralia() {
+    public Place getAustralia() {
         return Australia;
     }
 
-    public PlaceInterface getFrance() {
+    public Place getFrance() {
         return France;
     }
 
-    public PlaceInterface getNewYork() {
+    public Place getNewYork() {
         return NewYork;
     }
 
-    public PlaceInterface getCopacabannaBrazil() {
+    public Place getCopacabannaBrazil() {
         return CopacabanaBrazil;
     }
 
-    public PlaceInterface getCapeTownAfrica() {
+    public Place getCapeTownAfrica() {
         return CapeTownAfrica;
     }
 
@@ -171,11 +172,10 @@ public class PirateWorld extends World
         addObject(message,200,250);
     }
 
-    public void showHint2(String imagePath, String msg){
-        message.display(msg);
-        AnswerOption hintImg = new AnswerOption(imagePath);
-        hintImg.getImage().scale(250,180);
-        addObject(hintImg, 200,250);
+    public void showHint2(AnswerOption hintImg, String msg){
+        message.display(msg);       
+        hintImg.getImage().scale(200,180);
+        addObject(hintImg, 250,250);
     }
 
     public void removeLife(){

@@ -24,6 +24,7 @@ public class BasePlace extends Place
     AnswerOption ansOP2;
     AnswerOption ansOP3;
     AnswerOption ansOP4;
+    AnswerOption hintImg;
     PirateWorld world ;
 
     public BasePlace(){
@@ -37,27 +38,31 @@ public class BasePlace extends Place
         answerOption4Path = "images/baseplace/Ausincorrectop1.jpg";
 
     }
+
     public void act() 
     {
         if(Greenfoot.mouseClicked(ansOP1)){
 
             System.out.println("weeee answer clicked is correct");
             //move to next stage
+            cleanPlace();
+            world.setState(world.getAustralia());
 
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
             System.out.println(" eee  answer clicked is incorrect");
             //remove life and repaint the screen
             world.removeLife();
             if(hint==2){
-                 System.out.println("you are asking for 2nd hint");
-                world.showHint2(imageHintpath,"National Animal of...?");
+                System.out.println("you are asking for 2nd hint");
+                hintImg = new AnswerOption(imageHintpath);
+                world.showHint2(hintImg,"National Animal of...?");
+                hint = hint +1;
             }
             else if(hint==3){
                 //playsound
                 System.out.println("you are asking for 3rd hint");
+                hint = hint + 1;
             }
-            
-            
         }
     }    
 
@@ -87,5 +92,16 @@ public class BasePlace extends Place
 
     public void showHurdle(){
 
+    }
+
+    public void cleanPlace(){
+        world.removeObject(ansOP2);
+        world.removeObject(ansOP1);
+        world.removeObject(ansOP3);
+        world.removeObject(ansOP4);
+        if(null != hintImg){
+        world.removeObject(hintImg);
+        }
+        
     }
 }
