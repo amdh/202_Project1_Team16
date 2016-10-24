@@ -35,7 +35,6 @@ public class PirateWorld extends World
 
         Australia = new Australia();
         basePlace = new BasePlace();
-        MumbaiIndia = new MumbaiIndia();
         message = new Message();
     }
 
