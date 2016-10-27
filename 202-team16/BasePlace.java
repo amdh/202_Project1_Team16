@@ -46,7 +46,7 @@ public class BasePlace extends Place
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
-            world.setState(world.getAustralia());
+            world.setState(world.getNewYork());
 
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
             System.out.println(" eee  answer clicked is incorrect");
@@ -100,8 +100,8 @@ public class BasePlace extends Place
         world.removeObject(ansOP3);
         world.removeObject(ansOP4);
         if(null != hintImg){
-        world.removeObject(hintImg);
+            world.removeObject(hintImg);
         }
-        
+
     }
 }

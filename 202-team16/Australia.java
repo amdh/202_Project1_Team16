@@ -82,7 +82,7 @@ public class Australia extends Place
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
-            world.setState(world.getMumbaiIndia());
+            world.setState(world.getNewYork());
 
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4))
         {

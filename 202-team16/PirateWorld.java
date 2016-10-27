@@ -30,12 +30,12 @@ public class PirateWorld extends World
     public PirateWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1500  , 880   , 1);
+        super(1500  , 880   , 1,true);
         prepare(); 
-
         Australia = new Australia();
         basePlace = new BasePlace();
         MumbaiIndia = new MumbaiIndia();
+        NewYork=new NewYork();
         message = new Message();
     }
 
@@ -48,7 +48,7 @@ public class PirateWorld extends World
         LivesLeft.add(new Life());
 
         startGame = new StartGame();
-        addObject(startGame, 1300,700);
+        addObject(startGame, 800,600);
         pirate = new Pirates();
         pirateBoat = new Life();
         pirateBoat.getImage().scale(250,150);
@@ -176,13 +176,19 @@ public class PirateWorld extends World
     public void showHint2(AnswerOption hintImg, String msg){
         message.display(msg);       
         hintImg.getImage().scale(200,180);
-        addObject(hintImg, 250,250);
+        addObject(hintImg, 350,400);
     }
 
     public void removeLife(){
 
         if(!LivesLeft.isEmpty())
         {
+            while(!LivesLeft.get(0).isAtEdge())
+            {
+                System.out.println("Moving the life");
+                Greenfoot.delay(2);
+                LivesLeft.get(0).move(5);
+            }
             removeObject(LivesLeft.get(0));
             System.out.println("Lives:- " + LivesLeft.size());
             LivesLeft.remove(0);
