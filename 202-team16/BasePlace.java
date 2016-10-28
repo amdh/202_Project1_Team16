@@ -94,6 +94,7 @@ public class BasePlace extends Place
         if(null != hintImg){
         world.removeObject(hintImg);
         }
+        showHint1("");
         
     }
 }

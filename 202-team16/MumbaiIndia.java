@@ -60,7 +60,7 @@ public class MumbaiIndia extends Place
         ansOP4 = new  AnswerOption(answerOption4Path,false);
         setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
-        showHurdle();
+        //showHurdle();
         //showHurdle();
     }
 
@@ -69,4 +69,15 @@ public class MumbaiIndia extends Place
     {
         // Add your action code here.
     }    
+    
+    public void cleanPlace(){
+        getPirateWorld().removeObject(ansOP2);
+        getPirateWorld().removeObject(ansOP1);
+        getPirateWorld().removeObject(ansOP3);
+        getPirateWorld().removeObject(ansOP4);
+        if(null != hintImg){
+            getPirateWorld().removeObject(hintImg);
+        }
+        showHint1("");
+    }
 }

@@ -47,16 +47,16 @@ public class NewYork extends Place
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
-            world.setState(world.getMumbaiIndia());
+            setNextPlace(new MumbaiIndia());
             audioHint.stop();
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP1)){
             System.out.println(" eee  answer clicked is incorrect");
             //remove life and repaint the screen
-            world.removeLife();
+            removeLife();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                world.showHint2(hintImg,"Where is this statue......?");
+                showHint2(hintImg,"Where is this statue......?");
                 hint = hint +1;
             }
             else if(hint==3){
@@ -69,25 +69,17 @@ public class NewYork extends Place
     }    
 
     public void draw(){
-        world =  getWorldOfType(PirateWorld.class);
-       // world.removeObject(world.getObjects(StartGame.class).get(0));
-
-        world.setBackground(backgroundImgPath);
-
-        world.setLife();
-        world.setPirate();
-
-        List<Life> pirateLife = world.getLife();
-        life = pirateLife.size();
-
-        world.showHint1(textHintPath);
+        initialize(); 
+        getPirateWorld().removeObject(world.getObjects(StartGame.class).get(0));
+        setBackground(backgroundImgPath);
+        showHint1(textHintPath);
         hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,false);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,false);
         ansOP4 = new  AnswerOption(answerOption4Path,true);
-        world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
+        setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
         showHurdle();
     }
@@ -97,13 +89,14 @@ public class NewYork extends Place
     }
 
     public void cleanPlace(){
-        world.removeObject(ansOP2);
-        world.removeObject(ansOP1);
-        world.removeObject(ansOP3);
-        world.removeObject(ansOP4);
+        getPirateWorld().removeObject(ansOP2);
+        getPirateWorld().removeObject(ansOP1);
+        getPirateWorld().removeObject(ansOP3);
+        getPirateWorld().removeObject(ansOP4);
         if(null != hintImg){
-            world.removeObject(hintImg);
+            getPirateWorld().removeObject(hintImg);
         }
+        showHint1("");
 
     }
 }
