@@ -26,4 +26,10 @@ public class CopacabanaBrazil extends Place
        // setRotation(getRotation() + 5);       
         move(1);
     }    
+    
+     public void draw(){
+    }
+    
+    public void cleanPlace(){
+    }
 }

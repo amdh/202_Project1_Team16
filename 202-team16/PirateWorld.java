@@ -12,118 +12,49 @@ public class PirateWorld extends World
 
     Button startGame;
     Pirates pirate;
-
-    List<Life> LivesLeft = new ArrayList<Life>();
-
-    Place MumbaiIndia;
-    Place GoldengateBridge;
-    Place CapeTownAfrica;
-    Place NewYork;
-    Place Australia;
-    Place France;
-    Place CopacabanaBrazil;
-    Place basePlace;
-    Place state;
-
+    Place currentPlace;
     Life pirateBoat;
     Message message;
+
     public PirateWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1500  , 880   , 1);
-        prepare(); 
+        setWelcomeScreen(); 
 
-        Australia = new Australia();
-        basePlace = new BasePlace();
         message = new Message();
     }
 
-    public void prepare(){
-
-        LivesLeft.add(new Life());
-        LivesLeft.add(new Life());
-        LivesLeft.add(new Life());
-        LivesLeft.add(new Life());
-        LivesLeft.add(new Life());
-
+    public void setWelcomeScreen(){
         startGame = new StartGame();
-        addObject(startGame, 1300,700);
-        pirate = new Pirates();
-        pirateBoat = new Life();
-        pirateBoat.getImage().scale(250,150);
-        //while(!LivesLeft.isEmpty())
-        //{
-        //    System.out.println("Lives:- " + LivesLeft.size());
-        //    LivesLeft.remove(0);
-        //}
-
-        //Greenfoot.playSound("sounds/theme.mp3");
+        addObject(startGame, 1300,700);       
 
     }
 
-    public void setState(Place state)
+    public void setPlace(Place place)
     {
-        this.state = state;
-        addObject(state,0,0);
-        state.draw();
-    }
-
-    public Place getMumbaiIndia() {
-        return MumbaiIndia;
-    }
-
-    public Place getGoldengateBridge() {
-        return GoldengateBridge;
-    }
-
-    public Place getAustralia() {
-        return Australia;
-    }
-
-    public Place getFrance() {
-        return France;
-    }
-
-    public Place getNewYork() {
-        return NewYork;
-    }
-
-    public Place getCopacabannaBrazil() {
-        return CopacabanaBrazil;
-    }
-
-    public Place getCapeTownAfrica() {
-        return CapeTownAfrica;
-    }
-
-    public Place getBasePlace(){
-        return basePlace;
+        if(this.currentPlace != null){
+            removeObject(this.currentPlace);
+        }
+        this.currentPlace = place;
+        addObject(currentPlace,0,0);
+        currentPlace.draw();
     }
 
     public void started(){
         // Greenfoot.playSound("sounds/theme.mp3");
     }
 
-    public void setFrance(){
-        removeObject(startGame);
-        //  setBackground()
-        addObject(new France(),0,0);
-        addObject(pirateBoat,70, 520);
-        addObject(pirate, 100,500);
-
+    public void setPirate(){
+        pirate = new Pirates();
+        pirateBoat = new Life();
+        pirateBoat.getImage().scale(250,150);
+        Greenfoot.delay(10);
+        addObject(pirate,50,600);
+        pirate.setLife();
     }
-
-    public void setPlace(Button button, Place place){
-
-        removeObject(button);
-        addObject(place,0,0);
-        state.draw();
-
-    }
-
-    public List<Life> getLife()
-    {
-        return LivesLeft;
+    public Message getMessage(){
+        return message;
     }
 
     public Pirates getPirate()
@@ -131,61 +62,9 @@ public class PirateWorld extends World
         return pirate;
     }
 
-    public void setLife(){
-        int i=0 , x= 1000 , y = 50;
-        ListIterator listIterator = LivesLeft.listIterator();
-        while(listIterator.hasNext()){
-            Life obj = (Life)listIterator.next();
-            obj.getImage().scale(50,50);
-            addObject(obj,x,y);
-            i++;
-            x+=60;           
-        }
+    public Place getCurrentPlace(){
+        return currentPlace;
     }
 
-    public void setPirate(){
-        Greenfoot.delay(10);
-        addObject(pirate,50,600);
-    }
-
-    public void setAnswerOptions(AnswerOption ans1, AnswerOption ans2, AnswerOption ans3, AnswerOption ans4 ){
-
-        Greenfoot.delay(30);
-        int x =70 , y = 100;
-        ans1.getImage().scale(180,180);
-        addObject(ans1,x,y);
-        x=x+195;
-        ans2.getImage().scale(180,180);
-        addObject(ans2,x,y);
-        x=x+195;
-        ans3.getImage().scale(180,180);
-        addObject(ans3,x,y);
-        x=x+195;
-        ans4.getImage().scale(180,180);
-        addObject(ans4,x,y);
-
-    }
-
-    public void showHint1(String msg){
-        Greenfoot.delay(20);
-        message.display(msg);
-        addObject(message,200,250);
-    }
-
-    public void showHint2(AnswerOption hintImg, String msg){
-        message.display(msg);       
-        hintImg.getImage().scale(200,180);
-        addObject(hintImg, 250,250);
-    }
-
-    public void removeLife(){
-
-        if(!LivesLeft.isEmpty())
-        {
-            removeObject(LivesLeft.get(0));
-            System.out.println("Lives:- " + LivesLeft.size());
-            LivesLeft.remove(0);
-        }
-        repaint();
-    }
+   
 }

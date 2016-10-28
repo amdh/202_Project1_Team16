@@ -24,4 +24,11 @@ public class NewYork extends Place
     {
         move(1);
     }    
+    
+     public void draw(){
+    }
+    
+    
+    public void cleanPlace(){
+    }
 }

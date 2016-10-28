@@ -22,9 +22,6 @@ public class StartGame extends Button
     }    
     
     public void startAction(){
-        PirateWorld world = getWorldOfType(PirateWorld.class);
-        Place p = world.getBasePlace();
-       world.setState(p);
         PirateWorld world = getWorldOfType(PirateWorld.class); 
          world.setPirate();
         world.setPlace(new BasePlace());

@@ -16,4 +16,11 @@ public class GoldenGateBridge extends Place
     {
         // Add your action code here.
     }    
+    
+    public void draw(){
+    }
+    
+    
+    public void cleanPlace(){
+    }
 }

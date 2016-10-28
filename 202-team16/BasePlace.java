@@ -25,6 +25,7 @@ public class BasePlace extends Place
     AnswerOption ansOP3;
     AnswerOption ansOP4;
     AnswerOption hintImg;
+  
 
     public BasePlace(){
         backgroundImgPath = "images/baseplace/base.jpg";
@@ -45,13 +46,16 @@ public class BasePlace extends Place
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
+            setNextPlace(new Australia());
 
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
             System.out.println(" eee  answer clicked is incorrect");
             //remove life and repaint the screen
+            removeLife();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
+                showHint2(hintImg,"National Animal of...?");
                 hint = hint +1;
             }
             else if(hint==3){
@@ -63,12 +67,17 @@ public class BasePlace extends Place
     }    
 
     public void draw(){
+        initialize(); 
+        getPirateWorld().removeObject(world.getObjects(StartGame.class).get(0));
+        setBackground(backgroundImgPath);
+        showHint1(textHintPath);
         hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,true);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,false);
         ansOP4 = new  AnswerOption(answerOption4Path,false);
+        setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
         showHurdle();
     }
@@ -78,8 +87,14 @@ public class BasePlace extends Place
     }
 
     public void cleanPlace(){
+        getPirateWorld().removeObject(ansOP2);
+        getPirateWorld().removeObject(ansOP1);
+        getPirateWorld().removeObject(ansOP3);
+        getPirateWorld().removeObject(ansOP4);
         if(null != hintImg){
+            getPirateWorld().removeObject(hintImg);
         }
-        
+        showHint1("");
+
     }
 }
