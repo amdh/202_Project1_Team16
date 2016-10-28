@@ -33,4 +33,7 @@ public class France extends Place implements PlaceInterface
         System.out.println("We are on the right track!!!!");
        // getWorldOfType(PirateWorld.class).addObject(new France(),0,0);
     }
+    
+    public void cleanPlace(){
+    }
 }

@@ -25,7 +25,6 @@ public class BasePlace extends Place
     AnswerOption ansOP3;
     AnswerOption ansOP4;
     AnswerOption hintImg;
-    PirateWorld world ;
 
     public BasePlace(){
         backgroundImgPath = "images/baseplace/base.jpg";
@@ -46,16 +45,13 @@ public class BasePlace extends Place
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
-            world.setState(world.getAustralia());
 
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
             System.out.println(" eee  answer clicked is incorrect");
             //remove life and repaint the screen
-            world.removeLife();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                world.showHint2(hintImg,"National Animal of...?");
                 hint = hint +1;
             }
             else if(hint==3){
@@ -67,25 +63,12 @@ public class BasePlace extends Place
     }    
 
     public void draw(){
-        world =  getWorldOfType(PirateWorld.class);
-        world.removeObject(world.getObjects(StartGame.class).get(0));
-
-        world.setBackground(backgroundImgPath);
-
-        world.setLife();
-        world.setPirate();
-
-        List<Life> pirateLife = world.getLife();
-        life = pirateLife.size();
-
-        world.showHint1(textHintPath);
         hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,true);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,false);
         ansOP4 = new  AnswerOption(answerOption4Path,false);
-        world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
         showHurdle();
     }
@@ -95,12 +78,7 @@ public class BasePlace extends Place
     }
 
     public void cleanPlace(){
-        world.removeObject(ansOP2);
-        world.removeObject(ansOP1);
-        world.removeObject(ansOP3);
-        world.removeObject(ansOP4);
         if(null != hintImg){
-        world.removeObject(hintImg);
         }
         
     }
