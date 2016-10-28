@@ -69,12 +69,4 @@ public class MumbaiIndia extends Place
     {
         // Add your action code here.
     }    
-
-    public void showHurdle()
-    {
-    }
-
-    public void cleanPlace(){
-    }
-
 }

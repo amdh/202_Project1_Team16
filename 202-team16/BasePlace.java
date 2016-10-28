@@ -92,9 +92,8 @@ public class BasePlace extends Place
         getPirateWorld().removeObject(ansOP3);
         getPirateWorld().removeObject(ansOP4);
         if(null != hintImg){
-            getPirateWorld().removeObject(hintImg);
+        world.removeObject(hintImg);
         }
-        showHint1("");
-
+        
     }
 }
