@@ -1,8 +1,8 @@
 Folder Name:Images/NewYork(place class name)
-            ->hint.jpg
+            ->hint.jpg //hintimg.jpg
             ->audioHint.mp3
-            ->base.jpg
-            ->op1.jpg
+            ->base.jpg //background.jpg
+            ->op1.jpg //ansop1.jpg
             ->op2.jpg
             ->op3.jpg
             ->op4.jpg
