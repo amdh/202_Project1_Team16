@@ -15,6 +15,7 @@ public class PirateWorld extends World
     Place currentPlace;
     Life pirateBoat;
     Message message;
+    GreenfootSound sound = new GreenfootSound("sounds/theme.mp3");
 
     public PirateWorld()
     {    
@@ -42,10 +43,16 @@ public class PirateWorld extends World
     }
 
     public void started(){
-        // Greenfoot.playSound("sounds/theme.mp3");
+        sound.play();
+    }
+    
+    public void stopped(){
+        sound.stop();
     }
 
+
     public void setPirate(){
+        sound.stop();
         pirate = new Pirates();
         pirateBoat = new Life();
         pirateBoat.getImage().scale(250,150);
