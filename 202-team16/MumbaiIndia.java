@@ -29,22 +29,17 @@ public class MumbaiIndia extends Place
     AnswerOption ansOP3;
     AnswerOption ansOP4;
     AnswerOption hintImg;
-    PirateWorld world ;
-    Pirates pirate;
 
     public MumbaiIndia(){
-        textHintPath = "";
-        imageHintpath = "";
-
-        backgroundImgPath = "images/Mumbai/Mumbackgroud.jpg";
-        textHintPath = "";
+        backgroundImgPath = "images/Mumbai/background.jpg";
+        textHintPath = "To win there is a cape of good hope";
         soundHintPath="";
-        imageHintpath = "/images/Australia/mumbai.jpg";
-        answerOption1Path = "images/Australia/MumIncorrectop2.jpg";
-        answerOption2Path = "images/Australia/mumcorrectop.jpg";
-        answerOption3Path = "images/Australia/Mumicorrectop3.jpg";
-        answerOption4Path = "images/Australia/Mumincorrectop1.jpg";
-
+        imageHintpath = "images/CapeTownAfrica/hintimg.jpg";
+        
+        answerOption1Path = "images/CapeTownAfrica/CapeTownCorrectOption.jpg";
+        answerOption2Path = "images/CapeTownAfrica/CapeTownIncorrectOption1.jpg";
+        answerOption3Path = "images/CapeTownAfrica/CapeTownIncorrectOption2.jpg";
+        answerOption4Path = "images/CapeTownAfrica/CapeTownIncorrectOption3.jpg";
     }
 
     public void draw(){
@@ -54,8 +49,8 @@ public class MumbaiIndia extends Place
         hint= hint+1;
         hint= hint+1;
 
-        ansOP1 = new  AnswerOption(answerOption1Path,false);
-        ansOP2 = new  AnswerOption(answerOption2Path,true);
+        ansOP1 = new  AnswerOption(answerOption1Path,true);
+        ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,false);
         ansOP4 = new  AnswerOption(answerOption4Path,false);
         setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);

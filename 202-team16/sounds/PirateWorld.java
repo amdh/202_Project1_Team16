@@ -27,6 +27,7 @@ public class PirateWorld extends World
     }
 
     public void setWelcomeScreen(){
+        sound.stop();
         startGame = new StartGame();
         addObject(startGame, 1300,700);       
 
@@ -50,9 +51,7 @@ public class PirateWorld extends World
         sound.stop();
     }
 
-
     public void setPirate(){
-        sound.stop();
         pirate = new Pirates();
         pirateBoat = new Life();
         pirateBoat.getImage().scale(250,150);

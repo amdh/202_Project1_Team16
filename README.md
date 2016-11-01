@@ -14,8 +14,7 @@ Design a multiplayer game based on FSA.
 
 Implementing FSA for treasure hunt.
 
-Treasure hunt application for Pirates.
-(Path to be followed in game : Base Place -> Australia -> Mumbai -> CapeTown -> France -> Copacabana -> New York -> San Francisco)
+
 
 
 image:: https://graphs.waffle.io/amdh/202_Project1_Team16/throughput.svg 

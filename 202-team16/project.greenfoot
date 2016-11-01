@@ -133,6 +133,15 @@ dependency39.type=UsesDependency
 dependency4.from=PirateWorld
 dependency4.to=StartGame
 dependency4.type=UsesDependency
+dependency40.from=France
+dependency40.to=AnswerOption
+dependency40.type=UsesDependency
+dependency41.from=France
+dependency41.to=Australia
+dependency41.type=UsesDependency
+dependency42.from=France
+dependency42.to=StartGame
+
 dependency40.from=NewYork
 dependency40.to=AnswerOption
 dependency40.type=UsesDependency
@@ -148,7 +157,7 @@ dependency43.type=UsesDependency
 dependency44.from=NewYork
 dependency44.to=StartGame
 dependency44.type=UsesDependency
-dependency5.from=PirateWorld
+dependency5.from=PirateWorlddependency42.type=UsesDependencydependency5.from=PirateWorld
 dependency5.to=CopacabanaBrazil
 dependency5.type=UsesDependency
 dependency6.from=PirateWorld
