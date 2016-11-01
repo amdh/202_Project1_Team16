@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Place
-comment0.text=\n\ Write\ a\ description\ of\ class\ Place\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Place\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=void\ act()
 comment10.params=ans1\ ans2\ ans3\ ans4
@@ -10,7 +10,7 @@ comment11.target=void\ showHint1(java.lang.String)
 comment12.params=hintImg\ msg
 comment12.target=void\ showHint2(AnswerOption,\ java.lang.String)
 comment13.params=msg
-comment13.target=void\ showHInt3(java.lang.String)
+comment13.target=void\ showHint3(java.lang.String)
 comment2.params=
 comment2.target=void\ draw()
 comment3.params=

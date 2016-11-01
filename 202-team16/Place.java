@@ -76,7 +76,7 @@ public abstract class Place extends Actor
         world.addObject(hintImg, 200,400);
     }
 
-    public void showHInt3(String msg){
+    public void showHint3(String msg){
         world.getMessage().display(msg);
     }
 

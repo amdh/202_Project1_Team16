@@ -16,6 +16,7 @@ public class BasePlace extends Place
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
+    GreenfootSound audioHint;
 
     int life = 0;
     int hint = 1;
@@ -25,7 +26,6 @@ public class BasePlace extends Place
     AnswerOption ansOP3;
     AnswerOption ansOP4;
     AnswerOption hintImg;
-  
 
     public BasePlace(){
         backgroundImgPath = "images/baseplace/base.jpg";
@@ -36,6 +36,7 @@ public class BasePlace extends Place
         answerOption2Path = "images/baseplace/Ausincorrectop2.jpg";
         answerOption3Path = "images/baseplace/Ausincorrectop3.jpg";
         answerOption4Path = "images/baseplace/Ausincorrectop1.jpg";
+        audioHint=new GreenfootSound("images/baseplace/audioHint.mp3");
 
     }
 
@@ -46,6 +47,7 @@ public class BasePlace extends Place
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
+            audioHint.stop();
             setNextPlace(new Australia());
 
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
@@ -62,6 +64,9 @@ public class BasePlace extends Place
                 //playsound
                 System.out.println("you are asking for 3rd hint");
                 hint = hint + 1;
+                world.removeObject(hintImg);
+                showHint3("Music belongs to..?");
+                audioHint.play();
             }
         }
     }    
@@ -92,9 +97,9 @@ public class BasePlace extends Place
         getPirateWorld().removeObject(ansOP3);
         getPirateWorld().removeObject(ansOP4);
         if(null != hintImg){
-        world.removeObject(hintImg);
+            world.removeObject(hintImg);
         }
         showHint1("");
-        
+
     }
 }
