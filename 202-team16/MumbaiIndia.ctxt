@@ -8,13 +8,5 @@ comment2.target=void\ draw()
 comment3.params=
 comment3.target=void\ act()
 comment4.params=
-<<<<<<< HEAD
-comment4.target=void\ showHurdle()
-comment5.params=
-comment5.target=void\ cleanPlace()
-=======
-comment4.target=void\ act()
-comment5.params=
-comment5.target=void\ showHurdle()
->>>>>>> 9f0f1f70150c18923944b0dd0b135cbab9256112
-numComments=6
+comment4.target=void\ cleanPlace()
+numComments=5
