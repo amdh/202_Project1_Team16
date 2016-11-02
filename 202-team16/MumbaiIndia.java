@@ -63,8 +63,37 @@ public class MumbaiIndia extends Place
     public void act() 
     {
         // Add your action code here.
+        // Add your action code here.
+        if(Greenfoot.mouseClicked(ansOP1))
+        {
+
+            System.out.println("weeee answer clicked is correct");
+            //move to next stage
+            cleanPlace();
+            setNextPlace(new CapetownAfrica());
+
+        }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4))
+        {
+            System.out.println(" eee  answer clicked is incorrect");
+            //remove life and repaint the screen
+            removeLife();
+            if(hint==2){
+                System.out.println("you are asking for 2nd hint");
+                hintImg = new AnswerOption(imageHintpath);
+                showHint2(hintImg,"Penguins in Boulder Island...");
+                hint = hint +1;
+                removeLife();
+            }
+            else if(hint==3){
+                //playsound
+                System.out.println("you are asking for 3rd hint");
+                hint = hint + 1;
+            }
+        }
     }    
-    
+     public void showHurdle(){
+
+    }
     public void cleanPlace(){
         getPirateWorld().removeObject(ansOP2);
         getPirateWorld().removeObject(ansOP1);
