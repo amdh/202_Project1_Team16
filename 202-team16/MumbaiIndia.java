@@ -47,8 +47,7 @@ public class MumbaiIndia extends Place
         setBackground(backgroundImgPath);
         showHint1(textHintPath);
         hint= hint+1;
-        hint= hint+1;
-
+        
         ansOP1 = new  AnswerOption(answerOption1Path,true);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,false);
