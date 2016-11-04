@@ -29,7 +29,7 @@ public class BasePlace extends Place
 
     public BasePlace(){
         backgroundImgPath = "images/baseplace/base.jpg";
-        textHintPath = "Smallest continent in the world?";
+        textHintPath = "Smallest continent in the world is?";
         soundHintPath="";
         imageHintpath = "images/baseplace/AusHintImage.jpg";
         answerOption1Path = "images/baseplace/AusCorrectop.jpg";
@@ -57,7 +57,7 @@ public class BasePlace extends Place
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                showHint2(hintImg,"National Animal of...?");
+                showHint2(hintImg,"This is National animal of which country?");
                 hint = hint +1;
             }
             else if(hint==3){
@@ -65,7 +65,7 @@ public class BasePlace extends Place
                 System.out.println("you are asking for 3rd hint");
                 hint = hint + 1;
                 world.removeObject(hintImg);
-                showHint3("Music belongs to..?");
+                showHint3("This Song belongs to famous band from?");
                 audioHint.play();
             }
         }
