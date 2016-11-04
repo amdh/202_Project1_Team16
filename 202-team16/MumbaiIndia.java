@@ -31,7 +31,7 @@ public class MumbaiIndia extends Place
     AnswerOption hintImg;
 
     public MumbaiIndia(){
-        backgroundImgPath = "images/Mumbai/background.jpg";
+        backgroundImgPath = "images/Mumbai/Mumbackgroud.jpg";
         textHintPath = "To win there is a cape of good hope";
         soundHintPath="";
         imageHintpath = "images/CapeTownAfrica/hintimg.jpg";

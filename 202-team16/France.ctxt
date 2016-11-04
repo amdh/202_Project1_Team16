@@ -1,16 +1,15 @@
 #BlueJ class context
 comment0.target=France
-comment0.text=\n\ Write\ a\ description\ of\ class\ France\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Australia\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=France()
 comment2.params=
-comment2.target=void\ act()
+comment2.target=void\ draw()
 comment3.params=
-comment3.target=void\ passedState()
+comment3.target=void\ act()
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ Australia\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment4.params=
-comment4.target=void\ draw()
+comment4.target=void\ showHurdle()
 comment5.params=
-comment5.target=void\ showHurdle()
-comment6.params=
-comment6.target=void\ cleanPlace()
-numComments=7
+comment5.target=void\ cleanPlace()
+numComments=6

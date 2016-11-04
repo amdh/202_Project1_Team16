@@ -33,10 +33,10 @@ public class Australia extends Place
         textHintPath = "New York of India?";
         imageHintpath = "images/Mumbai/MumbaiImgHint.jpg";
         answerOption1Path = "images/Mumbai/Mumicorrectop3.jpg";
-        answerOption2Path = "images/Mumbai/Mumicorrectop2.jpg";
+        answerOption2Path = "images/Mumbai/MumIncorrectop2.jpg";
         answerOption3Path = "images/Mumbai/mumcorrectop.jpg";
         answerOption4Path = "images/Mumbai/Mumicorrectop1.jpg";
-        audioHint=new GreenfootSound("images/Mumbai/mumbai.wav");
+        audioHint=new GreenfootSound("images/Mumbai/mumbai.mp3");
 
     }
 
@@ -68,9 +68,10 @@ public class Australia extends Place
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
+            audioHint.stop();
             setNextPlace(new MumbaiIndia());
 
-        }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4))
+        }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP4))
         {
             System.out.println(" eee  answer clicked is incorrect");
             //remove life and repaint the screen
@@ -86,6 +87,9 @@ public class Australia extends Place
                 //playsound
                 System.out.println("you are asking for 3rd hint");
                 hint = hint + 1;
+                world.removeObject(hintImg);
+                showHint3("Sound reminds you of?");
+                audioHint.play();
             }
         }
     }    
