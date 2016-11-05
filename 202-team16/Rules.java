@@ -14,6 +14,13 @@ public class Rules extends Button
      */
     public void act() 
     {
-        // Add your action code here.
-    }    
+        if(Greenfoot.mouseClicked(this)){
+            startAction();  
+        }
+    } 
+    
+     public void startAction(){
+        PirateWorld world = getWorldOfType(PirateWorld.class);
+       world.setRules();
+    }
 }

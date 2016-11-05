@@ -73,7 +73,9 @@ public class BasePlace extends Place
 
     public void draw(){
         initialize(); 
-        getPirateWorld().removeObject(world.getObjects(StartGame.class).get(0));
+        getPirateWorld().removeObject(world.getObjects(Play.class).get(0));
+        getPirateWorld().removeObject(world.getObjects(Rules.class).get(0));
+        getPirateWorld().removeObject(world.getObjects(Quit.class).get(0));
         setBackground(backgroundImgPath);
         showHint1(textHintPath);
         hint= hint+1;

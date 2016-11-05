@@ -10,10 +10,12 @@ import java.util.*;
 public class PirateWorld extends World
 {
 
-    Button startGame;
+    Button startGame, quit, play, rules;
     Pirates pirate;
     Place currentPlace;
     Life pirateBoat;
+    Story story;
+    DisRule rule; 
     Message message;
     GreenfootSound sound = new GreenfootSound("sounds/theme.mp3");
 
@@ -28,10 +30,26 @@ public class PirateWorld extends World
 
     public void setWelcomeScreen(){
         startGame = new StartGame();
-        addObject(startGame, 1300,700);       
-
+        addObject(startGame, 1300,700);
     }
 
+    public void setIntroScreen(){
+        play = new Play();
+        quit = new Quit();
+        rules = new Rules();
+        story = new Story();
+        addObject(story, 1250,400);
+        addObject(play, 1300,700);
+        addObject(quit, 900,700);
+        addObject(rules, 500,700);
+    }
+    
+     public void setRules(){
+        removeObject(story);
+        rule = new DisRule();
+        addObject(rule, 1250,400);
+    }
+    
     public void setPlace(Place place)
     {
         if(this.currentPlace != null){
