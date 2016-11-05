@@ -22,7 +22,8 @@ public class Play extends Button
     }    
     
    public void startAction(){
-        PirateWorld world = getWorldOfType(PirateWorld.class);
+        PirateWorld world = getWorldOfType(PirateWorld.class);    
+        world.cleanIntro();
         world.setPirate();
         world.setPlace(new BasePlace());
     }

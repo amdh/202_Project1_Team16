@@ -24,7 +24,6 @@ public class PirateWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1500  , 880   , 1);
         setWelcomeScreen(); 
-
         message = new Message();
     }
 
@@ -91,5 +90,13 @@ public class PirateWorld extends World
         return currentPlace;
     }
 
-   
+    public void cleanIntro(){
+        removeObject(play);
+        removeObject(quit);
+        removeObject(rules);
+        if(story!=null)
+        removeObject(story);
+        if(rule!=null)
+        removeObject(rule);
+    }
 }
