@@ -30,16 +30,16 @@ public class CapetownAfrica extends Place
     public CapetownAfrica()
     {
         backgroundImgPath = "images/CapeTownAfrica/background.jpg";
-        textHintPath = "";
-        soundHintPath="images/France/audoiHint.mp3";
-        imageHintpath = "";
+        textHintPath = "Da Vinci Code was shot in it's capital city ";
+        soundHintPath="images/France/audioHint.mp3";
+        imageHintpath = "images/France/hintimg.jpg";
         
         answerOption1Path = "images/France/IncorrectOption1.jpg";
         answerOption2Path = "images/France/IncorrectOption2.jpg";
         answerOption3Path = "images/France/CorrectOption.png";
         answerOption4Path = "images/France/IncorrectOption3.jpg";
         
-        audioHint=new GreenfootSound("images/France/");  
+        audioHint=new GreenfootSound("images/France/audioHint.mp3");  
     }
     
     public void draw(){
@@ -97,7 +97,7 @@ public class CapetownAfrica extends Place
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                showHint2(hintImg,"");
+                showHint2(hintImg,"Romance Capital");
                 hint = hint +1;
                 removeLife();
             }
@@ -106,7 +106,7 @@ public class CapetownAfrica extends Place
                 System.out.println("you are asking for 3rd hint");
                 hint = hint + 1;
                 world.removeObject(hintImg);
-                showHint3("");
+                showHint3("Try to guess from audio..");
                 audioHint.play();
             }
         }
