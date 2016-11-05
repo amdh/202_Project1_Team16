@@ -87,7 +87,7 @@ public class CapetownAfrica extends Place
             //move to next stage
             cleanPlace();
             audioHint.stop();
-            setNextPlace(new CapetownAfrica());
+            setNextPlace(new France());
 
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP4))
         {
