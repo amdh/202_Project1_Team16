@@ -1,13 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Write a description of class France here.
+ * Write a description of class Australia here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class France extends Place implements PlaceInterface
+public class France extends Place
 {
+
     String backgroundImgPath;
     String textHintPath;
     String soundHintPath;
@@ -16,6 +17,7 @@ public class France extends Place implements PlaceInterface
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
+    GreenfootSound audioHint;
 
     int life = 0;
     int hint = 1;
@@ -25,68 +27,73 @@ public class France extends Place implements PlaceInterface
     AnswerOption ansOP3;
     AnswerOption ansOP4;
     AnswerOption hintImg;
-    public France()
-    {
-       backgroundImgPath = "images/baseplace/base.jpg";
-        textHintPath = "Smallest continent in the world?";
-        soundHintPath="";
-        imageHintpath = "images/baseplace/AusHintImage.jpg";
-        answerOption1Path = "images/baseplace/AusCorrectop.jpg";
-        answerOption2Path = "images/baseplace/Ausincorrectop2.jpg";
-        answerOption3Path = "images/baseplace/Ausincorrectop3.jpg";
-        answerOption4Path = "images/baseplace/Ausincorrectop1.jpg";
- 
+
+    public France(){
+        backgroundImgPath = "images/FranceBackgroud.png";
+        textHintPath = "World's most famous beach , runs for 3 miles?";
+        imageHintpath = "images/copacabana/imgHint.png";
+        answerOption1Path = "images/copacabana/ans4.png";
+        answerOption2Path = "images/copacabana/ans3.png";
+        answerOption3Path = "images/copacabana/ans2.png";
+        answerOption4Path = "images/copacabana/ans1.png";
+        audioHint=new GreenfootSound("images/copacabana/audioHint.mp3");
+
     }
-    
+
+    public void draw(){
+        initialize(); 
+        //getPirateWorld().removeObject(world.getObjects(BasePlace.class).get(0));
+        setBackground(backgroundImgPath);
+        showHint1(textHintPath);
+        hint= hint+1;
+
+        ansOP1 = new  AnswerOption(answerOption1Path,false);
+        ansOP2 = new  AnswerOption(answerOption2Path,false);
+        ansOP3 = new  AnswerOption(answerOption3Path,false);
+        ansOP4 = new  AnswerOption(answerOption4Path,true);
+        setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
+
+        showHurdle();
+    }
+
+    /**
+     * Act - do whatever the Australia wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */ 
     public void act() 
     {
-        if(Greenfoot.mouseClicked(ansOP1)){
+        if(Greenfoot.mouseClicked(ansOP4))
+        {
 
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
-            setNextPlace(new Australia());
+            audioHint.stop();
+            setNextPlace(new MumbaiIndia());
 
-        }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
+        }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3))
+        {
             System.out.println(" eee  answer clicked is incorrect");
             //remove life and repaint the screen
             removeLife();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                showHint2(hintImg,"National Animal of...?");
+                showHint2(hintImg,"Olypmics 2016 were held at?");
                 hint = hint +1;
+                removeLife();
             }
             else if(hint==3){
                 //playsound
                 System.out.println("you are asking for 3rd hint");
                 hint = hint + 1;
+                world.removeObject(hintImg);
+                showHint3("Place referenced in the song?");
+                audioHint.play();
             }
         }
     }    
-    
-    public void passedState()
-    {
-        
-    }
-    
-    public void draw()
-    {
-        initialize(); 
-        getPirateWorld().removeObject(world.getObjects(StartGame.class).get(0));
-        setBackground(backgroundImgPath);
-        showHint1(textHintPath);
-        hint= hint+1;
 
-        ansOP1 = new  AnswerOption(answerOption1Path,true);
-        ansOP2 = new  AnswerOption(answerOption2Path,false);
-        ansOP3 = new  AnswerOption(answerOption3Path,false);
-        ansOP4 = new  AnswerOption(answerOption4Path,false);
-        setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
-
-        showHurdle();
-    }
-    
     public void showHurdle(){
 
     }
@@ -97,9 +104,9 @@ public class France extends Place implements PlaceInterface
         getPirateWorld().removeObject(ansOP3);
         getPirateWorld().removeObject(ansOP4);
         if(null != hintImg){
-        world.removeObject(hintImg);
+            getPirateWorld().removeObject(hintImg);
         }
         showHint1("");
-        
+
     }
 }

@@ -17,6 +17,7 @@ public class Australia extends Place
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
+    GreenfootSound audioHint;
 
     int life = 0;
     int hint = 1;
@@ -28,35 +29,31 @@ public class Australia extends Place
     AnswerOption hintImg;
 
     public Australia(){
-        textHintPath = "Smallest continent in the world?";
-        imageHintpath = "images/baseplace/AusHintImage.jpg";
-
-        backgroundImgPath = "images/Australia/AusBackground.jpg";
-        textHintPath = "Bollywood is here.";
-        soundHintPath="";
-        imageHintpath = "/images/Australia/mumbai.jpg";
-        answerOption1Path = "images/Australia/MumIncorrectop2.jpg";
-        answerOption2Path = "images/Australia/mumcorrectop.jpg";
-        answerOption3Path = "images/Australia/Mumicorrectop3.jpg";
-        answerOption4Path = "images/Australia/Mumincorrectop1.jpg";
-        // correctAnswerPath = "";
+        backgroundImgPath = "images/AusBackground.jpg";
+        textHintPath = "New York of India?";
+        imageHintpath = "images/Mumbai/MumbaiImgHint.jpg";
+        answerOption1Path = "images/Mumbai/Mumicorrectop3.jpg";
+        answerOption2Path = "images/Mumbai/MumIncorrectop2.jpg";
+        answerOption3Path = "images/Mumbai/mumcorrectop.jpg";
+        answerOption4Path = "images/Mumbai/Mumicorrectop1.jpg";
+        audioHint=new GreenfootSound("images/Mumbai/mumbai.mp3");
 
     }
 
     public void draw(){
-        initialize();
+        initialize(); 
+        //getPirateWorld().removeObject(world.getObjects(BasePlace.class).get(0));
         setBackground(backgroundImgPath);
         showHint1(textHintPath);
         hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,false);
-        ansOP2 = new  AnswerOption(answerOption2Path,true);
-        ansOP3 = new  AnswerOption(answerOption3Path,false);
+        ansOP2 = new  AnswerOption(answerOption2Path,false);
+        ansOP3 = new  AnswerOption(answerOption3Path,true);
         ansOP4 = new  AnswerOption(answerOption4Path,false);
         setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
         showHurdle();
-        //showHurdle();
     }
 
     /**
@@ -65,15 +62,16 @@ public class Australia extends Place
      */ 
     public void act() 
     {
-        if(Greenfoot.mouseClicked(ansOP2))
+        if(Greenfoot.mouseClicked(ansOP3))
         {
 
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
+            audioHint.stop();
             setNextPlace(new MumbaiIndia());
 
-        }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4))
+        }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP4))
         {
             System.out.println(" eee  answer clicked is incorrect");
             //remove life and repaint the screen
@@ -81,7 +79,7 @@ public class Australia extends Place
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                showHint2(hintImg,"National Animal of...?");
+                showHint2(hintImg,"This famous fast food belongs to?");
                 hint = hint +1;
                 removeLife();
             }
@@ -89,6 +87,9 @@ public class Australia extends Place
                 //playsound
                 System.out.println("you are asking for 3rd hint");
                 hint = hint + 1;
+                world.removeObject(hintImg);
+                showHint3("Sound reminds you of?");
+                audioHint.play();
             }
         }
     }    
@@ -105,6 +106,7 @@ public class Australia extends Place
         if(null != hintImg){
             getPirateWorld().removeObject(hintImg);
         }
+        showHint1("");
 
     }
 }
