@@ -29,7 +29,7 @@ public class France extends Place
     AnswerOption hintImg;
 
     public France(){
-        backgroundImgPath = "images/FranceBackgroud.png";
+        backgroundImgPath = "images/France/background.jpg";
         textHintPath = "World's most famous beach, runs for 3 miles?";
         imageHintpath = "images/copacabana/imgHint.png";
         answerOption1Path = "images/copacabana/ans4.jpg";
