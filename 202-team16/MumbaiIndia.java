@@ -20,6 +20,7 @@ public class MumbaiIndia extends Place
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
+    GreenfootSound audioHint;
 
     int life = 0;
     int hint = 1;
@@ -40,6 +41,8 @@ public class MumbaiIndia extends Place
         answerOption2Path = "images/CapeTownAfrica/CapeTownIncorrectOption1.jpg";
         answerOption3Path = "images/CapeTownAfrica/CapeTownIncorrectOption2.jpg";
         answerOption4Path = "images/CapeTownAfrica/CapeTownIncorrectOption3.jpg";
+        
+        audioHint=new GreenfootSound("images/CapeTownAfrica/audioHint.mp3");  
     }
 
     public void draw(){
@@ -69,7 +72,9 @@ public class MumbaiIndia extends Place
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
+            audioHint.stop();
             setNextPlace(new CapetownAfrica());
+            
 
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4))
         {
@@ -87,6 +92,9 @@ public class MumbaiIndia extends Place
                 //playsound
                 System.out.println("you are asking for 3rd hint");
                 hint = hint + 1;
+                world.removeObject(hintImg);
+                showHint3("In the search for the shores of her bay");
+                audioHint.play();
             }
         }
     }    
