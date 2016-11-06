@@ -30,7 +30,7 @@ public class Australia extends Place
 
     public Australia(){
         backgroundImgPath = "images/AusBackground.jpg";
-        textHintPath = "New York of India?";
+        textHintPath = "Bollywood is Here?";
         imageHintpath = "images/Mumbai/MumbaiImgHint.jpg";
         answerOption1Path = "images/Mumbai/Mumicorrectop3.jpg";
         answerOption2Path = "images/Mumbai/MumIncorrectop2.jpg";
@@ -88,7 +88,7 @@ public class Australia extends Place
                 System.out.println("you are asking for 3rd hint");
                 hint = hint + 1;
                 world.removeObject(hintImg);
-                showHint3("Sound reminds you of?");
+                showHint3("Place referenced in the song?");
                 audioHint.play();
             }
         }

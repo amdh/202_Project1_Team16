@@ -30,11 +30,11 @@ public class France extends Place
 
     public France(){
         backgroundImgPath = "images/FranceBackgroud.png";
-        textHintPath = "World's most famous beach , runs for 3 miles?";
+        textHintPath = "World's most famous beach, runs for 3 miles?";
         imageHintpath = "images/copacabana/imgHint.png";
-        answerOption1Path = "images/copacabana/ans4.png";
-        answerOption2Path = "images/copacabana/ans3.png";
-        answerOption3Path = "images/copacabana/ans2.png";
+        answerOption1Path = "images/copacabana/ans4.jpg";
+        answerOption2Path = "images/copacabana/ans3.jpg";
+        answerOption3Path = "images/copacabana/ans2.jpg";
         answerOption4Path = "images/copacabana/ans1.png";
         audioHint=new GreenfootSound("images/copacabana/audioHint.mp3");
 
@@ -69,7 +69,7 @@ public class France extends Place
             //move to next stage
             cleanPlace();
             audioHint.stop();
-            setNextPlace(new MumbaiIndia());
+            setNextPlace(new CopacabanaBrazil());
 
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3))
         {

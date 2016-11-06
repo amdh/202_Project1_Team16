@@ -67,7 +67,7 @@ public abstract class Place extends Actor
     public void showHint1(String msg){
         Greenfoot.delay(20);
         world.getMessage().display(msg);
-        world.addObject(world.getMessage(),270,250);
+        world.addObject(world.getMessage(),290,250);
     }
 
     public void showHint2(AnswerOption hintImg, String msg){

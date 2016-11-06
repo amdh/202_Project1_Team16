@@ -39,8 +39,8 @@ public class PirateWorld extends World
         story = new Story();
         addObject(story, 1250,400);
         addObject(play, 1300,700);
-        addObject(quit, 900,700);
-        addObject(rules, 500,700);
+        addObject(quit, 300,700);
+        addObject(rules, 800,700);
     }
     
      public void setRules(){
