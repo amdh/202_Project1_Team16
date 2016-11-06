@@ -1,3 +1,5 @@
+1> For each place ,place specific folder is created under images so as to maintain the resources.
+e.g
 Folder Name:Images/NewYork(place class name)
             ->hint.jpg or hintimg.jpg
             ->audioHint.mp3
@@ -6,3 +8,20 @@ Folder Name:Images/NewYork(place class name)
             ->op2.jpg
             ->op3.jpg
             ->op4.jpg
+            
+2> All project related documents are to be placed under document folder.
+
+3> For each place , there are set of path values needed and which has to be set in the constucture of the class.
+e.g BasePlace constructure
+ public BasePlace(){
+        backgroundImgPath = "images/baseplace/base.jpg";
+        textHintPath = "Smallest continent in the world is?";
+        soundHintPath="";
+        imageHintpath = "images/baseplace/AusHintImage.jpg";
+        answerOption1Path = "images/baseplace/AusCorrectop.jpg";
+        answerOption2Path = "images/baseplace/Ausincorrectop2.jpg";
+        answerOption3Path = "images/baseplace/Ausincorrectop3.jpg";
+        answerOption4Path = "images/baseplace/Ausincorrectop1.jpg";
+        audioHint=new GreenfootSound("images/baseplace/audioHint.mp3");
+
+    }
