@@ -25,3 +25,7 @@ e.g BasePlace constructure
         audioHint=new GreenfootSound("images/baseplace/audioHint.mp3");
 
     }
+
+class name should be noun
+shouldnot contain verb
+interface name should start with I
