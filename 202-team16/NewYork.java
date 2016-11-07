@@ -100,3 +100,6 @@ public class NewYork extends Place
 
     }
 }
+/*New York is a state in the Northeastern United States and is the 27th-most extensive, fourth-most populous, and seventh-most densely 
+populated U.S. state. New York is bordered by New Jersey and Pennsylvania to the south and Connecticut, Massachusetts, and Vermont to 
+the east. The state has a maritime border in the Atlantic Ocean with Rhode Island, east of Long Island.*/
