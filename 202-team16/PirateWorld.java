@@ -44,9 +44,19 @@ public class PirateWorld extends World
     }
     
      public void setRules(){
+        if(story!=null)
         removeObject(story);
-        rule = new DisRule();
-        addObject(rule, 1250,400);
+        if(rule!=null)
+        {
+            removeObject(rule);
+            story = new Story();
+            addObject(story, 1250,400);
+        }
+       else
+        {
+            rule = new DisRule();
+            addObject(rule, 1250,400);
+        }
     }
     
     public void setPlace(Place place)
