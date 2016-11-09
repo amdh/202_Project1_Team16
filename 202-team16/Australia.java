@@ -64,6 +64,8 @@ public class Australia extends IPlace
      */ 
     public void act() 
     {
+        checkLifeCount();
+        
         if(Greenfoot.mouseClicked(ansOP3))
         {
 
@@ -134,5 +136,9 @@ public class Australia extends IPlace
 
     private void removeLife(){
         pirate.removeLife();
+    }
+    
+    private void checkLifeCount(){
+        pirate.checkLifeCount();
     }
 }

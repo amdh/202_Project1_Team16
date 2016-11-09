@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Tue Nov 08 23:21:58 PST 2016
+#Wed Nov 09 08:47:18 PST 2016
 target16.name=Story
 dependency35.to=AnswerOption
 editor.swing.0.y=0
@@ -42,6 +42,7 @@ target21.type=ClassTarget
 dependency50.to=StartGame
 dependency25.to=PirateWorld
 dependency32.type=UsesDependency
+class.GameOver.superclass=greenfoot.Actor
 target1.typeParameters=
 dependency39.type=UsesDependency
 dependency36.from=IPlace
@@ -387,6 +388,7 @@ dependency44.type=UsesDependency
 dependency8.from=BasePlace
 dependency48.from=NewYork
 target22.height=50
+class.GameOver.image=Game over screen.png
 target14.height=50
 target9.y=10
 target9.x=70
