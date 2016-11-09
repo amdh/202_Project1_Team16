@@ -64,6 +64,8 @@ public class CapetownAfrica extends IPlace
     public void act() 
     {
         // Add your action code here.
+        checkLifeCount();
+        
          if(Greenfoot.mouseClicked(ansOP3))
         {
 
@@ -85,7 +87,6 @@ public class CapetownAfrica extends IPlace
                 hintImg = new AnswerOption(imageHintpath);
                 world.showHint2(hintImg,"Romance Capital");
                 hint = hint +1;
-                removeLife();
             }
             else if(hint==3){
                 //playsound
@@ -135,6 +136,10 @@ public class CapetownAfrica extends IPlace
 
     private void removeLife(){
         pirate.removeLife();
+    }
+    
+     private void checkLifeCount(){
+        pirate.checkLifeCount();
     }
 }
 

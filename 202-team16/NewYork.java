@@ -43,6 +43,7 @@ public class NewYork extends IPlace
 
     public void act() 
     {
+        checkLifeCount();
         if(Greenfoot.mouseClicked(ansOP2)){
 
              System.out.println("perform correct answer function");
@@ -129,5 +130,9 @@ public class NewYork extends IPlace
 
     private void removeLife(){
          pirate.removeLife();
+    }
+    
+     private void checkLifeCount(){
+        pirate.checkLifeCount();
     }
 }

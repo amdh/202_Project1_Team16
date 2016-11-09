@@ -64,6 +64,7 @@ public class CopacabanaBrazil extends IPlace
      */ 
     public void act() 
     {
+        checkLifeCount();
         if(Greenfoot.mouseClicked(ansOP4))
         {
             System.out.println("perform correct answer function");
@@ -94,7 +95,6 @@ public class CopacabanaBrazil extends IPlace
                 hintImg = new AnswerOption(imageHintpath);
                 world.showHint2(hintImg,"Where is this statue......?");
                 hint = hint +1;
-                removeLife();
             }
             else if(hint==3){
                 //playsound
@@ -134,5 +134,9 @@ public class CopacabanaBrazil extends IPlace
 
     private void removeLife(){
         pirate.removeLife();
+    }
+    
+     private void checkLifeCount(){
+        pirate.checkLifeCount();
     }
 }
