@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class GoldenGateBridge extends Place
+public class GoldenGateBridge extends IPlace
 {
     /**
      * Act - do whatever the GoldenGateBridge wants to do. This method is called whenever
@@ -20,8 +20,32 @@ public class GoldenGateBridge extends Place
     public void draw(){
     }
     
+   
     
-    public void cleanPlace(){
+   public  void doIncorrectAnswer(){}
+    public  void doCorrectAnswer(){}
+    public  void showHurdle(){}
+    public  void setNextPlace(String placeName){}
+    public  IEnemy getEnemy(String type){
+        return null;
+    }
+
+    //private methods
+    private void cleanPlace(){
+       
+
+    }
+
+    private void initialize(){
+       
+    }
+
+    private void setBackground(String backgroundPath){
+      
+    }
+
+    private void removeLife(){
+       
     }
 }
 /*import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)

@@ -6,7 +6,7 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class France extends Place
+public class France extends IPlace
 {
 
     String backgroundImgPath;
@@ -27,15 +27,17 @@ public class France extends Place
     AnswerOption ansOP3;
     AnswerOption ansOP4;
     AnswerOption hintImg;
+    PirateWorld world;
+    Pirates pirate;
 
     public France(){
         backgroundImgPath = "images/France/background.jpg";
         textHintPath = "World's most famous beach, runs for 3 miles?";
         imageHintpath = "images/copacabana/imgHint.png";
-        answerOption1Path = "images/copacabana/ans4.jpg";
-        answerOption2Path = "images/copacabana/ans3.jpg";
-        answerOption3Path = "images/copacabana/ans2.jpg";
-        answerOption4Path = "images/copacabana/ans1.png";
+        answerOption1Path = "images/copacabana/ans1.jpg";
+        answerOption2Path = "images/copacabana/ans2.jpg";
+        answerOption3Path = "images/copacabana/ans3.jpg";
+        answerOption4Path = "images/copacabana/ans4.jpg";
         audioHint=new GreenfootSound("images/copacabana/audioHint.mp3");
 
     }
@@ -44,14 +46,14 @@ public class France extends Place
         initialize(); 
         //getPirateWorld().removeObject(world.getObjects(BasePlace.class).get(0));
         setBackground(backgroundImgPath);
-        showHint1(textHintPath);
+        world.showHint1(textHintPath);
         hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,false);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,false);
         ansOP4 = new  AnswerOption(answerOption4Path,true);
-        setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
+        world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
         showHurdle();
     }
@@ -69,7 +71,7 @@ public class France extends Place
             //move to next stage
             cleanPlace();
             audioHint.stop();
-            setNextPlace(new CopacabanaBrazil());
+            setNextPlace(PirateWorld.fifthPlace);
 
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3))
         {
@@ -79,7 +81,7 @@ public class France extends Place
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                showHint2(hintImg,"Olypmics 2016 were held at?");
+                world.showHint2(hintImg,"Olypmics 2016 were held at?");
                 hint = hint +1;
                 removeLife();
             }
@@ -88,25 +90,43 @@ public class France extends Place
                 System.out.println("you are asking for 3rd hint");
                 hint = hint + 1;
                 world.removeObject(hintImg);
-                showHint3("Place referenced in the song?");
+                world.showHint3("Place referenced in the song?");
                 audioHint.play();
             }
         }
     }    
 
-    public void showHurdle(){
+    public  void doIncorrectAnswer(){}
+    public  void doCorrectAnswer(){}
+    public  void showHurdle(){}
+    public  void setNextPlace(String placeName){}
+    public  IEnemy getEnemy(String type){
+        return null;
+    }
+
+    //private methods
+    private void cleanPlace(){
+        world.removeObject(ansOP2);
+        world.removeObject(ansOP1);
+        world.removeObject(ansOP3);
+        world.removeObject(ansOP4);
+        if(null != hintImg){
+            world.removeObject(hintImg);
+        }
+        world.showHint1("");
 
     }
 
-    public void cleanPlace(){
-        getPirateWorld().removeObject(ansOP2);
-        getPirateWorld().removeObject(ansOP1);
-        getPirateWorld().removeObject(ansOP3);
-        getPirateWorld().removeObject(ansOP4);
-        if(null != hintImg){
-            getPirateWorld().removeObject(hintImg);
-        }
-        showHint1("");
+    private void initialize(){
+        world =  getWorldOfType(PirateWorld.class);        
+        pirate =  world.getPirate();
+    }
 
+    private void setBackground(String backgroundPath){
+        world.setBackground(backgroundPath);
+    }
+
+    private void removeLife(){
+        pirate.removeLife();
     }
 }

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class CapetownAfrica extends Place
+public class CapetownAfrica extends IPlace
 {
     String backgroundImgPath;
     String textHintPath;
@@ -26,6 +26,8 @@ public class CapetownAfrica extends Place
     AnswerOption ansOP3;
     AnswerOption ansOP4;
     AnswerOption hintImg;
+     PirateWorld world;
+    Pirates pirate;
     
     public CapetownAfrica()
     {
@@ -45,7 +47,7 @@ public class CapetownAfrica extends Place
     public void draw(){
         initialize();
         setBackground(backgroundImgPath);
-        showHint1(textHintPath);
+        world.showHint1(textHintPath);
         hint= hint+1;
         //hint= hint+1;
 
@@ -53,30 +55,12 @@ public class CapetownAfrica extends Place
         ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,true);
         ansOP4 = new  AnswerOption(answerOption4Path,false);
-        setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
+        world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
         showHurdle();
     }
     
-     public void showHurdle(){
-
-    }
-    
-    public void cleanPlace(){
-        getPirateWorld().removeObject(ansOP2);
-        getPirateWorld().removeObject(ansOP1);
-        getPirateWorld().removeObject(ansOP3);
-        getPirateWorld().removeObject(ansOP4);
-        if(null != hintImg){
-            getPirateWorld().removeObject(hintImg);
-        }
-        showHint1("");
-    }
-    
-    /**
-     * Act - do whatever the CapetownAfrica wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+   
     public void act() 
     {
         // Add your action code here.
@@ -87,7 +71,7 @@ public class CapetownAfrica extends Place
             //move to next stage
             cleanPlace();
             audioHint.stop();
-            setNextPlace(new France());
+            setNextPlace(PirateWorld.forthPlace);
 
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP4))
         {
@@ -97,7 +81,7 @@ public class CapetownAfrica extends Place
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                showHint2(hintImg,"Romance Capital");
+                world.showHint2(hintImg,"Romance Capital");
                 hint = hint +1;
                 removeLife();
             }
@@ -106,10 +90,44 @@ public class CapetownAfrica extends Place
                 System.out.println("you are asking for 3rd hint");
                 hint = hint + 1;
                 world.removeObject(hintImg);
-                showHint3("Try to guess from audio..");
+                world.showHint3("Try to guess from audio..");
                 audioHint.play();
             }
         }
-    }    
+    } 
+    
+    public  void doIncorrectAnswer(){}
+    public  void doCorrectAnswer(){}
+    public  void showHurdle(){}
+    public  void setNextPlace(String placeName){}
+    public  IEnemy getEnemy(String type){
+        return null;
+    }
+
+    //private methods
+    private void cleanPlace(){
+        world.removeObject(ansOP2);
+        world.removeObject(ansOP1);
+        world.removeObject(ansOP3);
+        world.removeObject(ansOP4);
+        if(null != hintImg){
+            world.removeObject(hintImg);
+        }
+        world.showHint1("");
+
+    }
+
+    private void initialize(){
+        world =  getWorldOfType(PirateWorld.class);        
+        pirate =  world.getPirate();
+    }
+
+    private void setBackground(String backgroundPath){
+        world.setBackground(backgroundPath);
+    }
+
+    private void removeLife(){
+        pirate.removeLife();
+    }
 }
 

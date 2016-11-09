@@ -14,6 +14,20 @@ public class HintHolder extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        setLocation(getX() + 2, getY());
+
+        Actor shark = getOneObjectAtOffset(0,0,Shark.class);
+
+        if(shark != null){
+            System.out.println("shark killed");
+            getWorld().removeObject(shark);
+            getWorld().removeObject(this);
+            // break;
+        }
+        
+        if( getX() == (getWorld().getWidth() - 20)){
+
+            getWorld().removeObject(this);
+        }
     }    
 }

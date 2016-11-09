@@ -6,7 +6,7 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Australia extends Place
+public class Australia extends IPlace
 {
 
     String backgroundImgPath;
@@ -28,6 +28,9 @@ public class Australia extends Place
     AnswerOption ansOP4;
     AnswerOption hintImg;
 
+    PirateWorld world;
+    Pirates pirate;
+
     public Australia(){
         backgroundImgPath = "images/AusBackground.jpg";
         textHintPath = "Bollywood is Here?";
@@ -44,16 +47,15 @@ public class Australia extends Place
         initialize(); 
         //getPirateWorld().removeObject(world.getObjects(BasePlace.class).get(0));
         setBackground(backgroundImgPath);
-        showHint1(textHintPath);
+        world.showHint1(textHintPath);
         hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,false);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,true);
         ansOP4 = new  AnswerOption(answerOption4Path,false);
-        setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
+        world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
-        showHurdle();
     }
 
     /**
@@ -66,47 +68,71 @@ public class Australia extends Place
         {
 
             System.out.println("weeee answer clicked is correct");
-            //move to next stage
-            cleanPlace();
-            audioHint.stop();
-            setNextPlace(new MumbaiIndia());
+            doCorrectAnswer();
 
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP4))
         {
             System.out.println(" eee  answer clicked is incorrect");
-            //remove life and repaint the screen
-            removeLife();
-            if(hint==2){
-                System.out.println("you are asking for 2nd hint");
-                hintImg = new AnswerOption(imageHintpath);
-                showHint2(hintImg,"This famous fast food belongs to?");
-                hint = hint +1;
-                removeLife();
-            }
-            else if(hint==3){
-                //playsound
-                System.out.println("you are asking for 3rd hint");
-                hint = hint + 1;
-                world.removeObject(hintImg);
-                showHint3("Place referenced in the song?");
-                audioHint.play();
-            }
+            doIncorrectAnswer();
         }
     }    
 
-    public void showHurdle(){
+    public  void doIncorrectAnswer(){
+        //remove life and repaint the screen
+        removeLife();
+        if(hint==2){
+            System.out.println("you are asking for 2nd hint");
+            hintImg = new AnswerOption(imageHintpath);
+            world.showHint2(hintImg,"This famous fast food belongs to?");
+            hint = hint +1;
+        }
+        else if(hint==3){
+            //playsound
+            System.out.println("you are asking for 3rd hint");
+            hint = hint + 1;
+            world.removeObject(hintImg);
+            world.showHint3("Place referenced in the song?");
+            audioHint.play();
+        }
+    }
+
+    public  void doCorrectAnswer(){
+        //move to next stage
+        cleanPlace();
+        audioHint.stop();
+        setNextPlace(PirateWorld.secondPlace);
+    }
+
+    public  void showHurdle(){}
+
+    public  void setNextPlace(String placeName){
+        world.setPlace(placeName);
+    }
+
+    public  IEnemy getEnemy(String type){return null;}
+    //private methods
+    private void cleanPlace(){
+        world.removeObject(ansOP2);
+        world.removeObject(ansOP1);
+        world.removeObject(ansOP3);
+        world.removeObject(ansOP4);
+        if(null != hintImg){
+            world.removeObject(hintImg);
+        }
+        world.showHint1("");
 
     }
 
-    public void cleanPlace(){
-        getPirateWorld().removeObject(ansOP2);
-        getPirateWorld().removeObject(ansOP1);
-        getPirateWorld().removeObject(ansOP3);
-        getPirateWorld().removeObject(ansOP4);
-        if(null != hintImg){
-            getPirateWorld().removeObject(hintImg);
-        }
-        showHint1("");
+    private void initialize(){
+        world =  getWorldOfType(PirateWorld.class);        
+        pirate =  world.getPirate();
+    }
 
+    private void setBackground(String backgroundPath){
+        world.setBackground(backgroundPath);
+    }
+
+    private void removeLife(){
+        pirate.removeLife();
     }
 }
