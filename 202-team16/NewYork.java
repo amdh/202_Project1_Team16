@@ -28,35 +28,35 @@ public class NewYork extends Place
     PirateWorld world ;
 
     public NewYork(){
-        backgroundImgPath = "images/NewYork/base.jpg";
-        textHintPath = "City that never sleeps?";
+       backgroundImgPath = "images/NewYork/base.jpg";
+        textHintPath = "You can find the world's most crooked street over here!!";
         soundHintPath="";
-        imageHintpath = "images/NewYork/hint.jpg";
-        answerOption1Path = "images/NewYork/op1.jpg";
-        answerOption2Path = "images/NewYork/op2.jpg";
-        answerOption3Path = "images/NewYork/op3.jpg";
-        answerOption4Path = "images/NewYork/op4.jpg";
-        audioHint=new GreenfootSound("images/NewYork/audioHint.mp3");
+        imageHintpath = "images/GoldenGateBridge/hintImg.jpg";
+        answerOption1Path = "images/GoldenGateBridge/op1.jpg";
+        answerOption2Path = "images/GoldenGateBridge/op2.jpg";
+        answerOption3Path = "images/GoldenGateBridge/op3.jpg";
+        answerOption4Path = "images/GoldenGateBridge/op4.jpg";
+        audioHint=new GreenfootSound("images/GoldenGateBridge/audioHint.mp3");
 
     }
 
     public void act() 
     {
-        if(Greenfoot.mouseClicked(ansOP4)){
+        if(Greenfoot.mouseClicked(ansOP2)){
 
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
-            setNextPlace(new MumbaiIndia());
+            setNextPlace(new GoldenGateBridge());
             audioHint.stop();
-        }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP1)){
+        }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
             System.out.println(" eee  answer clicked is incorrect");
             //remove life and repaint the screen
             removeLife();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                showHint2(hintImg,"Where is this statue......?");
+                showHint2(hintImg,"The garden is Japenese but not in Japan!!");
                 hint = hint +1;
             }
             else if(hint==3){
@@ -70,15 +70,15 @@ public class NewYork extends Place
 
     public void draw(){
         initialize(); 
-        getPirateWorld().removeObject(world.getObjects(StartGame.class).get(0));
+        //getPirateWorld().removeObject(world.getObjects(StartGame.class).get(0));
         setBackground(backgroundImgPath);
         showHint1(textHintPath);
         hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,false);
-        ansOP2 = new  AnswerOption(answerOption2Path,false);
+        ansOP2 = new  AnswerOption(answerOption2Path,true);
         ansOP3 = new  AnswerOption(answerOption3Path,false);
-        ansOP4 = new  AnswerOption(answerOption4Path,true);
+        ansOP4 = new  AnswerOption(answerOption4Path,false);
         setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
         showHurdle();
@@ -97,9 +97,5 @@ public class NewYork extends Place
             getPirateWorld().removeObject(hintImg);
         }
         showHint1("");
-
     }
 }
-/*New York is a state in the Northeastern United States and is the 27th-most extensive, fourth-most populous, and seventh-most densely 
-populated U.S. state. New York is bordered by New Jersey and Pennsylvania to the south and Connecticut, Massachusetts, and Vermont to 
-the east. The state has a maritime border in the Atlantic Ocean with Rhode Island, east of Long Island.*/
