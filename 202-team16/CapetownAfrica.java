@@ -57,7 +57,7 @@ public class CapetownAfrica extends IPlace
         ansOP4 = new  AnswerOption(answerOption4Path,false);
         world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
-        showHurdle();
+       // showHurdle();
     }
     
    
@@ -67,16 +67,18 @@ public class CapetownAfrica extends IPlace
          if(Greenfoot.mouseClicked(ansOP3))
         {
 
-            System.out.println("weeee answer clicked is correct");
-            //move to next stage
-            cleanPlace();
-            audioHint.stop();
-            setNextPlace(PirateWorld.forthPlace);
+            System.out.println("perform correct answer function");
+            doCorrectAnswer();
 
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP4))
         {
             System.out.println(" eee  answer clicked is incorrect");
-            //remove life and repaint the screen
+            doIncorrectAnswer();
+        }
+    } 
+    
+    public  void doIncorrectAnswer(){
+        //remove life and repaint the screen
             removeLife();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
@@ -93,13 +95,18 @@ public class CapetownAfrica extends IPlace
                 world.showHint3("Try to guess from audio..");
                 audioHint.play();
             }
-        }
-    } 
-    
-    public  void doIncorrectAnswer(){}
-    public  void doCorrectAnswer(){}
+    }
+    public  void doCorrectAnswer(){
+        //move to next stage
+        cleanPlace();
+        audioHint.stop();
+        setNextPlace(PirateWorld.forthPlace);
+    }
     public  void showHurdle(){}
-    public  void setNextPlace(String placeName){}
+    public  void setNextPlace(String placeName){
+        world.setPlace(placeName);
+
+    }
     public  IEnemy getEnemy(String type){
         return null;
     }

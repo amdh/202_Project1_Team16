@@ -66,18 +66,29 @@ public class CopacabanaBrazil extends IPlace
     {
         if(Greenfoot.mouseClicked(ansOP4))
         {
-
-            System.out.println("weeee answer clicked is correct");
-            //move to next stage
-            cleanPlace();
-            audioHint.stop();
-            setNextPlace(PirateWorld.sixthPlace);
+            System.out.println("perform correct answer function");
+            doCorrectAnswer();
 
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3))
         {
             System.out.println(" eee  answer clicked is incorrect");
-            //remove life and repaint the screen
-            removeLife();
+            doIncorrectAnswer();
+        }
+    }    
+
+    private void cleanPlace(){
+        world.removeObject(ansOP2);
+        world.removeObject(ansOP1);
+        world.removeObject(ansOP3);
+        world.removeObject(ansOP4);
+        if(null != hintImg){
+            world.removeObject(hintImg);
+        }
+        world.showHint1("");
+    }
+
+    public  void doIncorrectAnswer(){
+        removeLife();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
@@ -93,42 +104,35 @@ public class CopacabanaBrazil extends IPlace
                 world.showHint3("Place referenced in the song?");
                 audioHint.play();
             }
-        }
-    }    
-
-
-    private void cleanPlace(){
-        world.removeObject(ansOP2);
-        world.removeObject(ansOP1);
-        world.removeObject(ansOP3);
-        world.removeObject(ansOP4);
-        if(null != hintImg){
-            world.removeObject(hintImg);
-        }
-        world.showHint1("");
     }
 
-    public  void doIncorrectAnswer(){}
-
-    public  void doCorrectAnswer(){}
+    public  void doCorrectAnswer(){
+         //move to next stage
+        cleanPlace();
+        audioHint.stop();
+        setNextPlace(PirateWorld.sixthPlace);
+    }
 
     public  void showHurdle(){}
 
-    public  void setNextPlace(String placeName){}
+    public  void setNextPlace(String placeName){
+        world.setPlace(placeName);
+    }
 
     public  IEnemy getEnemy(String type){
         return null;
     }
 
     private void initialize(){
-
+        world =  getWorldOfType(PirateWorld.class);        
+        pirate =  world.getPirate();
     }
 
     private void setBackground(String backgroundPath){
-
+         world.setBackground(backgroundPath);
     }
 
     private void removeLife(){
-
+        pirate.removeLife();
     }
 }

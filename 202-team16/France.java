@@ -64,18 +64,22 @@ public class France extends IPlace
      */ 
     public void act() 
     {
-        if(Greenfoot.mouseClicked(ansOP4))
+        if(Greenfoot.mouseClicked(ansOP1))
         {
 
-            System.out.println("weeee answer clicked is correct");
-            //move to next stage
-            cleanPlace();
-            audioHint.stop();
-            setNextPlace(PirateWorld.fifthPlace);
+            System.out.println("perform correct answer function");
+            doCorrectAnswer();
 
-        }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3))
+        }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4))
         {
             System.out.println(" eee  answer clicked is incorrect");
+            doIncorrectAnswer();
+
+        }
+    }    
+
+    public  void doIncorrectAnswer(){
+        System.out.println(" eee  answer clicked is incorrect");
             //remove life and repaint the screen
             removeLife();
             if(hint==2){
@@ -93,13 +97,17 @@ public class France extends IPlace
                 world.showHint3("Place referenced in the song?");
                 audioHint.play();
             }
-        }
-    }    
-
-    public  void doIncorrectAnswer(){}
-    public  void doCorrectAnswer(){}
+    }
+    public  void doCorrectAnswer(){
+        //move to next stage
+        cleanPlace();
+        audioHint.stop();
+        setNextPlace(PirateWorld.fifthPlace);
+    }
     public  void showHurdle(){}
-    public  void setNextPlace(String placeName){}
+    public  void setNextPlace(String placeName){
+        world.setPlace(placeName);
+    }
     public  IEnemy getEnemy(String type){
         return null;
     }
