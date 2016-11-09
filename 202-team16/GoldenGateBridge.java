@@ -21,7 +21,7 @@ public class GoldenGateBridge extends IPlace
     int hint = 1;
     Shark s;
     PirateWorld world ;
-
+    Pirates pirate;
     public GoldenGateBridge(){
        s=new Shark();
 backgroundImgPath = "images/GoldenGateBridge/base.jpg";
@@ -58,14 +58,15 @@ backgroundImgPath = "images/GoldenGateBridge/base.jpg";
     }
 
     private void initialize(){
-       
+        world =  getWorldOfType(PirateWorld.class);        
+        pirate =  world.getPirate();
     }
 
     private void setBackground(String backgroundPath){
-      
+        world.setBackground(backgroundPath);
     }
 
     private void removeLife(){
-       
+        pirate.removeLife();
     }
 }

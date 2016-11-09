@@ -45,9 +45,9 @@ public class PirateWorld extends World
         quit = new Quit();
         rules = new Rules();
         story = new Story();
-        play.getImage().scale(100,100);
-        quit.getImage().scale(100,100);
-        rules.getImage().scale(100,100);
+        play.getImage().scale(80,80);
+        quit.getImage().scale(70,70);
+        rules.getImage().scale(65,65);
         addObject(story, 1250,400);
         addObject(play, 1410,700);
         addObject(quit, 1180,700);

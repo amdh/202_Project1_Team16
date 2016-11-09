@@ -45,29 +45,12 @@ public class NewYork extends IPlace
     {
         if(Greenfoot.mouseClicked(ansOP2)){
 
-            System.out.println("weeee answer clicked is correct");
-            //move to next stage
-            cleanPlace();
-            setNextPlace(PirateWorld.seventhPlace);
-            audioHint.stop();
-        }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
+             System.out.println("perform correct answer function");
+            doCorrectAnswer();
+        }
+        else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
             System.out.println(" eee  answer clicked is incorrect");
-            //remove life and repaint the screen
-            removeLife();
-            if(hint==2){
-                System.out.println("you are asking for 2nd hint");
-                hintImg = new AnswerOption(imageHintpath);
-                world.showHint2(hintImg,"The garden is Japenese but not in Japan!!");
-                hint = hint +1;
-            }
-            else if(hint==3){
-                //playsound
-                System.out.println("you are asking for 3rd hint");
-                world.removeObject(hintImg);
-                hint = hint + 1;
-                world.showHint3("Place referenced in the song?");
-                audioHint.play();
-            }
+            doIncorrectAnswer();
         }
     }    
 
@@ -87,13 +70,37 @@ public class NewYork extends IPlace
         showHurdle();
     }
 
-    public  void doIncorrectAnswer(){}
+    public  void doIncorrectAnswer(){
+        //remove life and repaint the screen
+            removeLife();
+            if(hint==2){
+                System.out.println("you are asking for 2nd hint");
+                hintImg = new AnswerOption(imageHintpath);
+                world.showHint2(hintImg,"The garden is Japenese but not in Japan!!");
+                hint = hint +1;
+            }
+            else if(hint==3){
+                //playsound
+                System.out.println("you are asking for 3rd hint");
+                world.removeObject(hintImg);
+                hint = hint + 1;
+                world.showHint3("Place referenced in the song?");
+                audioHint.play();
+            }
+    }
 
-    public  void doCorrectAnswer(){}
+    public  void doCorrectAnswer(){
+        //move to next stage
+        cleanPlace();
+        audioHint.stop();
+        setNextPlace(PirateWorld.seventhPlace);
+    }
 
     public  void showHurdle(){}
 
-    public  void setNextPlace(String placeName){}
+    public  void setNextPlace(String placeName){
+         world.setPlace(placeName);
+    }
 
     public  IEnemy getEnemy(String type){
         return null;
@@ -112,11 +119,15 @@ public class NewYork extends IPlace
     }
 
     private void initialize(){
+        world =  getWorldOfType(PirateWorld.class);        
+        pirate =  world.getPirate();
     }
 
     private void setBackground(String backgroundPath){
+        world.setBackground(backgroundPath);
     }
 
     private void removeLife(){
+         pirate.removeLife();
     }
 }

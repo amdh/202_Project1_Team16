@@ -70,16 +70,22 @@ public class MumbaiIndia extends IPlace
         if(Greenfoot.mouseClicked(ansOP1))
         {
 
-            System.out.println("weeee answer clicked is correct");
-            //move to next stage
-            cleanPlace();
-            audioHint.stop();
-            setNextPlace(PirateWorld.thirdPlace);
+            System.out.println("perform correct answer function");
+            doCorrectAnswer();
 
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4))
         {
             System.out.println(" eee  answer clicked is incorrect");
-            //remove life and repaint the screen
+            doIncorrectAnswer();
+        }
+    }    
+
+    public void setNextPlace(String placeName){
+        world.setPlace(placeName);
+    }
+    
+    public  void doIncorrectAnswer(){
+        //remove life and repaint the screen
             removeLife();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
@@ -96,13 +102,15 @@ public class MumbaiIndia extends IPlace
                 world.showHint3("In the search for the shores of her bay");
                 audioHint.play();
             }
-        }
-    }    
 
-    public  void doIncorrectAnswer(){}
-    public  void doCorrectAnswer(){}
+    }
+    public  void doCorrectAnswer(){
+        //move to next stage
+        cleanPlace();
+        audioHint.stop();
+        setNextPlace(PirateWorld.thirdPlace);
+    }
     public  void showHurdle(){}
-    public  void setNextPlace(String placeName){}
     public  IEnemy getEnemy(String type){
         return null;
     }
