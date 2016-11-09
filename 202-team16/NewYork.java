@@ -26,6 +26,7 @@ public class NewYork extends IPlace
     AnswerOption ansOP4;
     AnswerOption hintImg;
     PirateWorld world ;
+    Pirates pirate;
 
     public NewYork(){
        backgroundImgPath = "images/NewYork/base.jpg";
@@ -56,13 +57,15 @@ public class NewYork extends IPlace
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                showHint2(hintImg,"The garden is Japenese but not in Japan!!");
+                world.showHint2(hintImg,"The garden is Japenese but not in Japan!!");
                 hint = hint +1;
             }
             else if(hint==3){
                 //playsound
                 System.out.println("you are asking for 3rd hint");
+                world.removeObject(hintImg);
                 hint = hint + 1;
+                world.showHint3("Place referenced in the song?");
                 audioHint.play();
             }
         }

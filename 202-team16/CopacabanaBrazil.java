@@ -27,6 +27,8 @@ public class CopacabanaBrazil extends IPlace
     AnswerOption ansOP3;
     AnswerOption ansOP4;
     AnswerOption hintImg;
+     PirateWorld world ;
+    Pirates pirate;
 
     public CopacabanaBrazil(){
         backgroundImgPath = "images/Copacabana/base.jpe";
@@ -44,14 +46,14 @@ public class CopacabanaBrazil extends IPlace
         initialize(); 
         //getPirateWorld().removeObject(world.getObjects(BasePlace.class).get(0));
         setBackground(backgroundImgPath);
-        showHint1(textHintPath);
+        world.showHint1(textHintPath);
         hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,false);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,false);
         ansOP4 = new  AnswerOption(answerOption4Path,true);
-        setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
+        world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
         showHurdle();
     }
@@ -69,7 +71,7 @@ public class CopacabanaBrazil extends IPlace
             //move to next stage
             cleanPlace();
             audioHint.stop();
-            setNextPlace(new NewYork());
+            setNextPlace(PirateWorld.sixthPlace);
 
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3))
         {
@@ -79,7 +81,7 @@ public class CopacabanaBrazil extends IPlace
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                showHint2(hintImg,"Where is this statue......?");
+                world.showHint2(hintImg,"Where is this statue......?");
                 hint = hint +1;
                 removeLife();
             }
@@ -88,43 +90,45 @@ public class CopacabanaBrazil extends IPlace
                 System.out.println("you are asking for 3rd hint");
                 hint = hint + 1;
                 world.removeObject(hintImg);
-                showHint3("Place referenced in the song?");
+                world.showHint3("Place referenced in the song?");
                 audioHint.play();
             }
         }
     }    
 
-    public void showHurdle(){
-
-    }
 
     private void cleanPlace(){
-        getPirateWorld().removeObject(ansOP2);
-        getPirateWorld().removeObject(ansOP1);
-        getPirateWorld().removeObject(ansOP3);
-        getPirateWorld().removeObject(ansOP4);
+        world.removeObject(ansOP2);
+        world.removeObject(ansOP1);
+        world.removeObject(ansOP3);
+        world.removeObject(ansOP4);
         if(null != hintImg){
-            getPirateWorld().removeObject(hintImg);
+            world.removeObject(hintImg);
         }
-        showHint1("");
+        world.showHint1("");
     }
-  
-   public  void doIncorrectAnswer(){}
+
+    public  void doIncorrectAnswer(){}
+
     public  void doCorrectAnswer(){}
+
     public  void showHurdle(){}
+
     public  void setNextPlace(String placeName){}
+
     public  IEnemy getEnemy(String type){
         return null;
     }
-private void initialize(){
-       
+
+    private void initialize(){
+
     }
 
     private void setBackground(String backgroundPath){
-      
+
     }
 
     private void removeLife(){
-       
+
     }
 }

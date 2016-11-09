@@ -39,7 +39,7 @@ backgroundImgPath = "images/GoldenGateBridge/base.jpg";
         //getPirateWorld().removeObject(world.getObjects(StartGame.class).get(0));
         setBackground(backgroundImgPath);
         
-        getPirateWorld().addObject(s,250,250);
+       world.addObject(s,250,250);
     }
 
    
