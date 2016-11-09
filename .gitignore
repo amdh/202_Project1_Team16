@@ -7,3 +7,6 @@
 *.ctxt
 202-team16/project.greenfoot
 *.greenfoot
+*.class
+202-team16/images/Australia/Thumbs.db
+*.db
