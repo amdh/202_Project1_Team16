@@ -139,8 +139,7 @@ public class BasePlace extends IPlace
         if(null != hintImg){
             world.removeObject(hintImg);
         }
-        world.showHint1("");
-
+        world.showHint1("");    
     }
 
     private void initialize(){
@@ -157,6 +156,6 @@ public class BasePlace extends IPlace
     }
     
     private void checkLifeCount(){
-        pirate.checkLifeCount();
+        pirate.checkLifeCount(audioHint);
     }
 }

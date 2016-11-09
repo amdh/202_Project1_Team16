@@ -83,9 +83,10 @@ public class Pirates extends Actor
         world.repaint();        
     }
     
-    public void checkLifeCount(){
+    public void checkLifeCount(GreenfootSound audio){
         if (LivesLeft.size() == 0)
         {
+            audio.stop();
             Greenfoot.stop();
             GameOver endgame;
             endgame = new GameOver();

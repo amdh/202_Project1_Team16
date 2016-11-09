@@ -139,6 +139,6 @@ public class France extends IPlace
     }
     
      private void checkLifeCount(){
-        pirate.checkLifeCount();
+        pirate.checkLifeCount(audioHint);
     }
 }

@@ -72,6 +72,6 @@ backgroundImgPath = "images/GoldenGateBridge/base.jpg";
     }
     
      private void checkLifeCount(){
-        pirate.checkLifeCount();
+        pirate.checkLifeCount(audioHint);
     }
 }

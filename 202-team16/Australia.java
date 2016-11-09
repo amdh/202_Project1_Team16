@@ -139,6 +139,6 @@ public class Australia extends IPlace
     }
     
     private void checkLifeCount(){
-        pirate.checkLifeCount();
+        pirate.checkLifeCount(audioHint);
     }
 }
