@@ -1,4 +1,5 @@
 #Greenfoot properties
+<<<<<<< HEAD
 #Tue Nov 08 16:50:29 PST 2016
 target16.name=Skeleton
 editor.swing.0.y=-9
@@ -22,6 +23,28 @@ target19.width=100
 dependency65.type=UsesDependency
 dependency62.from=GoldenGateBridge
 dependency69.from=PirateWorld
+=======
+#Tue Nov 08 18:57:40 PST 2016
+target16.name=Story
+dependency35.to=AnswerOption
+editor.swing.0.y=0
+editor.swing.0.x=0
+target26.width=80
+target2.name=Message
+target9.name=PirateWorld
+target23.name=Life
+dependency56.to=Quit
+dependency11.type=UsesDependency
+target23.y=430
+target23.x=10
+dependency18.type=UsesDependency
+dependency15.from=BasePlace
+target21.showInterface=false
+target19.width=80
+dependency65.type=UsesDependency
+dependency62.from=CopacabanaBrazil
+dependency69.from=GoldenGateBridge
+>>>>>>> origin/master
 dependency8.to=AnswerOption
 dependency77.to=Pirates
 target14.type=ClassTarget
@@ -29,7 +52,10 @@ target15.width=80
 dependency25.type=UsesDependency
 dependency22.from=Australia
 class.Button.superclass=greenfoot.Actor
+<<<<<<< HEAD
 dependency72.type=UsesDependency
+=======
+>>>>>>> origin/master
 dependency29.from=Pirates
 target15.height=50
 class.MumbaiIndia.image=Rio_de_janeiro_copacabana_beach_2010.JPG
@@ -48,11 +74,15 @@ dependency36.from=IPlace
 dependency83.from=EnemyFactory
 target20.showInterface=false
 dependency2.to=Pirates
+<<<<<<< HEAD
 dependency71.to=IEnemy
 dependency46.to=BasePlace
 dependency88.type=UsesDependency
 dependency85.from=EnemyFactory
 class.Skeleton.image=skeleton1.png
+=======
+dependency46.to=BasePlace
+>>>>>>> origin/master
 dependency1.type=UsesDependency
 target16.y=550
 target16.x=10
@@ -60,6 +90,7 @@ dependency41.type=UsesDependency
 class.Story.image=Story.png
 dependency8.type=UsesDependency
 dependency5.from=PirateWorld
+<<<<<<< HEAD
 dependency67.to=IEnemy
 class.CopacabanaBrazil.superclass=IPlace
 dependency48.type=UsesDependency
@@ -73,6 +104,19 @@ target27.showInterface=false
 class.Shark.superclass=IEnemy
 dependency88.to=HintHolder
 target18.width=80
+=======
+dependency67.to=PirateWorld
+class.CopacabanaBrazil.superclass=Place
+dependency48.type=UsesDependency
+dependency45.from=Australia
+target24.height=50
+target12.y=70
+target12.x=160
+class.Shark.superclass=greenfoot.Actor
+target18.width=130
+dependency55.type=UsesDependency
+dependency52.from=CapetownAfrica
+>>>>>>> origin/master
 editor.fx.0.height=700
 dependency55.type=UsesDependency
 dependency52.from=CapetownAfrica
@@ -89,22 +133,35 @@ target8.name=GoldenGateBridge
 dependency61.to=BasePlace
 class.Rules.image=Rules.png
 dependency36.to=PirateWorld
+<<<<<<< HEAD
 target22.name=IEnemy
+=======
+target22.name=Timer
+>>>>>>> origin/master
 dependency10.type=UsesDependency
 class.DisRule.superclass=greenfoot.Actor
 dependency17.type=UsesDependency
 dependency14.from=StartGame
 dependency64.type=UsesDependency
 dependency61.from=Play
+<<<<<<< HEAD
 package.numTargets=27
 dependency82.to=IEnemy
 target26.showInterface=false
 dependency68.from=PirateWorld
+=======
+package.numTargets=25
+target26.showInterface=false
+dependency68.from=GoldenGateBridge
+>>>>>>> origin/master
 dependency57.to=Rules
 target13.type=ClassTarget
 dependency24.type=UsesDependency
 dependency21.from=Australia
+<<<<<<< HEAD
 dependency71.type=UsesDependency
+=======
+>>>>>>> origin/master
 dependency28.from=StartGame
 dependency9.to=PirateWorld
 target24.typeParameters=
@@ -124,23 +181,36 @@ dependency38.type=UsesDependency
 dependency35.from=IPlace
 target3.y=490
 target3.x=200
+<<<<<<< HEAD
 >>>>>>>=origin/master
 dependency82.from=France
+=======
+>>>>>>>=Stashed changes
+>>>>>>> origin/master
 target7.typeParameters=
 class.PirateWorld.superclass=greenfoot.World
 dependency51.to=MumbaiIndia
 target8.height=50
 target25.showInterface=false
 dependency26.to=Life
+<<<<<<< HEAD
 mainWindow.y=-9
 mainWindow.x=-9
 dependency87.type=UsesDependency
+=======
+mainWindow.y=-8
+mainWindow.x=-8
+>>>>>>> origin/master
 target3.showInterface=false
 target12.showInterface=false
 target17.typeParameters=
 dependency3.to=Life
+<<<<<<< HEAD
 class.BasePlace.superclass=IPlace
 dependency72.to=IEnemy
+=======
+class.BasePlace.superclass=Place
+>>>>>>> origin/master
 dependency47.to=AnswerOption
 target1.width=90
 dependency40.type=UsesDependency
@@ -152,6 +222,7 @@ dependency44.from=Australia
 class.Play.superclass=Button
 target26.y=430
 target26.x=10
+<<<<<<< HEAD
 dependency68.to=CapetownAfrica
 dependency20.to=PirateWorld
 dependency54.type=UsesDependency
@@ -160,6 +231,16 @@ target22.y=70
 target22.x=160
 dependency58.from=France
 target14.name=NewYork
+=======
+dependency68.to=GoldenGateBridge
+dependency20.to=PirateWorld
+dependency54.type=UsesDependency
+dependency51.from=France
+target22.y=370
+target22.x=200
+dependency58.from=France
+target14.name=DisRule
+>>>>>>> origin/master
 target9.height=50
 target2.showInterface=false
 target11.showInterface=false
@@ -169,7 +250,11 @@ dependency41.to=StartGame
 dependency16.to=AnswerOption
 class.Life.image=life.png
 class.StartGame.image=StartGame.png
+<<<<<<< HEAD
 target21.name=Rules
+=======
+target21.name=Play
+>>>>>>> origin/master
 class.Rules.superclass=Button
 dependency13.from=PirateWorld
 dependency16.type=UsesDependency
@@ -180,7 +265,11 @@ dependency62.to=AnswerOption
 target14.typeParameters=
 dependency37.to=Pirates
 target8.width=130
+<<<<<<< HEAD
 dependency67.from=IPlace
+=======
+dependency67.from=GoldenGateBridge
+>>>>>>> origin/master
 target22.width=80
 target21.height=50
 target12.type=ClassTarget
@@ -189,12 +278,19 @@ dependency23.type=UsesDependency
 dependency20.from=Australia
 target19.type=ClassTarget
 target4.width=80
+<<<<<<< HEAD
 dependency83.to=IEnemy
+=======
+>>>>>>> origin/master
 dependency70.type=UsesDependency
 target9.showInterface=false
 target18.showInterface=false
 dependency27.from=BasePlace
+<<<<<<< HEAD
 class.EnemyFactory.superclass=greenfoot.Actor
+=======
+dependency58.to=CopacabanaBrazil
+>>>>>>> origin/master
 target10.showInterface=false
 target1.showInterface=false
 dependency58.to=CopacabanaBrazil
@@ -202,13 +298,20 @@ target5.type=ClassTarget
 dependency77.type=UsesDependency
 dependency74.from=CapetownAfrica
 dependency10.to=Life
+<<<<<<< HEAD
 target19.y=190
 class.Pirates.image=pirate_man2.jpg
 target19.x=150
+=======
+target19.y=430
+class.Pirates.image=imageedit_10_8300107855.png
+target19.x=190
+>>>>>>> origin/master
 dependency30.type=UsesDependency
 target26.type=ClassTarget
 target2.height=50
 dependency37.type=UsesDependency
+<<<<<<< HEAD
 dependency34.from=IPlace
 target15.y=610
 dependency79.to=PirateWorld
@@ -217,17 +320,31 @@ dependency84.type=UsesDependency
 dependency81.from=GoldenGateBridge
 dependency31.to=Pirates
 class.Australia.superclass=IPlace
+=======
+dependency34.from=Place
+target15.y=310
+target15.x=100
+dependency31.to=Pirates
+class.Australia.superclass=Place
+>>>>>>> origin/master
 class.HintHolder.image=anchor.png
 target11.y=130
 target11.x=10
 readme.height=58
 target26.typeParameters=
+<<<<<<< HEAD
 dependency86.type=UsesDependency
+=======
+>>>>>>> origin/master
 dependency52.to=France
 target8.showInterface=false
 target17.showInterface=false
 dependency27.to=Australia
+<<<<<<< HEAD
 class.France.superclass=IPlace
+=======
+class.France.superclass=Place
+>>>>>>> origin/master
 target11.typeParameters=
 dependency3.from=PirateWorld
 dependency6.type=UsesDependency
@@ -236,7 +353,10 @@ dependency46.type=UsesDependency
 class.Story.superclass=greenfoot.Actor
 dependency4.to=StartGame
 target9.typeParameters=
+<<<<<<< HEAD
 dependency73.to=IEnemy
+=======
+>>>>>>> origin/master
 dependency48.to=PirateWorld
 target25.width=80
 class.Quit.superclass=Button
@@ -244,18 +364,28 @@ target16.height=50
 dependency53.type=UsesDependency
 dependency50.from=NewYork
 target7.width=80
-<<<<<<<=HEAD
+<<<<<<<=Updated upstream
 dependency57.from=PirateWorld
 class.HintHolder.superclass=greenfoot.Actor
+<<<<<<< HEAD
 target13.name=EnemyFactory
 target21.width=80
 dependency69.to=GoldenGateBridge
+=======
+target13.name=NewYork
+target21.width=80
+dependency69.to=StartGame
+>>>>>>> origin/master
 dependency21.to=Life
 target6.name=AnswerOption
 target16.showInterface=false
 class.Life.superclass=greenfoot.Actor
+<<<<<<< HEAD
 target20.name=CopacabanaBrazil
 target27.name=Australia
+=======
+target20.name=CapetownAfrica
+>>>>>>> origin/master
 target14.width=80
 dependency15.type=UsesDependency
 dependency42.to=CapetownAfrica
@@ -267,6 +397,7 @@ target6.y=550
 dependency19.from=Australia
 target6.x=130
 dependency69.type=UsesDependency
+<<<<<<< HEAD
 dependency66.from=IPlace
 target2.y=490
 target10.width=80
@@ -274,6 +405,15 @@ target2.x=110
 target11.type=AbstractTarget
 class.AnswerOption.superclass=greenfoot.Actor
 dependency63.to=PirateWorld
+=======
+dependency66.from=GoldenGateBridge
+target2.y=490
+target10.width=80
+target2.x=110
+target11.type=ClassTarget
+class.AnswerOption.superclass=greenfoot.Actor
+dependency63.to=CopacabanaBrazil
+>>>>>>> origin/master
 dependency22.type=UsesDependency
 target25.height=50
 target18.type=ClassTarget
@@ -283,11 +423,17 @@ target6.typeParameters=
 dependency29.type=UsesDependency
 dependency26.from=MumbaiIndia
 target4.type=ClassTarget
+<<<<<<< HEAD
 dependency76.type=UsesDependency
 dependency73.from=CapetownAfrica
 dependency84.to=Shark
 target25.type=ClassTarget
 dependency59.to=PirateWorld
+=======
+target25.type=AbstractTarget
+dependency59.to=PirateWorld
+dependency33.from=PirateWorld
+>>>>>>> origin/master
 editor.fx.0.y=0
 dependency33.from=PirateWorld
 dependency36.type=UsesDependency
@@ -298,6 +444,7 @@ editor.fx.0.width=700
 dependency83.type=UsesDependency
 dependency80.from=NewYork
 target24.width=80
+<<<<<<< HEAD
 target25.y=370
 target25.x=200
 dependency85.type=UsesDependency
@@ -305,6 +452,13 @@ dependency32.to=MumbaiIndia
 dependency89.from=HintHolder
 target21.y=430
 target21.x=190
+=======
+target25.y=130
+target25.x=10
+dependency32.to=MumbaiIndia
+target21.y=370
+target21.x=110
+>>>>>>> origin/master
 target20.typeParameters=
 dependency5.type=UsesDependency
 dependency2.from=PirateWorld
@@ -316,7 +470,10 @@ dependency53.to=Story
 dependency49.from=NewYork
 target10.height=50
 dependency28.to=BasePlace
+<<<<<<< HEAD
 class.Skeleton.superclass=IEnemy
+=======
+>>>>>>> origin/master
 target3.typeParameters=
 target13.width=100
 dependency52.type=UsesDependency
@@ -324,32 +481,57 @@ dependency5.to=CopacabanaBrazil
 dependency74.to=PirateWorld
 dependency59.type=UsesDependency
 dependency56.from=PirateWorld
+<<<<<<< HEAD
 target12.name=StartGame
 dependency49.to=MumbaiIndia
 class.CopacabanaBrazil.image=copacabana.JPG
 target19.name=MumbaiIndia
+=======
+target12.name=Enemy
+dependency49.to=MumbaiIndia
+class.CopacabanaBrazil.image=copacabana.JPG
+target19.name=Rules
+>>>>>>> origin/master
 class.StartGame.superclass=Button
 target13.typeParameters=
 target5.name=Quit
 target24.showInterface=false
 dependency22.to=Pirates
+<<<<<<< HEAD
 target26.name=Life
+=======
+target26.name=Place
+>>>>>>> origin/master
 class.Timer.superclass=greenfoot.Actor
 dependency14.type=UsesDependency
 dependency11.from=BasePlace
 dependency61.type=UsesDependency
+<<<<<<< HEAD
 target18.y=610
 dependency18.from=PirateWorld
 target18.x=100
 dependency68.type=UsesDependency
 dependency65.from=GoldenGateBridge
 target14.y=310
+=======
+target18.y=250
+dependency18.from=PirateWorld
+target18.x=100
+dependency68.type=UsesDependency
+dependency65.from=NewYork
+target14.y=610
+>>>>>>> origin/master
 dependency43.to=AnswerOption
 target14.x=10
 target10.type=ClassTarget
 dependency18.to=Australia
+<<<<<<< HEAD
 package.numDependencies=89
 dependency21.type=UsesDependency
+=======
+dependency21.type=UsesDependency
+package.numDependencies=70
+>>>>>>> origin/master
 target17.type=ClassTarget
 dependency28.type=UsesDependency
 dependency25.from=MumbaiIndia
@@ -359,8 +541,12 @@ target10.x=190
 dependency75.type=UsesDependency
 dependency72.from=MumbaiIndia
 target23.showInterface=false
+<<<<<<< HEAD
 dependency79.from=CopacabanaBrazil
 dependency64.to=MumbaiIndia
+=======
+dependency64.to=NewYork
+>>>>>>> origin/master
 class.Play.image=playGame.png
 dependency39.to=AnswerOption
 target25.typeParameters=
@@ -369,9 +555,14 @@ readme.name=@README
 target16.width=80
 dependency35.type=UsesDependency
 dependency32.from=Australia
+<<<<<<< HEAD
 dependency82.type=UsesDependency
 dependency39.from=France
 class.MumbaiIndia.superclass=IPlace
+=======
+dependency39.from=France
+class.MumbaiIndia.superclass=Place
+>>>>>>> origin/master
 target10.typeParameters=
 dependency85.to=Skeleton
 target8.typeParameters=
@@ -395,12 +586,21 @@ dependency51.type=UsesDependency
 dependency29.to=Life
 dependency58.type=UsesDependency
 dependency55.from=PirateWorld
+<<<<<<< HEAD
 target11.name=IPlace
 class.NewYork.superclass=IPlace
 target5.y=70
 target5.x=70
 target22.typeParameters=
 target18.name=Story
+=======
+target11.name=StartGame
+class.NewYork.superclass=Place
+target5.y=70
+target5.x=70
+target22.typeParameters=
+target18.name=CopacabanaBrazil
+>>>>>>> origin/master
 target3.height=50
 dependency6.to=IPlace
 target4.name=Pirates
@@ -408,8 +608,13 @@ target1.y=490
 dependency75.to=Pirates
 target19.typeParameters=
 target1.x=10
+<<<<<<< HEAD
 target25.name=Timer
 class.IEnemy.superclass=greenfoot.Actor
+=======
+class.Place.superclass=greenfoot.Actor
+target25.name=Place
+>>>>>>> origin/master
 class.PirateWorld.image=HomeScreenBackground.PNG
 target5.typeParameters=
 dependency13.type=UsesDependency
@@ -419,7 +624,11 @@ target3.width=80
 dependency60.type=UsesDependency
 dependency17.from=PirateWorld
 dependency67.type=UsesDependency
+<<<<<<< HEAD
 dependency64.from=GoldenGateBridge
+=======
+dependency64.from=CopacabanaBrazil
+>>>>>>> origin/master
 dependency23.to=MumbaiIndia
 target23.height=50
 dependency20.type=UsesDependency
@@ -427,6 +636,7 @@ target16.type=ClassTarget
 dependency27.type=UsesDependency
 dependency24.from=MumbaiIndia
 target2.type=ClassTarget
+<<<<<<< HEAD
 dependency74.type=UsesDependency
 dependency71.from=Australia
 target24.y=370
@@ -448,6 +658,24 @@ target15.showInterface=false
 dependency81.type=UsesDependency
 dependency38.from=IPlace
 dependency65.to=StartGame
+=======
+target24.y=250
+dependency44.to=Australia
+target9.type=ClassTarget
+target24.x=10
+dependency19.to=AnswerOption
+target4.height=50
+target23.type=ClassTarget
+target20.y=130
+target20.x=100
+dependency34.type=UsesDependency
+dependency31.from=MumbaiIndia
+editor.swing.0.height=0
+target6.showInterface=false
+target15.showInterface=false
+dependency38.from=Place
+dependency65.to=GoldenGateBridge
+>>>>>>> origin/master
 readme.y=10
 readme.x=10
 target10.naviview.expanded=false
@@ -463,10 +691,17 @@ dependency7.from=StartGame
 target6.width=110
 dependency47.from=NewYork
 readme.width=47
+<<<<<<< HEAD
 target20.width=130
 mainWindow.height=1048
 target9.naviview.expanded=false
 editor.swing.0.width=1938
+=======
+target20.width=120
+mainWindow.height=744
+target9.naviview.expanded=false
+editor.swing.0.width=0
+>>>>>>> origin/master
 target5.showInterface=false
 target14.showInterface=false
 target26.height=50
@@ -477,17 +712,27 @@ dependency50.type=UsesDependency
 dependency57.type=UsesDependency
 dependency54.from=PirateWorld
 target10.name=Button
+<<<<<<< HEAD
 target17.y=310
 target17.x=100
 target17.name=France
 dependency80.to=IEnemy
+=======
+target17.y=190
+target17.x=150
+target17.name=MumbaiIndia
+>>>>>>> origin/master
 dependency55.to=Play
 target3.name=Shark
 target7.height=50
 target13.y=670
 target13.x=10
 class.DisRule.image=Rule.png
+<<<<<<< HEAD
 target24.name=Play
+=======
+target24.name=Australia
+>>>>>>> origin/master
 dependency7.to=PirateWorld
 dependency12.type=UsesDependency
 dependency76.to=PirateWorld
@@ -496,16 +741,26 @@ dependency16.from=PirateWorld
 target4.showInterface=false
 target13.showInterface=false
 dependency66.type=UsesDependency
+<<<<<<< HEAD
 dependency63.from=GoldenGateBridge
 target27.width=80
+=======
+dependency63.from=CopacabanaBrazil
+>>>>>>> origin/master
 target15.type=ClassTarget
 dependency23.from=PirateWorld
 dependency26.type=UsesDependency
 target11.height=50
+<<<<<<< HEAD
 target1.type=ClassTarget
 dependency24.to=AnswerOption
 dependency73.type=UsesDependency
 dependency70.from=BasePlace
+=======
+dependency24.to=AnswerOption
+target1.type=ClassTarget
+dependency70.from=GoldenGateBridge
+>>>>>>> origin/master
 target9.width=90
 target8.type=ClassTarget
 dependency77.from=France
@@ -514,6 +769,7 @@ target22.type=AbstractTarget
 dependency1.to=Button
 dependency33.type=UsesDependency
 dependency30.from=Pirates
+<<<<<<< HEAD
 dependency70.to=IEnemy
 class.Pirates.superclass=greenfoot.Actor
 target5.width=80
@@ -523,6 +779,15 @@ dependency37.from=IPlace
 dependency84.from=EnemyFactory
 class.CapetownAfrica.superclass=IPlace
 dependency66.to=IPlace
+=======
+dependency70.to=Shark
+class.Pirates.superclass=greenfoot.Actor
+target5.width=80
+dependency45.to=StartGame
+dependency37.from=Place
+class.CapetownAfrica.superclass=Place
+dependency66.to=AnswerOption
+>>>>>>> origin/master
 target8.y=190
 target8.x=10
 dependency89.type=UsesDependency
@@ -533,7 +798,10 @@ target4.y=10
 target4.x=170
 dependency42.type=UsesDependency
 target20.height=50
+<<<<<<< HEAD
 class.Shark.image=sahrk.png
+=======
+>>>>>>> origin/master
 target12.height=50
 dependency9.type=UsesDependency
 dependency6.from=PirateWorld
@@ -542,13 +810,17 @@ dependency46.from=Australia
 target21.typeParameters=
 dependency87.to=Pirates
 world.lastInstantiated=PirateWorld
+<<<<<<< HEAD
 dependency14.to=IPlace
+=======
+dependency14.to=Place
+>>>>>>> origin/master
 target18.typeParameters=
 target19.showInterface=false
 dependency53.from=PirateWorld
 dependency56.type=UsesDependency
 target1.height=50
 target4.typeParameters=
-mainWindow.width=1932
+mainWindow.width=1370
 =\=\=\=\=\=\=
 dependency60.to=PirateWorld

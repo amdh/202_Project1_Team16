@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=CopacabanaBrazil
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ SugarloafMountain\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ CopacabanaBrazil\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=CopacabanaBrazil()
+<<<<<<< HEAD
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ SugarloafMountain\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment10.params=
 comment10.target=void\ initialize()
@@ -10,11 +11,15 @@ comment11.params=backgroundPath
 comment11.target=void\ setBackground(java.lang.String)
 comment12.params=
 comment12.target=void\ removeLife()
+=======
+>>>>>>> origin/master
 comment2.params=
-comment2.target=void\ act()
+comment2.target=void\ draw()
 comment3.params=
-comment3.target=void\ draw()
+comment3.target=void\ act()
+comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ Australia\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment4.params=
+<<<<<<< HEAD
 comment4.target=void\ doIncorrectAnswer()
 comment5.params=
 comment5.target=void\ doCorrectAnswer()
@@ -27,3 +32,9 @@ comment8.target=IEnemy\ getEnemy(java.lang.String)
 comment9.params=
 comment9.target=void\ cleanPlace()
 numComments=13
+=======
+comment4.target=void\ showHurdle()
+comment5.params=
+comment5.target=void\ cleanPlace()
+numComments=6
+>>>>>>> origin/master
