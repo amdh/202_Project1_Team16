@@ -17,7 +17,7 @@ public class PirateWorld extends World
     static final String fifthPlace =  "BRAZIL";
     static final String sixthPlace = "NEWYORK";
     static final String seventhPlace = "GOLDENGATE";
-    
+
     Button startGame, quit, play, rules;
     Pirates pirate;
     IPlace currentPlace;
@@ -53,19 +53,20 @@ public class PirateWorld extends World
         addObject(quit, 1180,700);
         addObject(rules, 1300,700);
     }
-    
-     public void setRules(){
+
+    public void setRules(){
         if(story!=null)
-        removeObject(story);
-if(rule!=null)
+            removeObject(story);
+        if(rule!=null)
         {
             removeObject(rule);
             story = new Story();
             addObject(story, 1250,400);
         }
-       else
+        else
         {        rule = new DisRule();
-        addObject(rule, 1250,400);
+            addObject(rule, 1250,400);
+        }
     }
 
     public void setPlace(String placename)
