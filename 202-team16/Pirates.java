@@ -15,7 +15,7 @@ public class Pirates extends Actor
     public Pirates()
     {
         GreenfootImage image = getImage() ; 
-        image.scale( 150, 200 ) ; 
+        image.scale( 300, 300 ) ; 
         System.out.println("creating lives");
         LivesLeft = new ArrayList<Life>();
         LivesLeft.add(new Life());
@@ -41,6 +41,19 @@ public class Pirates extends Actor
             mouseY=mouse.getY();  
             setLocation(mouseX, mouseY);  
         } 
+        if(Greenfoot.mouseClicked(this)){
+
+            MouseInfo mouse = Greenfoot.getMouseInfo();  
+            mouseX=mouse.getX();  
+            mouseY=mouse.getY(); 
+            
+            HintHolder h = new HintHolder();
+            h.getImage().scale(30,30);
+            world.addObject(h,mouseX, mouseY);
+            
+            
+            
+        }
     }    
 
     public void setLife(){
@@ -63,5 +76,10 @@ public class Pirates extends Actor
             LivesLeft.remove(0);
         }
         //world.repaint();
+    }
+    
+    public void addLife(){
+        LivesLeft.add(new Life());
+        world.repaint();        
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class NewYork extends Place
+public class NewYork extends IPlace
 {
     String backgroundImgPath;
     String textHintPath;
@@ -47,7 +47,7 @@ public class NewYork extends Place
             System.out.println("weeee answer clicked is correct");
             //move to next stage
             cleanPlace();
-            setNextPlace(new MumbaiIndia());
+            setNextPlace(PirateWorld.seventhPlace);
             audioHint.stop();
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP1)){
             System.out.println(" eee  answer clicked is incorrect");
@@ -56,7 +56,7 @@ public class NewYork extends Place
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                showHint2(hintImg,"Where is this statue......?");
+                world.showHint2(hintImg,"Where is this statue......?");
                 hint = hint +1;
             }
             else if(hint==3){
@@ -70,34 +70,44 @@ public class NewYork extends Place
 
     public void draw(){
         initialize(); 
-        getPirateWorld().removeObject(world.getObjects(StartGame.class).get(0));
+
         setBackground(backgroundImgPath);
-        showHint1(textHintPath);
+        world.showHint1(textHintPath);
         hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,false);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,false);
         ansOP4 = new  AnswerOption(answerOption4Path,true);
-        setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
+        world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
 
         showHurdle();
     }
 
-    public void showHurdle(){
+    public  void doIncorrectAnswer(){}
+
+    public  void doCorrectAnswer(){}
+
+    public  void showHurdle(){}
+
+    public  void setNextPlace(String placeName){}
+
+    public  IEnemy getEnemy(String type){
+        return null;
+    }
+
+    //private methods
+    private void cleanPlace(){
 
     }
 
-    public void cleanPlace(){
-        getPirateWorld().removeObject(ansOP2);
-        getPirateWorld().removeObject(ansOP1);
-        getPirateWorld().removeObject(ansOP3);
-        getPirateWorld().removeObject(ansOP4);
-        if(null != hintImg){
-            getPirateWorld().removeObject(hintImg);
-        }
-        showHint1("");
+    private void initialize(){
+    }
 
+    private void setBackground(String backgroundPath){
+    }
+
+    private void removeLife(){
     }
 }
 /*New York is a state in the Northeastern United States and is the 27th-most extensive, fourth-most populous, and seventh-most densely 

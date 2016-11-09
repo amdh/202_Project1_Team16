@@ -9,10 +9,18 @@ import java.util.*;
  */
 public class PirateWorld extends World
 {
-
+    static final String basePlace = "BASEPLACE" ;
+    static final String firstPlace =  "AUSTRALIA";
+    static final String secondPlace = "MUMBAI";
+    static final String thirdPlace =  "CAPETOWN";
+    static final String forthPlace = "FRANCE";
+    static final String fifthPlace =  "BRAZIL";
+    static final String sixthPlace = "NEWYORK";
+    static final String seventhPlace = "GOLDENGATE";
+    
     Button startGame, quit, play, rules;
     Pirates pirate;
-    Place currentPlace;
+    IPlace currentPlace;
     Life pirateBoat;
     Story story;
     DisRule rule; 
@@ -42,14 +50,45 @@ public class PirateWorld extends World
         addObject(quit, 300,700);
         addObject(rules, 800,700);
     }
-    
-     public void setRules(){
+
+    public void setRules(){
         removeObject(story);
         rule = new DisRule();
         addObject(rule, 1250,400);
     }
-    
-    public void setPlace(Place place)
+
+    public void setPlace(String placename)
+    {
+        if(this.currentPlace != null){
+            removeObject(this.currentPlace);
+        }
+        System.out.println(placename);
+        switch(placename.toUpperCase()){
+
+            case basePlace:  this.currentPlace = new BasePlace();
+            break;
+            case firstPlace: this.currentPlace = new Australia();
+            break;
+            case forthPlace: this.currentPlace = new France();
+            break;
+            case secondPlace: this.currentPlace = new MumbaiIndia();
+            break;
+            case thirdPlace: this.currentPlace = new CapetownAfrica();
+            break;
+            case fifthPlace: this.currentPlace = new CopacabanaBrazil();
+            break;
+            case sixthPlace: this.currentPlace = new NewYork();
+            break;                
+            case seventhPlace: this.currentPlace = new GoldenGateBridge();
+            break;
+            default : this.currentPlace = new BasePlace();
+        }
+
+        addObject(currentPlace,0,0);
+        currentPlace.draw();
+    }
+
+    public void setPlace(IPlace place)
     {
         if(this.currentPlace != null){
             removeObject(this.currentPlace);
@@ -62,21 +101,21 @@ public class PirateWorld extends World
     public void started(){
         sound.play();
     }
-    
+
     public void stopped(){
         sound.stop();
     }
-
 
     public void setPirate(){
         sound.stop();
         pirate = new Pirates();
         pirateBoat = new Life();
-        pirateBoat.getImage().scale(250,150);
+        pirateBoat.getImage().scale(500,400);
         Greenfoot.delay(10);
-        addObject(pirate,50,600);
+        addObject(pirate,150,750);
         pirate.setLife();
     }
+
     public Message getMessage(){
         return message;
     }
@@ -86,7 +125,7 @@ public class PirateWorld extends World
         return pirate;
     }
 
-    public Place getCurrentPlace(){
+    public IPlace getCurrentPlace(){
         return currentPlace;
     }
 
@@ -95,8 +134,42 @@ public class PirateWorld extends World
         removeObject(quit);
         removeObject(rules);
         if(story!=null)
-        removeObject(story);
+            removeObject(story);
         if(rule!=null)
-        removeObject(rule);
+            removeObject(rule);
+    }
+
+    public void setAnswerOptions(AnswerOption ans1, AnswerOption ans2, AnswerOption ans3, AnswerOption ans4 ){
+
+        Greenfoot.delay(30);
+        int x =70 , y = 100;
+        ans1.getImage().scale(180,180);
+        addObject(ans1,x,y);
+        x=x+195;
+        ans2.getImage().scale(180,180);
+        addObject(ans2,x,y);
+        x=x+195;
+        ans3.getImage().scale(180,180);
+        addObject(ans3,x,y);
+        x=x+195;
+        ans4.getImage().scale(180,180);
+        addObject(ans4,x,y);
+
+    }
+
+    public void showHint1(String msg){
+        Greenfoot.delay(20);
+        message.display(msg);
+        addObject(message,290,250);
+    }
+
+    public void showHint2(AnswerOption hintImg, String msg){
+        message.display(msg);       
+        hintImg.getImage().scale(200,180);
+        addObject(hintImg, 200,400);
+    }
+
+    public void showHint3(String msg){
+        message.display(msg);
     }
 }
