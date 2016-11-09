@@ -45,11 +45,11 @@ public class BasePlace extends IPlace
 
     public void act() 
     {
-        if(life < 10){
-            if (Greenfoot.getRandomNumber(300)<3){
-                world.addObject(getEnemy("shark"), 1500,800);
-            }
-        }life++;
+        /* if(life < 10){
+        if (Greenfoot.getRandomNumber(300)<3){
+        world.addObject(getEnemy("shark"), 1500,800);
+        }
+        }life++; */
 
         if(Greenfoot.mouseClicked(ansOP1)){
 
@@ -74,7 +74,7 @@ public class BasePlace extends IPlace
         ansOP3 = new  AnswerOption(answerOption3Path,false);
         ansOP4 = new  AnswerOption(answerOption4Path,false);
         world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
-        showHurdle();
+        //        showHurdle();
     }
 
     public void showHurdle(){
