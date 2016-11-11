@@ -64,6 +64,7 @@ public class France extends IPlace
      */ 
     public void act() 
     {
+        checkLifeCount();
         if(Greenfoot.mouseClicked(ansOP1))
         {
 
@@ -86,8 +87,7 @@ public class France extends IPlace
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
                 world.showHint2(hintImg,"Olypmics 2016 were held at?");
-                hint = hint +1;
-                removeLife();
+                hint = hint +1;                
             }
             else if(hint==3){
                 //playsound
@@ -136,5 +136,9 @@ public class France extends IPlace
 
     private void removeLife(){
         pirate.removeLife();
+    }
+    
+     private void checkLifeCount(){
+        pirate.checkLifeCount(audioHint);
     }
 }

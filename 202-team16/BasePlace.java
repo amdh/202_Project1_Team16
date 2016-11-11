@@ -50,7 +50,8 @@ public class BasePlace extends IPlace
         world.addObject(getEnemy("shark"), 1500,800);
         }
         }life++; */
-
+        checkLifeCount();
+        
         if(Greenfoot.mouseClicked(ansOP1)){
 
             System.out.println("perform correct answer function");
@@ -138,8 +139,7 @@ public class BasePlace extends IPlace
         if(null != hintImg){
             world.removeObject(hintImg);
         }
-        world.showHint1("");
-
+        world.showHint1("");    
     }
 
     private void initialize(){
@@ -153,5 +153,9 @@ public class BasePlace extends IPlace
 
     private void removeLife(){
         pirate.removeLife();
+    }
+    
+    private void checkLifeCount(){
+        pirate.checkLifeCount(audioHint);
     }
 }

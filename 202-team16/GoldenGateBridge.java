@@ -29,6 +29,7 @@ backgroundImgPath = "images/GoldenGateBridge/base.jpg";
 
     public void act() 
     {
+        checkLifeCount();
         Greenfoot.delay(5);
         s.turn(4);
         s.move(2);
@@ -68,5 +69,9 @@ backgroundImgPath = "images/GoldenGateBridge/base.jpg";
 
     private void removeLife(){
         pirate.removeLife();
+    }
+    
+     private void checkLifeCount(){
+        pirate.checkLifeCount(audioHint);
     }
 }

@@ -82,4 +82,16 @@ public class Pirates extends Actor
         LivesLeft.add(new Life());
         world.repaint();        
     }
+    
+    public void checkLifeCount(GreenfootSound audio){
+        if (LivesLeft.size() == 0)
+        {
+            audio.stop();
+            Greenfoot.stop();
+            GameOver endgame;
+            endgame = new GameOver();
+            world.removeObjects(world.getObjects(null)); //removes all the objects in the world;
+            world.addObject(new GameOver(), world.getWidth()/2, world.getHeight()/2); //adds the game over screen in the middle of the world;             
+        }
+    }
 }

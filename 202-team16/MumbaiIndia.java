@@ -67,6 +67,8 @@ public class MumbaiIndia extends IPlace
     {
         // Add your action code here.
         // Add your action code here.
+        checkLifeCount();
+        
         if(Greenfoot.mouseClicked(ansOP1))
         {
 
@@ -92,7 +94,6 @@ public class MumbaiIndia extends IPlace
                 hintImg = new AnswerOption(imageHintpath);
                 world.showHint2(hintImg,"Penguins in Boulder Island...");
                 hint = hint +1;
-                removeLife();
             }
             else if(hint==3){
                 //playsound
@@ -139,5 +140,9 @@ public class MumbaiIndia extends IPlace
 
     private void removeLife(){
         pirate.removeLife();
+    }
+    
+     private void checkLifeCount(){
+        pirate.checkLifeCount(audioHint);
     }
 }
