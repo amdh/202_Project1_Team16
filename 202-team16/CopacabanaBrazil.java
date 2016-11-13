@@ -31,7 +31,7 @@ public class CopacabanaBrazil extends IPlace
     Pirates pirate;
 
     public CopacabanaBrazil(){
-        backgroundImgPath = "images/Copacabana/base.jpe";
+        backgroundImgPath = "images/Copacabana/world_5.jpg";
         textHintPath = "City that never sleeps?";
         imageHintpath = "images/NewYork/imgHint.jpg";
         answerOption1Path = "images/NewYork/op1.jpg";

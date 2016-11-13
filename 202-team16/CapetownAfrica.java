@@ -31,7 +31,7 @@ public class CapetownAfrica extends IPlace
     
     public CapetownAfrica()
     {
-        backgroundImgPath = "images/CapeTownAfrica/background.jpg";
+        backgroundImgPath = "images/CapeTownAfrica/world_3.jpg";
         textHintPath = "Da Vinci Code was shot in it's capital city ";
         soundHintPath="images/France/audioHint.mp3";
         imageHintpath = "images/France/hintimg.jpg";

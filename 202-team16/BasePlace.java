@@ -31,7 +31,7 @@ public class BasePlace extends IPlace
     Pirates pirate;
 
     public BasePlace(){
-        backgroundImgPath = "images/baseplace/base.jpg";
+        backgroundImgPath = "images/baseplace/world_0.jpg";
         textHintPath = "Smallest continent in the world is?";
         imageHintpath = "images/baseplace/AusHintImage.jpg";
 
@@ -45,13 +45,14 @@ public class BasePlace extends IPlace
 
     public void act() 
     {
-        /* if(life < 10){
-        if (Greenfoot.getRandomNumber(300)<3){
-        world.addObject(getEnemy("shark"), 1500,800);
+        if(hurdle){
+            if (Greenfoot.getRandomNumber(300)<3){
+                world.addObject(getEnemy("shark"), 1500,800);
+            }
         }
-        }life++; */
+
         checkLifeCount();
-        
+
         if(Greenfoot.mouseClicked(ansOP1)){
 
             System.out.println("perform correct answer function");
@@ -75,10 +76,11 @@ public class BasePlace extends IPlace
         ansOP3 = new  AnswerOption(answerOption3Path,false);
         ansOP4 = new  AnswerOption(answerOption4Path,false);
         world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
-        //        showHurdle();
+        showHurdle();
     }
 
     public void showHurdle(){
+
         EnemyFactory f = new EnemyFactory();
 
         IEnemy s1 = f.getEnemy("shark");
@@ -92,6 +94,7 @@ public class BasePlace extends IPlace
     }
 
     public void setNextPlace(String placeName){
+
         world.setPlace(placeName);
     }
 
@@ -154,7 +157,7 @@ public class BasePlace extends IPlace
     private void removeLife(){
         pirate.removeLife();
     }
-    
+
     private void checkLifeCount(){
         pirate.checkLifeCount(audioHint);
     }

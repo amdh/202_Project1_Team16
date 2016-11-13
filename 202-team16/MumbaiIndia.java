@@ -34,13 +34,13 @@ public class MumbaiIndia extends IPlace
     Pirates pirate;
 
     public MumbaiIndia(){
-        backgroundImgPath = "images/Mumbai/background.jpg";
+        backgroundImgPath = "images/Mumbai/world_2.jpg";
         textHintPath = "To win there is a cape of good hope";
         soundHintPath="";
         imageHintpath = "images/CapeTownAfrica/hintimg.jpg";
 
-        answerOption1Path = "images/CapeTownAfrica/CapeTownCorrectOption.jpg";
-        answerOption2Path = "images/CapeTownAfrica/CapeTownIncorrectOption1.jpg";
+        answerOption1Path = "images/CapeTownAfrica/CapeTownIncorrectOption1.jpg";
+        answerOption2Path = "images/CapeTownAfrica/CapeTownCorrectOption.jpg";
         answerOption3Path = "images/CapeTownAfrica/CapeTownIncorrectOption2.jpg";
         answerOption4Path = "images/CapeTownAfrica/CapeTownIncorrectOption3.jpg";
 
@@ -69,13 +69,13 @@ public class MumbaiIndia extends IPlace
         // Add your action code here.
         checkLifeCount();
         
-        if(Greenfoot.mouseClicked(ansOP1))
+        if(Greenfoot.mouseClicked(ansOP2))
         {
 
             System.out.println("perform correct answer function");
             doCorrectAnswer();
 
-        }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4))
+        }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4))
         {
             System.out.println(" eee  answer clicked is incorrect");
             doIncorrectAnswer();

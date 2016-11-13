@@ -31,7 +31,7 @@ public class France extends IPlace
     Pirates pirate;
 
     public France(){
-        backgroundImgPath = "images/France/background.jpg";
+        backgroundImgPath = "images/France/world_4.jpg";
         textHintPath = "World's most famous beach, runs for 3 miles?";
         imageHintpath = "images/copacabana/imgHint.png";
         answerOption1Path = "images/copacabana/ans1.jpg";

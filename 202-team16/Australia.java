@@ -32,7 +32,7 @@ public class Australia extends IPlace
     Pirates pirate;
 
     public Australia(){
-        backgroundImgPath = "images/AusBackground.jpg";
+        backgroundImgPath = "images/Australia/world_1.jpg";
         textHintPath = "Bollywood is Here?";
         imageHintpath = "images/Mumbai/MumbaiImgHint.jpg";
         answerOption1Path = "images/Mumbai/Mumicorrectop3.jpg";

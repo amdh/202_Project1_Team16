@@ -29,7 +29,7 @@ public class NewYork extends IPlace
     Pirates pirate;
 
     public NewYork(){
-       backgroundImgPath = "images/NewYork/base.jpg";
+       backgroundImgPath = "images/NewYork/world_6.jpg";
         textHintPath = "You can find the world's most crooked street over here!!";
         soundHintPath="";
         imageHintpath = "images/GoldenGateBridge/hintImg.jpg";
