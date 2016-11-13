@@ -16,7 +16,7 @@ public class CapetownAfrica extends IPlace
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
-    GreenfootSound audioHint;
+    GreenfootSound audioHint, wrongAns;
 
     int life = 0;
     int hint = 1;
@@ -42,6 +42,7 @@ public class CapetownAfrica extends IPlace
         answerOption4Path = "images/France/IncorrectOption3.jpg";
         
         audioHint=new GreenfootSound("images/France/audioHint.mp3");  
+        wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
     }
     
     public void draw(){
@@ -81,7 +82,9 @@ public class CapetownAfrica extends IPlace
     
     public  void doIncorrectAnswer(){
         //remove life and repaint the screen
-            removeLife();
+             wrongAns.stop();
+             removeLife();
+             wrongAns.play();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);

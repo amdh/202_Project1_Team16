@@ -16,7 +16,7 @@ public class GoldenGateBridge extends IPlace
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
-    GreenfootSound audioHint;
+    GreenfootSound audioHint, wrongAns;
     int life = 0;
     int hint = 1;
     Shark s;

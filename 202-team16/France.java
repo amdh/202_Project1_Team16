@@ -17,7 +17,7 @@ public class France extends IPlace
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
-    GreenfootSound audioHint;
+    GreenfootSound audioHint, wrongAns;
 
     int life = 0;
     int hint = 1;
@@ -39,6 +39,7 @@ public class France extends IPlace
         answerOption3Path = "images/copacabana/ans3.jpg";
         answerOption4Path = "images/copacabana/ans4.jpg";
         audioHint=new GreenfootSound("images/copacabana/audioHint.mp3");
+        wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
 
     }
 
@@ -82,7 +83,9 @@ public class France extends IPlace
     public  void doIncorrectAnswer(){
         System.out.println(" eee  answer clicked is incorrect");
             //remove life and repaint the screen
-            removeLife();
+             wrongAns.stop();
+             removeLife();
+             wrongAns.play();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);

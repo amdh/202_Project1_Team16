@@ -11,6 +11,8 @@ public class Pirates extends Actor
 {
     List<Life> LivesLeft ;
     PirateWorld world;
+    GreenfootSound sound = new GreenfootSound("sounds/FireAnchor.mp3");
+    GreenfootSound Die = new GreenfootSound("sounds/GameOver.mp3");
 
     public Pirates()
     {
@@ -43,14 +45,14 @@ public class Pirates extends Actor
         } 
         if(Greenfoot.mouseClicked(this)){
 
+            sound.stop();
             MouseInfo mouse = Greenfoot.getMouseInfo();  
             mouseX=mouse.getX();  
             mouseY=mouse.getY(); 
-            
             HintHolder h = new HintHolder();
             h.getImage().scale(30,30);
             world.addObject(h,mouseX, mouseY);
-            
+            sound.play();
             
             
         }
@@ -87,6 +89,7 @@ public class Pirates extends Actor
         if (LivesLeft.size() == 0)
         {
             audio.stop();
+            Die.play();
             Greenfoot.stop();
             GameOver endgame;
             endgame = new GameOver();
