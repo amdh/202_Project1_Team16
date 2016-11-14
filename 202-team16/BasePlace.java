@@ -18,7 +18,7 @@ public class BasePlace extends IPlace
     GreenfootSound audioHint, wrongAns;
 
     int life = 0;
-    int hint = 1;
+    int hint = 1,i=1000;
     boolean hurdle = true;
 
     AnswerOption ansOP1;
@@ -34,14 +34,12 @@ public class BasePlace extends IPlace
         backgroundImgPath = "images/baseplace/world_0.jpg";
         textHintPath = "Smallest continent in the world is?";
         imageHintpath = "images/baseplace/AusHintImage.jpg";
-
         answerOption1Path = "images/baseplace/AusCorrectop.jpg";
         answerOption2Path = "images/baseplace/Ausincorrectop2.jpg";
         answerOption3Path = "images/baseplace/Ausincorrectop3.jpg";
         answerOption4Path = "images/baseplace/Ausincorrectop1.jpg";
         audioHint=new GreenfootSound("images/baseplace/audioHint.mp3");
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-
     }
 
     public void act() 
@@ -51,27 +49,30 @@ public class BasePlace extends IPlace
                 world.addObject(getEnemy("shark"), 1500,800);
             }
         }
-
         checkLifeCount();
-
         if(Greenfoot.mouseClicked(ansOP1)){
-
             System.out.println("perform correct answer function");
             doCorrectAnswer();
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
             System.out.println(" eee  answer clicked is incorrect");
             doIncorrectAnswer();
         }
-
+        if (hint>=4){   
+            if (i%100==0)
+            world.showHint3("You will be promoted to the next step in "+i/100);
+            i--;
+            if (i == 0)
+            {
+                doCorrectAnswer();
+            }
+        }
     }    
 
     public void draw(){
         initialize(); 
         setBackground(backgroundImgPath);
-
         world.showHint1(textHintPath);
-        hint= hint+1;
-
+        //hint= hint+1;
         ansOP1 = new  AnswerOption(answerOption1Path,true);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,false);
@@ -81,21 +82,16 @@ public class BasePlace extends IPlace
     }
 
     public void showHurdle(){
-
         EnemyFactory f = new EnemyFactory();
-
         IEnemy s1 = f.getEnemy("shark");
         s1.getImage().scale(250,300);
         world.addObject(s1,1400,700); 
-
         IEnemy s2 = f.getEnemy("shark");
         s2.getImage().scale(250,300);
         world.addObject(s2,1500,800); 
-
     }
 
     public void setNextPlace(String placeName){
-
         world.setPlace(placeName);
     }
 
@@ -104,33 +100,31 @@ public class BasePlace extends IPlace
         cleanPlace();
         audioHint.stop();
         setNextPlace(PirateWorld.firstPlace);
-
     }
 
     public void doIncorrectAnswer(){
         //remove life and repaint the screen
         wrongAns.stop();
         removeLife();
+        hint = hint + 1;
+        System.out.println(hint);
         wrongAns.play();
         if(hint==2){
             System.out.println("you are asking for 2nd hint");
             hintImg = new AnswerOption(imageHintpath);
             world.showHint2(hintImg,"This is National animal of which country?");
-            hint = hint +1;
         }
         else if(hint==3){
             //playsound
-            System.out.println("you are asking for 3rd hint");
-            hint = hint + 1;  
+            System.out.println("you are asking for 3rd hint"); 
             world.removeObject(hintImg);
             world.showHint3("This Song belongs to famous band from?");
-            audioHint.play();
+            audioHint.play(); 
         }
     }
 
     public IEnemy getEnemy(String type){
         EnemyFactory f = new EnemyFactory();
-
         IEnemy s1 = f.getEnemy(type);
         return s1;
     }
@@ -138,6 +132,17 @@ public class BasePlace extends IPlace
     //end of implemented methods
     //private methods
     private void cleanPlace(){
+        world.removeObject(ansOP2);
+        world.removeObject(ansOP1);
+        world.removeObject(ansOP3);
+        world.removeObject(ansOP4);
+        if(null != hintImg){
+            world.removeObject(hintImg);
+        }
+        world.showHint1("");    
+    }
+    
+    private void p(){
         world.removeObject(ansOP2);
         world.removeObject(ansOP1);
         world.removeObject(ansOP3);
