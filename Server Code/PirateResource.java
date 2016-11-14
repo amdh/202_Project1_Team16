@@ -6,7 +6,7 @@ import org.restlet.ext.json.* ;
 import org.restlet.resource.* ;
 import gumball.GumballMachine ;
 
-public class GumballResource extends ServerResource {
+public class PirateResource extends ServerResource {
 
     GumballMachine machine = GumballMachine.getInstance() ;
 
@@ -33,9 +33,9 @@ public class GumballResource extends ServerResource {
         String action = json.getString("action") ;
         System.out.println( "action: " + action ) ;
 
-        if ( action.equals( "insert-quarter") )
-            machine.insertQuarter() ;
-        if ( action.equals( "turn-crank") )
+        if ( action.equals( "correct-answer"))
+            machine.insertQuarter();
+        if ( action.equals( "wrong-answer") )
             machine.turnCrank();
 
         JSONObject response = new JSONObject() ;
