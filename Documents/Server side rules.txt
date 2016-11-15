@@ -1,0 +1,18 @@
+client hits the server everytime to see if any player has reached stage 7. 
+if so, it will pull all that data (player_id) and compare with the current machine if the player_id matches.
+If not, display loser, else display winner
+
+On every stage clear, the client will hit the server and update the stage on server side.
+
+server will store client id and stage. (like a hashmap)
+
+lives lost will be managed on the client side. When the last life is lost, it will hit the server and update the stage to '-1'.
+
+player_id     Stage
+    1           4
+    2           7
+    3          -1
+    
+   so player 3 is dead, player 2 has reached the final stage, and will display winner on his sreen n looser on the others.. 
+   
+   If any modifications or comments, please dont change the above text, write it below.
