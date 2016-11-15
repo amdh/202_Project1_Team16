@@ -20,7 +20,7 @@ public class MumbaiIndia extends IPlace
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
-    GreenfootSound audioHint, wrongAns;
+    GreenfootSound audioHint, wrongAns, correctAns;
 
     int life = 0;
     int hint = 1, i=1000;
@@ -38,14 +38,13 @@ public class MumbaiIndia extends IPlace
         textHintPath = "To win there is a cape of good hope";
         soundHintPath="";
         imageHintpath = "images/CapeTownAfrica/hintimg.jpg";
-
         answerOption1Path = "images/CapeTownAfrica/CapeTownIncorrectOption1.jpg";
         answerOption2Path = "images/CapeTownAfrica/CapeTownCorrectOption.jpg";
         answerOption3Path = "images/CapeTownAfrica/CapeTownIncorrectOption2.jpg";
         answerOption4Path = "images/CapeTownAfrica/CapeTownIncorrectOption3.jpg";
-
         audioHint=new GreenfootSound("images/CapeTownAfrica/audioHint.mp3");  
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
+        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
 
     public void draw(){
@@ -72,12 +71,12 @@ public class MumbaiIndia extends IPlace
         
         if(Greenfoot.mouseClicked(ansOP2))
         {
-
+            audioHint.stop();
             System.out.println("perform correct answer function");
             doCorrectAnswer();
-
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4))
         {
+            audioHint.stop();
             System.out.println(" eee  answer clicked is incorrect");
             doIncorrectAnswer();
         }
@@ -120,8 +119,9 @@ public class MumbaiIndia extends IPlace
     }
     public  void doCorrectAnswer(){
         //move to next stage
+        correctAns.play();
         cleanPlace();
-        audioHint.stop();
+        //audioHint.stop();
         setNextPlace(PirateWorld.thirdPlace);
     }
     public  void showHurdle(){}
