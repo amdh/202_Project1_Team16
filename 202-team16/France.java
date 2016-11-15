@@ -20,7 +20,7 @@ public class France extends IPlace
     GreenfootSound audioHint, wrongAns;
 
     int life = 0;
-    int hint = 1;
+    int hint = 1,i=1000;
 
     AnswerOption ansOP1;
     AnswerOption ansOP2;
@@ -48,7 +48,7 @@ public class France extends IPlace
         //getPirateWorld().removeObject(world.getObjects(BasePlace.class).get(0));
         setBackground(backgroundImgPath);
         world.showHint1(textHintPath);
-        hint= hint+1;
+        //hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,false);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
@@ -78,6 +78,15 @@ public class France extends IPlace
             doIncorrectAnswer();
 
         }
+        if (hint>=4){   
+            if (i%100==0)
+            world.showHint3("You will be promoted to the next step in "+i/100);
+            i--;
+            if (i == 0)
+            {
+                doCorrectAnswer();
+            }
+        }
     }    
 
     public  void doIncorrectAnswer(){
@@ -85,17 +94,18 @@ public class France extends IPlace
             //remove life and repaint the screen
              wrongAns.stop();
              removeLife();
+             hint = hint + 1;
              wrongAns.play();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
                 world.showHint2(hintImg,"Olypmics 2016 were held at?");
-                hint = hint +1;                
+                //hint = hint +1;                
             }
             else if(hint==3){
                 //playsound
                 System.out.println("you are asking for 3rd hint");
-                hint = hint + 1;
+                //hint = hint + 1;
                 world.removeObject(hintImg);
                 world.showHint3("Place referenced in the song?");
                 audioHint.play();

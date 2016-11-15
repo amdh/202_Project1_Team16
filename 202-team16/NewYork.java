@@ -18,7 +18,7 @@ public class NewYork extends IPlace
     String answerOption4Path;
     GreenfootSound audioHint, wrongAns;
     int life = 0;
-    int hint = 1;
+    int hint = 1,i=1000;
 
     AnswerOption ansOP1;
     AnswerOption ansOP2;
@@ -30,7 +30,7 @@ public class NewYork extends IPlace
 
     public NewYork(){
        backgroundImgPath = "images/NewYork/world_6.jpg";
-        textHintPath = "You can find the world's most crooked street over here!!";
+        textHintPath = "World's most crooked street are here??";
         soundHintPath="";
         imageHintpath = "images/GoldenGateBridge/hintImg.jpg";
         answerOption1Path = "images/GoldenGateBridge/op1.jpg";
@@ -54,6 +54,15 @@ public class NewYork extends IPlace
             System.out.println(" eee  answer clicked is incorrect");
             doIncorrectAnswer();
         }
+        if (hint>=4){   
+            if (i%100==0)
+            world.showHint3("You will be promoted to the next step in "+i/100);
+            i--;
+            if (i == 0)
+            {
+                doCorrectAnswer();
+            }
+        }
     }    
 
     public void draw(){
@@ -61,7 +70,7 @@ public class NewYork extends IPlace
         //getPirateWorld().removeObject(world.getObjects(StartGame.class).get(0));
         setBackground(backgroundImgPath);
         world.showHint1(textHintPath);
-        hint= hint+1;
+        //hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,false);
         ansOP2 = new  AnswerOption(answerOption2Path,true);
@@ -76,18 +85,19 @@ public class NewYork extends IPlace
         //remove life and repaint the screen
              wrongAns.stop();
              removeLife();
+             hint = hint + 1;
              wrongAns.play();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
                 world.showHint2(hintImg,"The garden is Japenese but not in Japan!!");
-                hint = hint +1;
+                //hint = hint +1;
             }
             else if(hint==3){
                 //playsound
                 System.out.println("you are asking for 3rd hint");
                 world.removeObject(hintImg);
-                hint = hint + 1;
+                //hint = hint + 1;
                 world.showHint3("Place referenced in the song?");
                 audioHint.play();
             }
