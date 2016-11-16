@@ -34,6 +34,7 @@ public class PirateGameRoomResource extends ServerResource {
 			System.out.println(key + " " + stage);
 
 			response.put("winner", isWinner);
+			response.put("playerCount" , player.size());
 		}
 
 		return new JsonRepresentation(response);
@@ -47,6 +48,14 @@ public class PirateGameRoomResource extends ServerResource {
 		System.out.println("satge: " + stage);
 
 		playercnt++;
+		if(playercnt <= 5)
+			player.put(playercnt, stage);
+		else
+		{
+			JSONObject response = new JSONObject();
+			response.put("Error", "Maximum number of players already allocated");
+			return new JsonRepresentation(response);
+		}
 		player.put(playercnt, stage);
 
 		JSONObject response = new JSONObject();
