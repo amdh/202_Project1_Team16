@@ -71,6 +71,10 @@ public class Pirates extends Actor
     }
 
     public void removeLife(){
+        while(!LivesLeft.get(0).isAtEdge()){
+            Greenfoot.delay(10);
+            LivesLeft.get(0).move(15);
+        }
         if(!LivesLeft.isEmpty())
         {
             world.removeObject(LivesLeft.get(0));
