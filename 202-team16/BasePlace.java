@@ -15,11 +15,11 @@ public class BasePlace extends IPlace
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
-    GreenfootSound audioHint, wrongAns;
+    GreenfootSound audioHint, wrongAns, correctAns;
 
     int life = 0;
     int hint = 1,i=1000;
-    boolean hurdle = true;
+    boolean hurdle = false;
 
     AnswerOption ansOP1;
     AnswerOption ansOP2;
@@ -40,6 +40,7 @@ public class BasePlace extends IPlace
         answerOption4Path = "images/baseplace/Ausincorrectop1.jpg";
         audioHint=new GreenfootSound("images/baseplace/audioHint.mp3");
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
+        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
 
     public void act() 
@@ -51,9 +52,11 @@ public class BasePlace extends IPlace
         }*/
         checkLifeCount();
         if(Greenfoot.mouseClicked(ansOP1)){
+            audioHint.stop();
             System.out.println("perform correct answer function");
             doCorrectAnswer();
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
+            audioHint.stop();
             System.out.println(" eee  answer clicked is incorrect");
             doIncorrectAnswer();
         }
@@ -97,8 +100,9 @@ public class BasePlace extends IPlace
 
     public void doCorrectAnswer(){
         //move to next stage
+        correctAns.play();
         cleanPlace();
-        audioHint.stop();
+        //audioHint.stop();
         setNextPlace(PirateWorld.firstPlace);
     }
 
@@ -132,17 +136,6 @@ public class BasePlace extends IPlace
     //end of implemented methods
     //private methods
     private void cleanPlace(){
-        world.removeObject(ansOP2);
-        world.removeObject(ansOP1);
-        world.removeObject(ansOP3);
-        world.removeObject(ansOP4);
-        if(null != hintImg){
-            world.removeObject(hintImg);
-        }
-        world.showHint1("");    
-    }
-    
-    private void p(){
         world.removeObject(ansOP2);
         world.removeObject(ansOP1);
         world.removeObject(ansOP3);

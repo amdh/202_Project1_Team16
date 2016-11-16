@@ -17,7 +17,7 @@ public class CopacabanaBrazil extends IPlace
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
-    GreenfootSound audioHint, wrongAns;
+    GreenfootSound audioHint, wrongAns, correctAns;
 
     int life = 0;
     int hint = 1,i=1000;
@@ -40,7 +40,7 @@ public class CopacabanaBrazil extends IPlace
         answerOption4Path = "images/NewYork/op4.jpg";
         audioHint=new GreenfootSound("images/NewYork/audioHint.mp3");
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-
+        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
 
     public void draw(){
@@ -68,11 +68,12 @@ public class CopacabanaBrazil extends IPlace
         checkLifeCount();
         if(Greenfoot.mouseClicked(ansOP4))
         {
+            audioHint.stop();
             System.out.println("perform correct answer function");
             doCorrectAnswer();
-
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3))
         {
+            audioHint.stop();
             System.out.println(" eee  answer clicked is incorrect");
             doIncorrectAnswer();
         }
@@ -122,7 +123,8 @@ public class CopacabanaBrazil extends IPlace
     public  void doCorrectAnswer(){
          //move to next stage
         cleanPlace();
-        audioHint.stop();
+        correctAns.play();
+        //audioHint.stop();
         setNextPlace(PirateWorld.sixthPlace);
     }
 
