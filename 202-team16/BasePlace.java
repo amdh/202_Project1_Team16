@@ -18,8 +18,8 @@ public class BasePlace extends IPlace
     GreenfootSound audioHint, wrongAns;
 
     int life = 0;
-    int hint = 1,i=1000;
-    boolean hurdle = true;
+    int hint = 1,i=1000 ;
+    boolean hurdle = false;
 
     AnswerOption ansOP1;
     AnswerOption ansOP2;
@@ -29,7 +29,7 @@ public class BasePlace extends IPlace
 
     PirateWorld world;
     Pirates pirate;
-
+    EnemyFactory factory;
     public BasePlace(){
         backgroundImgPath = "images/baseplace/world_0.jpg";
         textHintPath = "Smallest continent in the world is?";
@@ -44,11 +44,7 @@ public class BasePlace extends IPlace
 
     public void act() 
     {
-        if(hurdle){
-            if (Greenfoot.getRandomNumber(300)<3){
-                world.addObject(getEnemy("shark"), 1500,800);
-            }
-        }
+      
         checkLifeCount();
         if(Greenfoot.mouseClicked(ansOP1)){
             System.out.println("perform correct answer function");
@@ -59,7 +55,7 @@ public class BasePlace extends IPlace
         }
         if (hint>=4){   
             if (i%100==0)
-            world.showHint3("You will be promoted to the next step in "+i/100);
+                world.showHint3("You will be promoted to the next step in "+i/100);
             i--;
             if (i == 0)
             {
@@ -78,17 +74,16 @@ public class BasePlace extends IPlace
         ansOP3 = new  AnswerOption(answerOption3Path,false);
         ansOP4 = new  AnswerOption(answerOption4Path,false);
         world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
-        showHurdle();
+       // showHurdle();
     }
 
     public void showHurdle(){
-        EnemyFactory f = new EnemyFactory();
-        IEnemy s1 = f.getEnemy("shark");
-        s1.getImage().scale(250,300);
-        world.addObject(s1,1400,700); 
-        IEnemy s2 = f.getEnemy("shark");
-        s2.getImage().scale(250,300);
-        world.addObject(s2,1500,800); 
+
+    }
+
+    private void showPlace(){
+
+      
     }
 
     public void setNextPlace(String placeName){
@@ -124,8 +119,9 @@ public class BasePlace extends IPlace
     }
 
     public IEnemy getEnemy(String type){
-        EnemyFactory f = new EnemyFactory();
-        IEnemy s1 = f.getEnemy(type);
+
+        IEnemy s1 = factory.getEnemy(type);
+        s1.getImage().scale(250,300);
         return s1;
     }
 
@@ -141,7 +137,7 @@ public class BasePlace extends IPlace
         }
         world.showHint1("");    
     }
-    
+
     private void p(){
         world.removeObject(ansOP2);
         world.removeObject(ansOP1);
