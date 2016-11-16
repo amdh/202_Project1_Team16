@@ -6,31 +6,79 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class HurdleShark extends Actor
+public class HurdleShark extends IPlace
 {
     PirateWorld world;
     Pirates pirate;
-    int cnt=0;
-
+    int hurdlecnt, i= 1000 , maxhurdle = 11;
+    EnemyFactory factory;
+    GreenfootSound backgoundSound;
     public HurdleShark(){
-        world =  getWorldOfType(PirateWorld.class);        
-        pirate =  world.getPirate();
-        world.setBackground("images/hurdleShark.jpg");
-
+        backgoundSound = new GreenfootSound("sounds/theme.mp3");
     }
 
     public void act() 
     {
         // Add your action code here.
-        if (Greenfoot.getRandomNumber(300)<3){
-            world.addObject(getEnemy("shark"), 1500,800);
+        checkLifeCount();
+        if(hurdlecnt < maxhurdle){
+            if (Greenfoot.getRandomNumber(300)<3){
+                world.addObject(getEnemy("shark"), 1500,800);
+                hurdlecnt++;
+                System.out.println(hurdlecnt);
+            }
         }
+        if(checkHurdleCrossed()){
+            cleanPlace();
+            setNextPlace(PirateWorld.firstPlace);
+        }
+
+        
+
     }  
 
+    public boolean checkHurdleCrossed(){
+       if( maxhurdle == pirate.getSharkKilledCount())
+            return true;
+       else
+            return false;
+    }
     public IEnemy getEnemy(String type){
-        EnemyFactory f = new EnemyFactory();
 
-        IEnemy s1 = f.getEnemy(type);
+        IEnemy s1 = factory.getEnemy(type);
+        s1.getImage().scale(250,300);
         return s1;
+    }
+
+    public void draw(){
+        
+        world =  getWorldOfType(PirateWorld.class);        
+        pirate =  world.getPirate();
+        world.setBackground("images/hurdleShark.jpg");
+        backgoundSound.play();
+        world.showHint3("Kill all sharks to reach next place..");
+        factory = new EnemyFactory();
+        
+    }
+
+    public  void doIncorrectAnswer(){}
+
+    public  void doCorrectAnswer(){}
+
+    public  void showHurdle(){
+
+    }
+
+    public void setNextPlace(String placeName){
+        world.setPlace(placeName);
+    }
+
+    private void checkLifeCount(){
+        pirate.checkLifeCount(backgoundSound);
+    }
+    
+     private void cleanPlace(){
+         backgoundSound.stop();
+        world.removeObjects(world.getObjects(HintHolder.class));
     }
 }

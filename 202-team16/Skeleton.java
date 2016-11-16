@@ -17,5 +17,12 @@ public class Skeleton extends IEnemy
         // Add your action code here.
     }    
 
-    public void killPirate(){}
+    public void killPirate(){
+        Pirates pirate = (Pirates) getOneObjectAtOffset(0,0,Pirates.class);
+
+        if(pirate != null){
+            System.out.println("pirate eaten");
+            pirate.removeLife();
+        }
+    }
 }

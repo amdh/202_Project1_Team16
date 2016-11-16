@@ -8,20 +8,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Shark extends IEnemy
 {
-    /**
-     * Act - do whatever the Shark wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
     public void act() 
     {
         setLocation(getX()-2, getY());
+        killPirate();
+    }    
+    
+    public void killPirate(){
         Pirates pirate = (Pirates) getOneObjectAtOffset(0,0,Pirates.class);
 
         if(pirate != null){
             System.out.println("pirate eaten");
-            killPirate();
+           pirate.removeLife();
         }
-    }    
-    
-    public void killPirate(){}
+    }
 }

@@ -8,42 +8,52 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HintHolder extends Actor
 {
-    /**
-     * Act - do whatever the HintHolder wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+   
+    private static int sharkKilledCnt;
+    
+    public HintHolder(){
+       
+    }
+
     public void act() 
     {
-        setLocation(getX() + 2, getY());
+        setLocation(getX() + 2, getY());        
+
+
         killShark();
         killSkeleton();
         
         
-        if( getX() == (getWorld().getWidth() - 20)){
-
+        if( getX() == (getWorld().getWidth() - 10)){
             getWorld().removeObject(this);
         }
+        //getWorld().removeObject(this);
     }
-  
+
     public void killShark(){
         Actor shark = getOneObjectAtOffset(0,0,Shark.class);
 
         if(shark != null){
             System.out.println("shark killed");
             getWorld().removeObject(shark);
-           // getWorld().removeObject(this);
+            
             // break;
+            sharkKilledCnt++;
         }
     }
-    
+
+    public static int getSharkKilledCount(){
+        return sharkKilledCnt;
+    }
     public void killSkeleton(){
-    Actor skeleton = getOneObjectAtOffset(0,0,Skeleton.class);
+        Actor skeleton = getOneObjectAtOffset(0,0,Skeleton.class);
 
         if(skeleton != null){
             System.out.println("shark killed");
             getWorld().removeObject(skeleton);
-           // getWorld().removeObject(this);
+            // getWorld().removeObject(this);
             // break;
         }
     }
+
 }
