@@ -19,7 +19,7 @@ public class Message extends Actor
     }
     
     public void display(String msg){
-         setImage(new GreenfootImage(msg, 30, Color.black, Color.white)); 
+         setImage(new GreenfootImage(msg, 36, Color.yellow, Color.black)); 
     }
 }
 
