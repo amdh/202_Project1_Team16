@@ -12,7 +12,9 @@ public class Pirates extends Actor
     List<Life> LivesLeft ;
     PirateWorld world;
     GreenfootSound sound = new GreenfootSound("sounds/FireAnchor.mp3");
-    GreenfootSound Die = new GreenfootSound("sounds/GameOver.mp3");
+   
+    private String stageName;
+    private int pirateId;
 
     public Pirates()
     {
@@ -27,14 +29,13 @@ public class Pirates extends Actor
         LivesLeft.add(new Life());
 
     }
-    /**
-     * Act - do whatever the Pirates wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+   
     public void act() 
     {
-        // Add your action code here.
-        // move(1); 
+         if(PirateWorld.multiUser){
+                if(world.callGETAPI_ISWINNER())
+                world.setGameOver(); 
+            }
         int mouseX, mouseY ;
 
         if(Greenfoot.mouseDragged(this)) {          
@@ -89,12 +90,20 @@ public class Pirates extends Actor
         if (LivesLeft.size() == 0)
         {
             audio.stop();
-            Die.play();
-            Greenfoot.stop();
-            GameOver endgame;
-            endgame = new GameOver();
-            world.removeObjects(world.getObjects(null)); //removes all the objects in the world;
-            world.addObject(new GameOver(), world.getWidth()/2, world.getHeight()/2); //adds the game over screen in the middle of the world;             
+            world.setGameOver();
         }
+    }
+    
+    public int getSharkKilledCount(){
+        return HintHolder.getSharkKilledCount();
+    }
+    
+      
+    public void setStage(String name){
+        this.stageName = name;
+    }
+    
+    public void setPirateID(int id){
+        this.pirateId = id;
     }
 }

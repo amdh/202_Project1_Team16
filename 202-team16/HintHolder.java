@@ -24,20 +24,20 @@ public class HintHolder extends Actor
         killSkeleton();
         
         
-        if( getX() == (getWorld().getWidth() - 10)){
+        if( getX() >= (getWorld().getWidth() - 10)){
             getWorld().removeObject(this);
         }
         //getWorld().removeObject(this);
     }
 
     public void killShark(){
-        Actor shark = getOneObjectAtOffset(0,0,Shark.class);
-
+        Actor shark  = getOneObjectAtOffset(0,0,Shark.class);
+        
         if(shark != null){
             System.out.println("shark killed");
             getWorld().removeObject(shark);
-            
             // break;
+            //getWorld().removeObject(this);
             sharkKilledCnt++;
         }
     }

@@ -30,7 +30,7 @@ public class NewYork extends IPlace
 
     public NewYork(){
        backgroundImgPath = "images/NewYork/world_6.jpg";
-        textHintPath = "You can find the world's most crooked street over here!!";
+        textHintPath = "World's most crooked street over here!!";
         soundHintPath="";
         imageHintpath = "images/GoldenGateBridge/hintImg.jpg";
         answerOption1Path = "images/GoldenGateBridge/op1.jpg";
