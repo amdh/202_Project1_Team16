@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+
 /**
  * Write a description of class StartGame here.
  * 
@@ -16,15 +17,15 @@ public class Play extends Button
     {
         if(Greenfoot.mouseClicked(this)){
             startAction();
-           
         }
-       
+
     }    
-    
-   public void startAction(){
+
+    public void startAction(){
         PirateWorld world = getWorldOfType(PirateWorld.class);    
-        world.cleanIntro();
+        world.cleanIntro();      
         world.setPirate();
-        world.setPlace(new BasePlace());
+        world.setPlace(PirateWorld.basePlace);
+
     }
 }
