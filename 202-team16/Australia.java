@@ -41,7 +41,7 @@ public class Australia extends IPlace
         answerOption4Path = "images/Mumbai/Mumicorrectop1.jpg";
         audioHint=new GreenfootSound("images/Mumbai/mumbai.mp3");
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
+        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
 
     }
 
@@ -115,7 +115,7 @@ public class Australia extends IPlace
     public  void doCorrectAnswer(){
         //move to next stage
         cleanPlace();
-        correctAns.play();
+        //correctAns.play();
         //audioHint.stop();
         setNextPlace(PirateWorld.secondPlace);
     }

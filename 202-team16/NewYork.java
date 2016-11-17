@@ -39,7 +39,7 @@ public class NewYork extends IPlace
         answerOption4Path = "images/GoldenGateBridge/op4.jpg";
         audioHint=new GreenfootSound("images/GoldenGateBridge/audioHint.mp3");
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
+        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
 
     }
 
@@ -108,7 +108,7 @@ public class NewYork extends IPlace
     public  void doCorrectAnswer(){
         //move to next stage
         cleanPlace();
-        correctAns.play();
+        //correctAns.play();
         //audioHint.stop();
         setNextPlace(PirateWorld.seventhPlace);
     }

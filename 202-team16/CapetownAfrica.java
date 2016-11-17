@@ -43,7 +43,7 @@ public class CapetownAfrica extends IPlace
         
         audioHint=new GreenfootSound("images/France/audioHint.mp3");  
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
+        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
     
     public void draw(){
@@ -114,7 +114,7 @@ public class CapetownAfrica extends IPlace
     public  void doCorrectAnswer(){
         //move to next stage
         cleanPlace();
-        correctAns.play();
+        //correctAns.play();
         //audioHint.stop();
         setNextPlace(PirateWorld.forthPlace);
     }

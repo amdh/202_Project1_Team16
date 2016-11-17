@@ -53,8 +53,6 @@ public class Pirates extends Actor
             h.getImage().scale(30,30);
             world.addObject(h,mouseX, mouseY);
             sound.play();
-            
-            
         }
     }    
 
@@ -92,7 +90,7 @@ public class Pirates extends Actor
     public void checkLifeCount(GreenfootSound audio){
         if (LivesLeft.size() == 0)
         {
-            audio.stop();
+            //audio.stop();
             Die.play();
             Greenfoot.stop();
             GameOver endgame;

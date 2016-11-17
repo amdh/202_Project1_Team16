@@ -15,5 +15,24 @@ public class Treasure extends Actor
     public void act() 
     {
         // Add your action code here.
-    }    
+        Pirates pirate  = (Pirates) getOneObjectAtOffset(0,0,Pirates.class);
+
+        if(pirate != null){
+            System.out.println("pirate won");
+            grabTreasure();
+        }
+    }   
+
+    public void grabTreasure(){
+        
+    }
+    boolean checkIntersectingObjects(Pirates t)
+    {
+        if(this.intersects(t))
+        {
+            return true;
+        }
+        else
+            return false;
+    } 
 }

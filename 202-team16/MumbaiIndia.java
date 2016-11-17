@@ -44,7 +44,7 @@ public class MumbaiIndia extends IPlace
         answerOption4Path = "images/CapeTownAfrica/CapeTownIncorrectOption3.jpg";
         audioHint=new GreenfootSound("images/CapeTownAfrica/audioHint.mp3");  
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
+        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
 
     public void draw(){
@@ -119,7 +119,7 @@ public class MumbaiIndia extends IPlace
     }
     public  void doCorrectAnswer(){
         //move to next stage
-        correctAns.play();
+        //correctAns.play();
         cleanPlace();
         //audioHint.stop();
         setNextPlace(PirateWorld.thirdPlace);

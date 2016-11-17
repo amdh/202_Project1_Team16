@@ -22,6 +22,14 @@ public class Shark extends IEnemy
             killPirate();
         }
     }    
-    
+    boolean checkIntersectingObjects(Pirates t)
+    {
+        if(this.intersects(t))
+        {
+            return true;
+        }
+        else
+            return false;
+    }
     public void killPirate(){}
 }

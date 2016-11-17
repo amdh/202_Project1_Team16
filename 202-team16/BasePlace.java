@@ -40,7 +40,7 @@ public class BasePlace extends IPlace
         answerOption4Path = "images/baseplace/Ausincorrectop1.jpg";
         audioHint=new GreenfootSound("images/baseplace/audioHint.mp3");
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
+        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
 
     public void act() 
@@ -100,7 +100,7 @@ public class BasePlace extends IPlace
 
     public void doCorrectAnswer(){
         //move to next stage
-        correctAns.play();
+        //correctAns.play();
         cleanPlace();
         //audioHint.stop();
         setNextPlace(PirateWorld.firstPlace);
