@@ -123,7 +123,7 @@ public class BasePlace extends IPlace
     }
 
     public IEnemy getEnemy(String type){
-
+        return null;
     }
 
     //end of implemented methods
