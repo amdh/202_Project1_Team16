@@ -20,10 +20,10 @@ public class MumbaiIndia extends IPlace
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
-    GreenfootSound audioHint, wrongAns;
+    GreenfootSound audioHint, wrongAns, correctAns;
 
     int life = 0;
-    int hint = 1;
+    int hint = 1, i=1000;
 
     AnswerOption ansOP1;
     AnswerOption ansOP2;
@@ -38,21 +38,20 @@ public class MumbaiIndia extends IPlace
         textHintPath = "To win there is a cape of good hope";
         soundHintPath="";
         imageHintpath = "images/CapeTownAfrica/hintimg.jpg";
-
         answerOption1Path = "images/CapeTownAfrica/CapeTownIncorrectOption1.jpg";
         answerOption2Path = "images/CapeTownAfrica/CapeTownCorrectOption.jpg";
         answerOption3Path = "images/CapeTownAfrica/CapeTownIncorrectOption2.jpg";
         answerOption4Path = "images/CapeTownAfrica/CapeTownIncorrectOption3.jpg";
-
         audioHint=new GreenfootSound("images/CapeTownAfrica/audioHint.mp3");  
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
+        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
 
     public void draw(){
         initialize();
         setBackground(backgroundImgPath);
         world.showHint1(textHintPath);
-        hint= hint+1;
+        //hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,true);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
@@ -72,14 +71,23 @@ public class MumbaiIndia extends IPlace
         
         if(Greenfoot.mouseClicked(ansOP2))
         {
-
+            audioHint.stop();
             System.out.println("perform correct answer function");
             doCorrectAnswer();
-
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4))
         {
+            audioHint.stop();
             System.out.println(" eee  answer clicked is incorrect");
             doIncorrectAnswer();
+        }
+        if (hint>=4){   
+            if (i%100==0)
+            world.showHint3("You will be promoted to the next step in "+i/100);
+            i--;
+            if (i == 0)
+            {
+                doCorrectAnswer();
+            }
         }
     }    
 
@@ -91,17 +99,18 @@ public class MumbaiIndia extends IPlace
         //remove life and repaint the screen
              wrongAns.stop();
              removeLife();
+             hint = hint + 1;
              wrongAns.play();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
                 world.showHint2(hintImg,"Penguins in Boulder Island...");
-                hint = hint +1;
+                //hint = hint +1;
             }
             else if(hint==3){
                 //playsound
                 System.out.println("you are asking for 3rd hint");
-                hint = hint + 1;
+                //hint = hint + 1;
                 world.removeObject(hintImg);
                 world.showHint3("In the search for the shores of her bay");
                 audioHint.play();
@@ -110,8 +119,9 @@ public class MumbaiIndia extends IPlace
     }
     public  void doCorrectAnswer(){
         //move to next stage
+        //correctAns.play();
         cleanPlace();
-        audioHint.stop();
+        //audioHint.stop();
         setNextPlace(PirateWorld.thirdPlace);
     }
     public  void showHurdle(){}

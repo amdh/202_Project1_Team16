@@ -15,11 +15,11 @@ public class BasePlace extends IPlace
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
-    GreenfootSound audioHint, wrongAns;
+    GreenfootSound audioHint, wrongAns, correctAns;
 
     int life = 0;
-    int hint = 1,i=1000 ;
-    boolean hurdle = false;
+    int hint = 1,i=1000;
+    boolean hurdle = true;
 
     AnswerOption ansOP1;
     AnswerOption ansOP2;
@@ -40,6 +40,7 @@ public class BasePlace extends IPlace
         answerOption4Path = "images/baseplace/Ausincorrectop1.jpg";
         audioHint=new GreenfootSound("images/baseplace/audioHint.mp3");
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
+        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
 
     public void act() 
@@ -47,9 +48,11 @@ public class BasePlace extends IPlace
       
         checkLifeCount();
         if(Greenfoot.mouseClicked(ansOP1)){
+            audioHint.stop();
             System.out.println("perform correct answer function");
             doCorrectAnswer();
         }else if(Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3) || Greenfoot.mouseClicked(ansOP4)){
+            audioHint.stop();
             System.out.println(" eee  answer clicked is incorrect");
             doIncorrectAnswer();
         }
@@ -68,13 +71,13 @@ public class BasePlace extends IPlace
         initialize(); 
         setBackground(backgroundImgPath);
         world.showHint1(textHintPath);
-        //hint= hint+1;
+       
         ansOP1 = new  AnswerOption(answerOption1Path,true);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
         ansOP3 = new  AnswerOption(answerOption3Path,false);
         ansOP4 = new  AnswerOption(answerOption4Path,false);
         world.setAnswerOptions(ansOP1,ansOP2,ansOP3,ansOP4);
-       // showHurdle();
+       
     }
 
     public void showHurdle(){
@@ -92,9 +95,10 @@ public class BasePlace extends IPlace
 
     public void doCorrectAnswer(){
         //move to next stage
+        //correctAns.play();
         cleanPlace();
         audioHint.stop();
-        setNextPlace(PirateWorld.hurdleShark);
+        setNextPlace(PirateWorld.firstPlace);
     }
 
     public void doIncorrectAnswer(){
@@ -120,9 +124,6 @@ public class BasePlace extends IPlace
 
     public IEnemy getEnemy(String type){
 
-        IEnemy s1 = factory.getEnemy(type);
-        s1.getImage().scale(250,300);
-        return s1;
     }
 
     //end of implemented methods
@@ -137,18 +138,8 @@ public class BasePlace extends IPlace
         }
         world.showHint1("");    
     }
-
-    private void p(){
-        world.removeObject(ansOP2);
-        world.removeObject(ansOP1);
-        world.removeObject(ansOP3);
-        world.removeObject(ansOP4);
-        if(null != hintImg){
-            world.removeObject(hintImg);
-        }
-        world.showHint1("");    
-    }
-
+    
+   
     private void initialize(){
         world =  getWorldOfType(PirateWorld.class);        
         pirate =  world.getPirate();

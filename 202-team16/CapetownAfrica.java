@@ -16,10 +16,10 @@ public class CapetownAfrica extends IPlace
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
-    GreenfootSound audioHint, wrongAns;
+    GreenfootSound audioHint, wrongAns, correctAns;
 
     int life = 0;
-    int hint = 1;
+    int hint = 1, i=1000;
 
     AnswerOption ansOP1;
     AnswerOption ansOP2;
@@ -43,13 +43,13 @@ public class CapetownAfrica extends IPlace
         
         audioHint=new GreenfootSound("images/France/audioHint.mp3");  
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
+        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
     
     public void draw(){
         initialize();
         setBackground(backgroundImgPath);
         world.showHint1(textHintPath);
-        hint= hint+1;
         //hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,false);
@@ -69,14 +69,24 @@ public class CapetownAfrica extends IPlace
         
          if(Greenfoot.mouseClicked(ansOP3))
         {
-
+            audioHint.stop();
             System.out.println("perform correct answer function");
             doCorrectAnswer();
 
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP4))
         {
+            audioHint.stop();
             System.out.println(" eee  answer clicked is incorrect");
             doIncorrectAnswer();
+        }
+        if (hint>=4){   
+            if (i%100==0)
+            world.showHint3("You will be promoted to the next step in "+i/100);
+            i--;
+            if (i == 0)
+            {
+                doCorrectAnswer();
+            }
         }
     } 
     
@@ -84,17 +94,18 @@ public class CapetownAfrica extends IPlace
         //remove life and repaint the screen
              wrongAns.stop();
              removeLife();
+             hint = hint + 1;
              wrongAns.play();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
                 world.showHint2(hintImg,"Romance Capital");
-                hint = hint +1;
+                //hint = hint +1;
             }
             else if(hint==3){
                 //playsound
                 System.out.println("you are asking for 3rd hint");
-                hint = hint + 1;
+                //hint = hint + 1;
                 world.removeObject(hintImg);
                 world.showHint3("Try to guess from audio..");
                 audioHint.play();
@@ -103,7 +114,8 @@ public class CapetownAfrica extends IPlace
     public  void doCorrectAnswer(){
         //move to next stage
         cleanPlace();
-        audioHint.stop();
+        //correctAns.play();
+        //audioHint.stop();
         setNextPlace(PirateWorld.forthPlace);
     }
     public  void showHurdle(){}

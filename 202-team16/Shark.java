@@ -22,5 +22,15 @@ public class Shark extends IEnemy
             System.out.println("pirate eaten");
            pirate.removeLife();
         }
+    }    
+    boolean checkIntersectingObjects(Pirates t)
+    {
+        if(this.intersects(t))
+        {
+            return true;
+        }
+        else
+            return false;
     }
+    
 }

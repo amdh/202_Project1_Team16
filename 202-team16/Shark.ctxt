@@ -3,6 +3,15 @@ comment0.target=Shark
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Shark\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=void\ act()
+<<<<<<< HEAD
 comment2.params=
 comment2.target=void\ killPirate()
 numComments=3
+=======
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Shark\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=t
+comment2.target=boolean\ checkIntersectingObjects(Pirates)
+comment3.params=
+comment3.target=void\ killPirate()
+numComments=4
+>>>>>>> fb71612a83881ff6aa57e5e1cbb99fecb7129154

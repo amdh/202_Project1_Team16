@@ -16,4 +16,13 @@ public class Skull extends Actor
     {
         // Add your action code here.
     }    
+    boolean checkIntersectingObjects(Pirates t)
+    {
+        if(this.intersects(t))
+        {
+            return true;
+        }
+        else
+            return false;
+    }
 }

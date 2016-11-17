@@ -311,7 +311,7 @@ public class PirateWorld extends World
     public void showHint1(String msg){
         Greenfoot.delay(20);
         message.display(msg);
-        addObject(message,290,250);
+        addObject(message,360,250);
     }
 
     public void showHint2(AnswerOption hintImg, String msg){

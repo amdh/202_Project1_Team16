@@ -17,10 +17,10 @@ public class CopacabanaBrazil extends IPlace
     String answerOption2Path;
     String answerOption3Path ;
     String answerOption4Path;
-    GreenfootSound audioHint, wrongAns;
+    GreenfootSound audioHint, wrongAns, correctAns;
 
     int life = 0;
-    int hint = 1;
+    int hint = 1,i=1000;
 
     AnswerOption ansOP1;
     AnswerOption ansOP2;
@@ -40,7 +40,7 @@ public class CopacabanaBrazil extends IPlace
         answerOption4Path = "images/NewYork/op4.jpg";
         audioHint=new GreenfootSound("images/NewYork/audioHint.mp3");
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-
+        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
 
     public void draw(){
@@ -48,7 +48,7 @@ public class CopacabanaBrazil extends IPlace
         //getPirateWorld().removeObject(world.getObjects(BasePlace.class).get(0));
         setBackground(backgroundImgPath);
         world.showHint1(textHintPath);
-        hint= hint+1;
+        //hint= hint+1;
 
         ansOP1 = new  AnswerOption(answerOption1Path,false);
         ansOP2 = new  AnswerOption(answerOption2Path,false);
@@ -68,13 +68,23 @@ public class CopacabanaBrazil extends IPlace
         checkLifeCount();
         if(Greenfoot.mouseClicked(ansOP4))
         {
+            audioHint.stop();
             System.out.println("perform correct answer function");
             doCorrectAnswer();
-
         }else if(Greenfoot.mouseClicked(ansOP1) || Greenfoot.mouseClicked(ansOP2) || Greenfoot.mouseClicked(ansOP3))
         {
+            audioHint.stop();
             System.out.println(" eee  answer clicked is incorrect");
             doIncorrectAnswer();
+        }
+        if (hint>=4){   
+            if (i%100==0)
+            world.showHint3("You will be promoted to the next step in "+i/100);
+            i--;
+            if (i == 0)
+            {
+                doCorrectAnswer();
+            }
         }
     }    
 
@@ -92,17 +102,18 @@ public class CopacabanaBrazil extends IPlace
     public  void doIncorrectAnswer(){
          wrongAns.stop();
          removeLife();
+         hint = hint +1;
          wrongAns.play();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
                 world.showHint2(hintImg,"Where is this statue......?");
-                hint = hint +1;
+                //hint = hint +1;
             }
             else if(hint==3){
                 //playsound
                 System.out.println("you are asking for 3rd hint");
-                hint = hint + 1;
+                //hint = hint + 1;
                 world.removeObject(hintImg);
                 world.showHint3("Place referenced in the song?");
                 audioHint.play();
@@ -112,7 +123,8 @@ public class CopacabanaBrazil extends IPlace
     public  void doCorrectAnswer(){
          //move to next stage
         cleanPlace();
-        audioHint.stop();
+        //correctAns.play();
+        //audioHint.stop();
         setNextPlace(PirateWorld.sixthPlace);
     }
 
