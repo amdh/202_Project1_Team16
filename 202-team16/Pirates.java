@@ -12,7 +12,7 @@ public class Pirates extends Actor
     List<Life> LivesLeft ;
     PirateWorld world;
     GreenfootSound sound = new GreenfootSound("sounds/FireAnchor.mp3");
-   
+
     private String stageName;
     private int pirateId;
 
@@ -29,13 +29,13 @@ public class Pirates extends Actor
         LivesLeft.add(new Life());
 
     }
-   
+
     public void act() 
     {
-         if(PirateWorld.multiUser){
-                if(world.callGETAPI_ISWINNER())
+        if(PirateWorld.multiUser){
+            if(world.callGETAPI_ISWINNER())
                 world.setGameOver(); 
-            }
+        }
         int mouseX, mouseY ;
 
         if(Greenfoot.mouseDragged(this)) {          
@@ -44,16 +44,18 @@ public class Pirates extends Actor
             mouseY=mouse.getY();  
             setLocation(mouseX, mouseY);  
         } 
-        if(Greenfoot.mouseClicked(this)){
+        if(world.getCurrentPlace().getClass().getName().equalsIgnoreCase(PirateWorld.hurdleShark)){
+            if(Greenfoot.mouseClicked(this)){
 
-            sound.stop();
-            MouseInfo mouse = Greenfoot.getMouseInfo();  
-            mouseX=mouse.getX();  
-            mouseY=mouse.getY(); 
-            HintHolder h = new HintHolder();
-            h.getImage().scale(30,30);
-            world.addObject(h,mouseX, mouseY);
-            sound.play();
+                sound.stop();
+                MouseInfo mouse = Greenfoot.getMouseInfo();  
+                mouseX=mouse.getX();  
+                mouseY=mouse.getY(); 
+                HintHolder h = new HintHolder();
+                h.getImage().scale(30,30);
+                world.addObject(h,mouseX, mouseY);
+                sound.play();
+            }
         }
     }    
 
@@ -70,41 +72,44 @@ public class Pirates extends Actor
     }
 
     public void removeLife(){
-        while(!LivesLeft.get(0).isAtEdge()){
-            Greenfoot.delay(10);
-            LivesLeft.get(0).move(15);
-        }
+
         if(!LivesLeft.isEmpty())
         {
+            while(!LivesLeft.get(0).isAtEdge()){
+                Greenfoot.delay(5);
+                LivesLeft.get(0).move(15);
+            }
             world.removeObject(LivesLeft.get(0));
             System.out.println("Lives:- " + LivesLeft.size());
             LivesLeft.remove(0);
         }
         //world.repaint();
     }
-    
+
     public void addLife(){
         LivesLeft.add(new Life());
         world.repaint();        
     }
-    
+
     public void checkLifeCount(GreenfootSound audio){
         if (LivesLeft.size() == 0)
         {
-            audio.stop();
+            if(null != audio)
+                audio.stop();
+            if(PirateWorld.multiUser)
+                world.callPUTAPI_LOOSER();
             world.setGameOver();
         }
     }
-    
+
     public int getSharkKilledCount(){
         return HintHolder.getSharkKilledCount();
     }
-    
-      
+
     public void setStage(String name){
         this.stageName = name;
     }
-    
+
     public void setPirateID(int id){
         this.pirateId = id;
     }

@@ -1,20 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class HurdleShark here.
+ * Write a description of class HurdleSkeleton here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class HurdleShark extends IPlace
+public class HurdleSkeleton extends IPlace
 {
+
     PirateWorld world;
     Pirates pirate;
-    int hurdlecnt, i= 1000 , maxhurdle = 11;
+    int hurdlecnt, i= 1000 , maxhurdle = 7;
     EnemyFactory factory;
     GreenfootSound backgoundSound;
-    public HurdleShark(){
+
+    public HurdleSkeleton(){
         backgoundSound = new GreenfootSound("sounds/theme.mp3");
+        factory = new EnemyFactory();
     }
 
     public void act() 
@@ -23,28 +26,26 @@ public class HurdleShark extends IPlace
         checkLifeCount();
         if(hurdlecnt < maxhurdle){
             if (Greenfoot.getRandomNumber(300)<3){
-                world.addObject(getEnemy("shark"), 1500,800);
+                world.addObject(getEnemy("skeleton"), 1500,800);
                 hurdlecnt++;
                 System.out.println(hurdlecnt);
             }
         }
-		
-		
         if(checkHurdleCrossed()){
             cleanPlace();
             setNextPlace(PirateWorld.firstPlace);
         }
 
-        
 
     }  
 
     public boolean checkHurdleCrossed(){
-       if( maxhurdle == pirate.getSharkKilledCount())
+        if( maxhurdle == pirate.getSharkKilledCount())
             return true;
-       else
+        else
             return false;
     }
+
     public IEnemy getEnemy(String type){
 
         IEnemy s1 = factory.getEnemy(type);
@@ -53,24 +54,18 @@ public class HurdleShark extends IPlace
     }
 
     public void draw(){
-        
+
         world =  getWorldOfType(PirateWorld.class);        
         pirate =  world.getPirate();
-        world.setBackground("images/hurdleShark.jpg");
+        world.setBackground("images/hurdleSkeleton.jpg");
         backgoundSound.play();
-        world.showHint3("Kill all sharks to reach next place..");
-        factory = new EnemyFactory();
-        
-    }
+        world.showHint3("Kill all to reach next place..");
 
+    }
     public  void doIncorrectAnswer(){}
-
     public  void doCorrectAnswer(){}
-
     public  void showHurdle(){
-
     }
-
     public void setNextPlace(String placeName){
         world.setPlace(placeName);
     }
@@ -78,9 +73,9 @@ public class HurdleShark extends IPlace
     private void checkLifeCount(){
         pirate.checkLifeCount(backgoundSound);
     }
-    
-     private void cleanPlace(){
-         backgoundSound.stop();
+
+    private void cleanPlace(){
+        backgoundSound.stop();
         world.removeObjects(world.getObjects(HintHolder.class));
     }
 }

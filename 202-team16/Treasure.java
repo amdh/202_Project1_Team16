@@ -8,10 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Treasure extends Actor
 {
-    /**
-     * Act - do whatever the Treasure wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+
     public void act() 
     {
         // Add your action code here.
@@ -24,8 +21,13 @@ public class Treasure extends Actor
     }   
 
     public void grabTreasure(){
-        
+        PirateWorld world =  getWorldOfType(PirateWorld.class);  
+        if(PirateWorld.multiUser){
+            world.callPUTAPI_WINNER();
+        }
+        world.setWinnerScreen();
     }
+
     boolean checkIntersectingObjects(Pirates t)
     {
         if(this.intersects(t))

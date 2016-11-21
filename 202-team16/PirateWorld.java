@@ -14,17 +14,17 @@ import org.restlet.data.* ;
  */
 public class PirateWorld extends World
 {
-     static final String basePlace = "BASEPLACE";
-     static final String firstPlace =  "AUSTRALIA";
-     static final String secondPlace = "MUMBAI";
-     static final String thirdPlace =  "CAPETOWN";
-     static final String forthPlace = "FRANCE";
-     static final String fifthPlace =  "BRAZIL";
-     static final String sixthPlace = "NEWYORK";
-     static final String seventhPlace = "GOLDENGATE";
-     static final String hurdleShark= " HURDLESHARK";
+    static final String basePlace = "BASEPLACE";
+    static final String firstPlace =  "AUSTRALIA";
+    static final String secondPlace = "MUMBAI";
+    static final String thirdPlace =  "CAPETOWN";
+    static final String forthPlace = "FRANCE";
+    static final String fifthPlace =  "BRAZIL";
+    static final String sixthPlace = "NEWYORK";
+    static final String seventhPlace = "GOLDENGATE";
+    static final String hurdleShark= " HURDLESHARK";
 
-     static final boolean multiUser = false;
+    static final boolean multiUser = false;
 
     private static final String URL = "http://localhost:8080/pirategameroom";
 
@@ -81,6 +81,9 @@ public class PirateWorld extends World
         addObject(new GameOver(), getWidth()/2, getHeight()/2); //adds the game over screen in the middle of the world;  
     }
 
+    public void setWinnerScreen(){
+    }
+
     public void setRules(){
         if(story!=null)
             removeObject(story);
@@ -135,14 +138,14 @@ public class PirateWorld extends World
         Representation result_string = client.put(new JsonRepresentation(json_update), MediaType.APPLICATION_JSON);
     }
 
-    private void callPUTAPI_WINNER(){
+    public void callPUTAPI_WINNER(){
         JSONObject json_update = new JSONObject();
         json_update.put("player",pirateID);
         json_update.put("stage","WINNER");
         Representation result_string = client.put(new JsonRepresentation(json_update), MediaType.APPLICATION_JSON);
     }
 
-    private void callPUTAPI_LOOSER(){
+    public void callPUTAPI_LOOSER(){
         JSONObject json_update = new JSONObject();
         json_update.put("player",pirateID);
         json_update.put("stage","DEAD");

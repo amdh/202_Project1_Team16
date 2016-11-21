@@ -19,12 +19,11 @@ public class GoldenGateBridge extends IPlace
     GreenfootSound audioHint, wrongAns;
     int life = 0;
     int hint = 1;
-    Shark s;
-    Skull sk;
-
-    Shark s2;
-    Skull sk2;
+    IEnemy shark;
+    IEnemy skull1;
+    IEnemy skull2;
     PirateWorld world ;
+    EnemyFactory factory;
     Pirates pirate;
     Treasure treasure;
     public static int x;
@@ -32,16 +31,15 @@ public class GoldenGateBridge extends IPlace
     public static int id1;
     public static int id2;
     public GoldenGateBridge(){
-        s=new Shark();
-        sk = new Skull();
+        factory = new EnemyFactory();
+        shark=getEnemy("shark");
+        skull1 = getEnemy("skull");
 
-        s2=new Shark();
-        sk2 = new Skull();
-        s.getImage().scale(100,100);
-        sk.getImage().scale(100,100);
+        skull2 = getEnemy("skull");
+        shark.getImage().scale(100,100);
+        skull1.getImage().scale(100,100);
 
-        s2.getImage().scale(100,100);
-        sk2.getImage().scale(100,100);
+        skull2.getImage().scale(100,100);
         x=30;
         y=-30;
         id1=0;
@@ -55,37 +53,37 @@ public class GoldenGateBridge extends IPlace
     {
         checkLifeCount();
         Greenfoot.delay(5);
-        if(s2.isAtEdge()){
+        if(shark.isAtEdge()){
             id1++;
             System.out.println(id1);
         }
-        if(sk.isAtEdge()){
+        if(skull1.isAtEdge()){
             id2++;
         }
         if(id2%2==0){
-            s2.move(x);
+            shark.move(x);
         }
         else{
-            s2.move(y);
+            shark.move(y);
         }
         if(id2%2==0){
-            sk.move(y);
-            sk2.move(y);
+            skull1.move(y);
+            skull2.move(y);
         }
         else{
-            sk.move(x);
-            sk2.move(x);
+            skull1.move(x);
+            skull2.move(x);
         }
-        if(sk.checkIntersectingObjects(pirate)||sk2.checkIntersectingObjects(pirate)||s2.checkIntersectingObjects(pirate))
+       if(skull1.checkIntersectingObjects(pirate)||skull2.checkIntersectingObjects(pirate)||shark.checkIntersectingObjects(pirate))
         {
-                removeLife();        
+            pirate.removeLife();        
         }
         if(treasure.checkIntersectingObjects(pirate))
         {
-                System.out.println("Wow...pirate has won the game");
-                Greenfoot.stop();
-        }
-        /*s.setLocation(250, 250);
+            System.out.println("Wow...pirate has won the game");
+            //Greenfoot.stop();
+        } /*
+        s.setLocation(250, 250);
         s.setLocation(350, 150);
         s.setLocation(450, 250);
         s.setLocation(350, 350);*/
@@ -93,14 +91,14 @@ public class GoldenGateBridge extends IPlace
 
     public void draw(){
         initialize(); 
-        //getPirateWorld().removeObject(world.getObjects(StartGame.class).get(0));
+
         pirate.setLocation(100,(world.getHeight()-100));
         pirate.getImage().scale(100,100);
         setBackground(backgroundImgPath);
         world.addObject(treasure,100,230);
-        world.addObject(sk, (world.getWidth()/2),((world.getHeight()-200)/2));
-        world.addObject(sk2, (world.getWidth()/2),((world.getHeight()-600)/2));
-        world.addObject(s2,(world.getWidth()/2),((world.getHeight()+200)/2));
+        world.addObject(skull1, (world.getWidth()/2),((world.getHeight()-200)/2));
+        world.addObject(skull2, (world.getWidth()/2),((world.getHeight()-600)/2));
+        world.addObject(shark,(world.getWidth()/2),((world.getHeight()+200)/2));
     }
 
     public  void doIncorrectAnswer(){}
@@ -112,7 +110,8 @@ public class GoldenGateBridge extends IPlace
     public  void setNextPlace(String placeName){}
 
     public  IEnemy getEnemy(String type){
-        return null;
+
+        return factory.getEnemy(type);
     }
 
     //private methods

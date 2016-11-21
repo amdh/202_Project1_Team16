@@ -2,9 +2,11 @@
 comment0.target=Shark
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Shark\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
-comment1.target=void\ act()
+comment1.target=Shark()
 comment2.params=
-comment2.target=void\ killPirate()
-comment3.params=t
-comment3.target=boolean\ checkIntersectingObjects(Pirates)
-numComments=4
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ killPirate()
+comment4.params=t
+comment4.target=boolean\ checkIntersectingObjects(Pirates)
+numComments=5

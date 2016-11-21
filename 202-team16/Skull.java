@@ -6,17 +6,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Skull extends Actor
+public class Skull extends IEnemy
 {
-    /**
-     * Act - do whatever the Skull wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    PirateWorld world ;
+    public Skull(){
+
+        world =  getWorldOfType(PirateWorld.class);  
+    }
+
     public void act() 
     {
         // Add your action code here.
+        //killPirate();
     }    
-    boolean checkIntersectingObjects(Pirates t)
+
+    public boolean checkIntersectingObjects(Pirates t)
     {
         if(this.intersects(t))
         {
@@ -24,5 +28,14 @@ public class Skull extends Actor
         }
         else
             return false;
+    }
+
+    public void killPirate(){
+        Pirates pirate = (Pirates) getOneObjectAtOffset(0,0,Pirates.class);
+        
+        if(this.intersects(pirate)){
+            System.out.println("pirate eaten by skull");
+            pirate.removeLife();
+        }
     }
 }

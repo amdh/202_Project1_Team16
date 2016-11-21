@@ -21,8 +21,18 @@ public class Skeleton extends IEnemy
         Pirates pirate = (Pirates) getOneObjectAtOffset(0,0,Pirates.class);
 
         if(pirate != null){
-            System.out.println("pirate eaten");
+            System.out.println("pirate eaten by skeleton");
             pirate.removeLife();
         }
+    }
+    
+    public boolean checkIntersectingObjects(Pirates t)
+    {
+            if(this.intersects(t))
+        {
+            return true;
+        }
+        else
+            return false;
     }
 }

@@ -14,6 +14,8 @@ public class EnemyFactory extends Actor
             return new Shark();
         }else if(type.equalsIgnoreCase("skeleton")){
             return new Skeleton();
+        }else if(type.equalsIgnoreCase("skull")){
+            return new Skull();
         }
         return null;
     } 
@@ -30,6 +32,11 @@ public class EnemyFactory extends Actor
             enemies = new Skeleton[count];
             for(int i =0;i < count ; i++){
                 enemies [i ] = new Skeleton();
+            }
+        }else if(type.equalsIgnoreCase("skull")){
+            enemies = new Skull[count];
+            for(int i =0;i < count ; i++){
+                enemies [i ] = new Skull();
             }
         }
         return enemies;
