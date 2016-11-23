@@ -82,5 +82,7 @@ public class HurdleShark extends IPlace
      private void cleanPlace(){
          backgoundSound.stop();
         world.removeObjects(world.getObjects(HintHolder.class));
+         world.removeObjects(world.getObjects(Shark.class));
+        PirateWorld.isHurdle= false;
     }
 }

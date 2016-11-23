@@ -23,8 +23,10 @@ public class PirateWorld extends World
     static final String sixthPlace = "NEWYORK";
     static final String seventhPlace = "GOLDENGATE";
     static final String hurdleShark= " HURDLESHARK";
+    static final String hurdleSkeleton = "HURDLESKELETON";
 
-    static final boolean multiUser = false;
+    static boolean multiUser = false;
+    static boolean isHurdle = false;
 
     private static final String URL = "http://localhost:8080/pirategameroom";
 
@@ -241,6 +243,12 @@ public class PirateWorld extends World
                 callPUTAPI();
             break;
             case hurdleShark: this.currentPlace = new HurdleShark();
+            isHurdle = true;
+            if(multiUser)
+                callPUTAPI();
+            break;
+            case hurdleSkeleton: this.currentPlace = new HurdleSkeleton();
+            isHurdle = true;
             if(multiUser)
                 callPUTAPI();
             break;

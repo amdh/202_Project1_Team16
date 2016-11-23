@@ -9,5 +9,5 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class IEnemy extends Actor
 {
    public  abstract void killPirate();
-   public abstract boolean checkIntersectingObjects(Pirates pirate);
+  // public abstract boolean checkIntersectingObjects(Pirates pirate);
 }

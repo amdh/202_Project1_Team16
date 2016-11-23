@@ -12,6 +12,7 @@ public class Pirates extends Actor
     List<Life> LivesLeft ;
     PirateWorld world;
     GreenfootSound sound = new GreenfootSound("sounds/FireAnchor.mp3");
+    HintHolder anchor = new HintHolder();
 
     private String stageName;
     private int pirateId;
@@ -36,29 +37,38 @@ public class Pirates extends Actor
             if(world.callGETAPI_ISWINNER())
                 world.setGameOver(); 
         }
-        int mouseX, mouseY ;
-
+   
         if(Greenfoot.mouseDragged(this)) {          
             MouseInfo mouse = Greenfoot.getMouseInfo();  
-            mouseX=mouse.getX();  
-            mouseY=mouse.getY();  
-            setLocation(mouseX, mouseY);  
+             setLocation(mouse.getX(), mouse.getY());  
         } 
-        if(world.getCurrentPlace().getClass().getName().equalsIgnoreCase(PirateWorld.hurdleShark)){
-            if(Greenfoot.mouseClicked(this)){
-
-                sound.stop();
-                MouseInfo mouse = Greenfoot.getMouseInfo();  
-                mouseX=mouse.getX();  
-                mouseY=mouse.getY(); 
-                HintHolder h = new HintHolder();
-                h.getImage().scale(30,30);
-                world.addObject(h,mouseX, mouseY);
-                sound.play();
-            }
+        if(PirateWorld.isHurdle){
+            fireAnchor();
+            killedByShark();
         }
     }    
 
+    public void killedByShark(){
+        Actor shark = (Shark)getOneObjectAtOffset(0,0,Shark.class);
+        if(shark != null){
+            removeLife();           
+            world.removeObject(shark);
+            HintHolder.incrSharkKilledCount();
+            System.out.println("shark pirate killed");
+        }
+    }
+
+    public void fireAnchor(){
+         if(Greenfoot.mouseClicked(this)){
+            sound.stop();
+            MouseInfo mouse = Greenfoot.getMouseInfo();             
+            anchor.getImage().scale(30,30);
+            world.addObject(anchor,0,0);
+            anchor.setLocation(mouse.getX(), mouse.getY());
+            sound.play();
+        }
+
+    }
     public void setLife(){
         world =  getWorldOfType(PirateWorld.class);
         int x= 1000 , y = 50;

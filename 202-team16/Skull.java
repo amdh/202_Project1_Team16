@@ -9,33 +9,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Skull extends IEnemy
 {
     PirateWorld world ;
+    Pirates pirate;
     public Skull(){
-
         world =  getWorldOfType(PirateWorld.class);  
     }
 
     public void act() 
     {
         // Add your action code here.
-        //killPirate();
+        pirate = (Pirates) getOneObjectAtOffset(0,0,Pirates.class);
+        if(pirate != null)
+            killPirate();
     }    
 
-    public boolean checkIntersectingObjects(Pirates t)
-    {
-        if(this.intersects(t))
-        {
-            return true;
-        }
-        else
-            return false;
-    }
-
     public void killPirate(){
-        Pirates pirate = (Pirates) getOneObjectAtOffset(0,0,Pirates.class);
-        
-        if(this.intersects(pirate)){
-            System.out.println("pirate eaten by skull");
-            pirate.removeLife();
-        }
+        System.out.println("pirate eaten by skull");
+        pirate.removeLife();
+
     }
 }

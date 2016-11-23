@@ -10,31 +10,33 @@ public class Shark extends IEnemy
 {
     PirateWorld world ;
     public Shark(){
-
         world =  getWorldOfType(PirateWorld.class);  
     }
+
     public void act() 
     {
-        //setLocation(getX()-2, getY());
-        //killPirate();
+        setLocation(getX()-2, getY());
+       
     }    
-    
+
     public void killPirate(){
         Pirates pirate = (Pirates) getOneObjectAtOffset(0,0,Pirates.class);
 
         if(pirate != null){
             System.out.println("pirate eaten by shark");
-           pirate.removeLife();
+            pirate.removeLife();
+            world.removeObject(this);
         }
     }    
+
     public boolean checkIntersectingObjects(Pirates t)
     {
-            if(this.intersects(t))
+        if(this.intersects(t))
         {
             return true;
         }
         else
             return false;
     }
-    
+
 }

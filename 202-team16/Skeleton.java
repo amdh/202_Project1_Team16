@@ -15,6 +15,7 @@ public class Skeleton extends IEnemy
     public void act() 
     {
         // Add your action code here.
+        setLocation(getX()-2, getY());
     }    
 
     public void killPirate(){
