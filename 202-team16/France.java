@@ -40,7 +40,7 @@ public class France extends IPlace
         answerOption4Path = "images/copacabana/ans4.jpg";
         audioHint=new GreenfootSound("images/copacabana/audioHint.mp3");
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
+        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
 
     public void draw(){
@@ -79,7 +79,7 @@ public class France extends IPlace
         }
         if (hint>=4){   
             if (i%100==0)
-            world.showHint3("You will be promoted to the next step in "+i/100);
+            world.showHint3("You will be promoted to the next State in "+i/100);
             i--;
             if (i == 0)
             {
@@ -113,7 +113,7 @@ public class France extends IPlace
     public  void doCorrectAnswer(){
         //move to next stage
         cleanPlace();
-        //correctAns.play();
+        correctAns.play();
         //audioHint.stop();
         setNextPlace(PirateWorld.fifthPlace);
     }

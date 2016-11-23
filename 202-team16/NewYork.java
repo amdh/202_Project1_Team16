@@ -30,7 +30,7 @@ public class NewYork extends IPlace
 
     public NewYork(){
        backgroundImgPath = "images/NewYork/world_6.jpg";
-        textHintPath = "World's most crooked street over here!!";
+        textHintPath = "World's most crooked street are over here!!";
         soundHintPath="";
         imageHintpath = "images/GoldenGateBridge/hintImg.jpg";
         answerOption1Path = "images/GoldenGateBridge/op1.jpg";
@@ -39,7 +39,7 @@ public class NewYork extends IPlace
         answerOption4Path = "images/GoldenGateBridge/op4.jpg";
         audioHint=new GreenfootSound("images/GoldenGateBridge/audioHint.mp3");
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
+        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
 
     }
 
@@ -58,7 +58,7 @@ public class NewYork extends IPlace
         }
         if (hint>=4){   
             if (i%100==0)
-            world.showHint3("You will be promoted to the next step in "+i/100);
+            world.showHint3("You will be promoted to the next State in "+i/100);
             i--;
             if (i == 0)
             {
@@ -108,7 +108,7 @@ public class NewYork extends IPlace
     public  void doCorrectAnswer(){
         //move to next stage
         cleanPlace();
-        //correctAns.play();
+        correctAns.play();
         //audioHint.stop();
         setNextPlace(PirateWorld.seventhPlace);
     }

@@ -44,7 +44,7 @@ public class MumbaiIndia extends IPlace
         answerOption4Path = "images/CapeTownAfrica/CapeTownIncorrectOption3.jpg";
         audioHint=new GreenfootSound("images/CapeTownAfrica/audioHint.mp3");  
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
+        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
 
     public void draw(){
@@ -82,7 +82,7 @@ public class MumbaiIndia extends IPlace
         }
         if (hint>=4){   
             if (i%100==0)
-            world.showHint3("You will be promoted to the next step in "+i/100);
+            world.showHint3("You will be promoted to the next State in "+i/100);
             i--;
             if (i == 0)
             {
@@ -119,7 +119,7 @@ public class MumbaiIndia extends IPlace
     }
     public  void doCorrectAnswer(){
         //move to next stage
-        //correctAns.play();
+        correctAns.play();
         cleanPlace();
         //audioHint.stop();
         setNextPlace(PirateWorld.thirdPlace);

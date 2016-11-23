@@ -40,7 +40,7 @@ public class BasePlace extends IPlace
         answerOption4Path = "images/baseplace/Ausincorrectop1.jpg";
         audioHint=new GreenfootSound("images/baseplace/audioHint.mp3");
         wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-        //correctAns = new GreenfootSound("sounds/yeaahh.mp3");
+        correctAns = new GreenfootSound("sounds/yeaahh.mp3");
     }
 
     public void act() 
@@ -58,7 +58,7 @@ public class BasePlace extends IPlace
         }
         if (hint>=4){   
             if (i%100==0)
-                world.showHint3("You will be promoted to the next step in "+i/100);
+                world.showHint3("You will be promoted to the next State in "+i/100);
             i--;
             if (i == 0)
             {
@@ -91,7 +91,7 @@ public class BasePlace extends IPlace
 
     public void doCorrectAnswer(){
         //move to next stage
-        //correctAns.play();
+        correctAns.play();
         cleanPlace();
         audioHint.stop();
         setNextPlace(PirateWorld.firstPlace);
