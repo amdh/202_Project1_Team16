@@ -94,7 +94,7 @@ public class BasePlace extends IPlace
         //correctAns.play();
         cleanPlace();
         audioHint.stop();
-        setNextPlace(PirateWorld.hurdleSkeleton);
+        setNextPlace(PirateWorld.firstPlace);
     }
 
     public void doIncorrectAnswer(){
