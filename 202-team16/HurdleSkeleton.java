@@ -16,7 +16,7 @@ public class HurdleSkeleton extends IPlace
     GreenfootSound backgoundSound;
 
     public HurdleSkeleton(){
-        backgoundSound = new GreenfootSound("sounds/theme.mp3");
+        backgoundSound = new GreenfootSound("sounds/evil.mp3");
         factory = new EnemyFactory();
     }
 
@@ -58,8 +58,7 @@ public class HurdleSkeleton extends IPlace
         pirate =  world.getPirate();
         world.setBackground("images/hurdleSkeleton.jpg");
         backgoundSound.play();
-        world.showHint3("Kill all to reach next place..");
-
+        factory = new EnemyFactory();
     }
 
     public  void doIncorrectAnswer(){}
@@ -80,6 +79,7 @@ public class HurdleSkeleton extends IPlace
     private void cleanPlace(){
         backgoundSound.stop();
         world.removeObjects(world.getObjects(HintHolder.class));
+        world.removeObjects(world.getObjects(Skeleton.class));
         PirateWorld.isHurdle= false;
     }
 }
