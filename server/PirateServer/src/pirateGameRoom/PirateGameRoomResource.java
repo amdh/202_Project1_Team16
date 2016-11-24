@@ -10,7 +10,7 @@ import org.restlet.resource.*;
 public class PirateGameRoomResource extends ServerResource {
 
 	private static int playercnt = 0;
-	private static ConcurrentHashMap<Integer, String> player = new ConcurrentHashMap();
+	private static ConcurrentHashMap<Integer, String> player = new ConcurrentHashMap<Integer, String>();
 	private static final String winner = "WINNER";
 	// playercnt, stagecnt
 

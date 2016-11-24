@@ -28,7 +28,7 @@ public class PirateWorld extends World
     static boolean multiUser = false;
     static boolean isHurdle = false;
 
-    private static final String URL = "http://localhost:8080/pirategameroom";
+    private static final String URL = "http://localhost:8080/pirategameroom";//"http://pirates-c7d5c1a1-1.4e53aff4.cont.dockerapp.io:8181/pirategameroom";
 
     private ClientResource client ; 
 
@@ -41,6 +41,7 @@ public class PirateWorld extends World
     Message message;
     String pirateName;
     int pirateID;
+    String winner;
     GreenfootSound sound = new GreenfootSound("sounds/theme.mp3");
     GreenfootSound gameOver = new GreenfootSound("sounds/GameOver.mp3");
 
@@ -54,11 +55,13 @@ public class PirateWorld extends World
             client = new ClientResource( URL ); 
     }
 
+    //shows first screen
     public void setWelcomeScreen(){
         startGame = new StartGame();
         addObject(startGame, 1300,700);
     }
 
+    //shows introduction about game with story, rules and quit play opions
     public void setIntroScreen(){
         play = new Play();
         quit = new Quit();
@@ -73,19 +76,23 @@ public class PirateWorld extends World
         addObject(rules, 1300,700);
     }
 
+    //shows game over screen
     public void setGameOver(){
-        //callPUTAPI_LOOSER();
+
         gameOver.play();
-        Greenfoot.stop();
-        GameOver endgame;
-        endgame = new GameOver();
+        Greenfoot.stop();      
         removeObjects(getObjects(null)); //removes all the objects in the world;
         addObject(new GameOver(), getWidth()/2, getHeight()/2); //adds the game over screen in the middle of the world;  
     }
 
+    //shows the winner screen
     public void setWinnerScreen(){
+        Greenfoot.stop();
+        removeObjects(getObjects(null)); //removes all the objects in the world;
+        addObject(new GameWon(), getWidth()/2, getHeight()/2); //adds gamewon screen
     }
 
+    //sets the game rules
     public void setRules(){
         if(story!=null)
             removeObject(story);
@@ -101,6 +108,7 @@ public class PirateWorld extends World
         }
     }
 
+    //add player into gameroom
     private void callPOSTAPI(){
 
         JSONObject json_start = new JSONObject();
@@ -109,7 +117,8 @@ public class PirateWorld extends World
         Representation result_string = client.post(new JsonRepresentation(json_start), MediaType.APPLICATION_JSON);
         try {
             JSONObject json = new JSONObject( result_string.getText() ) ;
-            if(json.get("Error").equals("Maximum number of players already allocated"))
+
+            if(!json.isNull("Error"))
             {
                 Message msg = new Message();
                 msg.display("Maximum number of players already allocated.");
@@ -133,6 +142,7 @@ public class PirateWorld extends World
 
     }
 
+    //update the player current place
     private void callPUTAPI(){
         JSONObject json_update = new JSONObject();
         json_update.put("player",pirateID);
@@ -140,6 +150,7 @@ public class PirateWorld extends World
         Representation result_string = client.put(new JsonRepresentation(json_update), MediaType.APPLICATION_JSON);
     }
 
+    //update player with winner when he wins the game
     public void callPUTAPI_WINNER(){
         JSONObject json_update = new JSONObject();
         json_update.put("player",pirateID);
@@ -147,6 +158,7 @@ public class PirateWorld extends World
         Representation result_string = client.put(new JsonRepresentation(json_update), MediaType.APPLICATION_JSON);
     }
 
+    //update player with dead when players looses game
     public void callPUTAPI_LOOSER(){
         JSONObject json_update = new JSONObject();
         json_update.put("player",pirateID);
@@ -154,9 +166,9 @@ public class PirateWorld extends World
         Representation result_string = client.put(new JsonRepresentation(json_update), MediaType.APPLICATION_JSON);
     }
 
+    //returns if there there is any player if yes sets the winner 
     public boolean callGETAPI_ISWINNER(){
-        boolean isWinner = false;
-        String winner;
+        boolean isWinner = false;      
         Representation result_string = client.get();
         try {
             JSONObject json = new JSONObject( result_string.getText() ) ;
@@ -169,6 +181,7 @@ public class PirateWorld extends World
         return isWinner;
     }
 
+    //returns total player count
     public int callGETAPI_PLAYERCOUNT(){
         int playerCount = 0;
         String winner;
@@ -184,6 +197,46 @@ public class PirateWorld extends World
         return playerCount;
     }
 
+    //check if there is winner else call put to update the player stage
+    private void doPlayAPI(){
+        if(multiUser){
+            if(callGETAPI_ISWINNER()){
+                if(winner.equals(pirateID)){
+                    setWinnerScreen();
+                }else{
+                    setGameOver();
+                }
+            }
+            callPUTAPI();  
+        }
+    }
+
+    // calls post api for entering player into gameroom
+    //if already 5 players error is displayed
+    //if less than 5 playes , waiting messesage is displayed till player count becomes 5
+    //if 5 then proceed
+    private void doEnterAPI(){
+        if(multiUser){ 
+            callPOSTAPI();       
+
+            Message msg = new Message();
+            msg.display("Please wait for all 5 members to join the room.");    
+            addObject(msg, getWidth()/2, getHeight()/2);
+            repaint();//needed to repaint the message before executing the loop
+            do{     
+                int count = callGETAPI_PLAYERCOUNT();
+                if( count == 5){
+                    break;
+                }else if(count < 5){
+                    continue;                     
+                }
+
+            }while(true);
+            removeObject(msg);
+        }
+    }
+
+    //sets the current place 
     public void setPlace(String placename)
     {
         if(this.currentPlace != null){
@@ -194,63 +247,36 @@ public class PirateWorld extends World
         switch(placename.toUpperCase()){
 
             case basePlace:  this.currentPlace = new BasePlace();
-            if(multiUser){
-                Message msg = new Message();
-                msg.display("Please wait for all 5 members to join the room.");
-                addObject(msg, getWidth()/2, getHeight()/2);
-                repaint();
-                callPOSTAPI();            
-                do{     
-                    int count = callGETAPI_PLAYERCOUNT();
-                    if( count <= 5){
-                        break;
-                    }else{
-                        msg.display("Maximum number of players already allocated.");
-                        Greenfoot.delay(150);
-                        System.exit(1);
-                    }
-
-                }while(true);
-                removeObject(msg);
-            }
+            doEnterAPI();
             break;
             case firstPlace: this.currentPlace = new Australia();
-            if(multiUser)
-                callPUTAPI();                          
+            doPlayAPI();
             break;
             case forthPlace: this.currentPlace = new France();
-            if(multiUser)
-                callPUTAPI();            
+            doPlayAPI();           
             break;
             case secondPlace: this.currentPlace = new MumbaiIndia();
-            if(multiUser)
-                callPUTAPI();
+            doPlayAPI();
             break;
             case thirdPlace: this.currentPlace = new CapetownAfrica();
-            if(multiUser)
-                callPUTAPI();
+            doPlayAPI();
             break;
             case fifthPlace: this.currentPlace = new CopacabanaBrazil();
-            if(multiUser)
-                callPUTAPI();
+            doPlayAPI();
             break;
             case sixthPlace: this.currentPlace = new NewYork();
-            if(multiUser)
-                callPUTAPI();
+            doPlayAPI();
             break;                
             case seventhPlace: this.currentPlace = new GoldenGateBridge();
-            if(multiUser)
-                callPUTAPI();
+            doPlayAPI();
             break;
             case hurdleShark: this.currentPlace = new HurdleShark();
             isHurdle = true;
-            if(multiUser)
-                callPUTAPI();
+            doPlayAPI();
             break;
             case hurdleSkeleton: this.currentPlace = new HurdleSkeleton();
             isHurdle = true;
-            if(multiUser)
-                callPUTAPI();
+            doPlayAPI();
             break;
             default : this.currentPlace = new BasePlace();
 
@@ -260,14 +286,17 @@ public class PirateWorld extends World
         currentPlace.draw();
     }
 
+    //when game starts play the background music
     public void started(){
         sound.play();
     }
 
+    //stop the backfground music
     public void stopped(){
         sound.stop();
     }
 
+    //sets the pirate for the game
     public void setPirate(){
         sound.stop();
         pirate = new Pirates();
@@ -301,6 +330,7 @@ public class PirateWorld extends World
             removeObject(rule);
     }
 
+    //sets the answer optiosn for the current place
     public void setAnswerOptions(AnswerOption ans1, AnswerOption ans2, AnswerOption ans3, AnswerOption ans4 ){
 
         Greenfoot.delay(30);
@@ -319,22 +349,26 @@ public class PirateWorld extends World
 
     }
 
+    //shows the first hint for next place
     public void showHint1(String msg){
         Greenfoot.delay(20);
         message.display(msg);
         addObject(message,360,250);
     }
 
+    //shows the second hint for next place
     public void showHint2(AnswerOption hintImg, String msg){
         message.display(msg);       
         hintImg.getImage().scale(200,180);
         addObject(hintImg, 200,400);
     }
 
+    //shows the third hint for next place
     public void showHint3(String msg){
         message.display(msg);
     }
 
+    //shows the general message
     public void showMessage(String msg){
         message.display(msg);
     }

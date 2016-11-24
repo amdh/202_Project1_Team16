@@ -33,10 +33,7 @@ public class Pirates extends Actor
 
     public void act() 
     {
-        if(PirateWorld.multiUser){
-            if(world.callGETAPI_ISWINNER())
-                world.setGameOver(); 
-        }
+        
    
         if(Greenfoot.mouseDragged(this)) {          
             MouseInfo mouse = Greenfoot.getMouseInfo();  

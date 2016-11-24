@@ -14,7 +14,7 @@ public class HurdleShark extends IPlace
     EnemyFactory factory;
     GreenfootSound backgoundSound;
     public HurdleShark(){
-        backgoundSound = new GreenfootSound("sounds/evil.mp3");
+        backgoundSound = new GreenfootSound("sounds/theme.mp3");
     }
 
     public void act() 

@@ -9,11 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class HintHolder extends Actor
 {
 
-    private static int sharkKilledCnt;
-    private static int skeletonKilledCnt;
+    private static int sharkKilledCnt = 0;
+    private static int skeletonKilledCnt = 0;
 
     public HintHolder(){
-
+       
     }
 
     public void act() 
