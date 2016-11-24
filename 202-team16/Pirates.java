@@ -45,6 +45,7 @@ public class Pirates extends Actor
         if(PirateWorld.isHurdle){
             fireAnchor();
             killedByShark();
+            killedBySkeleton();
         }
     }    
 
@@ -57,7 +58,15 @@ public class Pirates extends Actor
             System.out.println("shark pirate killed");
         }
     }
-
+    public void killedBySkeleton(){
+        Actor skeleton = (Skeleton)getOneObjectAtOffset(0,0,Skeleton.class);
+        if(skeleton != null){
+            removeLife();           
+            world.removeObject(skeleton);
+            HintHolder.incrSkeletonKilledCount();
+            System.out.println("skeleton pirate killed");
+        }
+    }
     public void fireAnchor(){
          if(Greenfoot.mouseClicked(this)){
             sound.stop();
@@ -114,6 +123,10 @@ public class Pirates extends Actor
 
     public int getSharkKilledCount(){
         return HintHolder.getSharkKilledCount();
+    }
+    
+    public int getSkeletonKilledCount(){
+        return HintHolder.getSkeletonKilledCount();
     }
 
     public void setStage(String name){

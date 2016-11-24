@@ -25,11 +25,9 @@ public class HintHolder extends Actor
         if(shark !=null){  
             killShark(shark);
         }else if(skeleton != null){
-            System.out.println("skeleton killed");
-            getWorld().removeObject(skeleton);
-            skeletonKilledCnt++;
-            getWorld().removeObject(this);           
-        } else if(isAtEdge()){
+            killSkeleton(skeleton);
+        } 
+        else if(isAtEdge()){
             getWorld().removeObject(this);
         }
 
@@ -53,16 +51,13 @@ public class HintHolder extends Actor
         return skeletonKilledCnt;
     }
 
-    public void killSkeleton(){
-        Actor skeleton = getOneIntersectingObject(Skeleton.class);
-
-        if(skeleton != null){
-            System.out.println("shark killed");
+    public void killSkeleton(Actor skeleton){
+            System.out.println("skeleton killed");
             getWorld().removeObject(skeleton);
+            skeletonKilledCnt++;
             getWorld().removeObject(this);
             // break;
         }
-    }
 
     public void killShark(Actor shark){
         System.out.println("shark killed");

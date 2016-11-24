@@ -16,7 +16,7 @@ public class HurdleSkeleton extends IPlace
     GreenfootSound backgoundSound;
 
     public HurdleSkeleton(){
-        backgoundSound = new GreenfootSound("sounds/theme.mp3");
+        backgoundSound = new GreenfootSound("sounds/evil.mp3");
         factory = new EnemyFactory();
     }
 
@@ -24,7 +24,7 @@ public class HurdleSkeleton extends IPlace
     {
         // Add your action code here.
         checkLifeCount();
-
+        backgoundSound.play();
         if(hurdlecnt < maxhurdle){
             if (Greenfoot.getRandomNumber(300)<3){
                 world.addObject(getEnemy("skeleton"), 1500,750);
@@ -39,7 +39,7 @@ public class HurdleSkeleton extends IPlace
 
     }  
     public boolean checkHurdleCrossed(){
-        if( maxhurdle == pirate.getSharkKilledCount())
+        if( maxhurdle == pirate.getSkeletonKilledCount())
             return true;
         else
             return false;
@@ -59,7 +59,7 @@ public class HurdleSkeleton extends IPlace
         world.setBackground("images/hurdleSkeleton.jpg");
         backgoundSound.play();
         world.showHint3("Kill all to reach next place..");
-
+        factory = new EnemyFactory();
     }
 
     public  void doIncorrectAnswer(){}
@@ -80,6 +80,7 @@ public class HurdleSkeleton extends IPlace
     private void cleanPlace(){
         backgoundSound.stop();
         world.removeObjects(world.getObjects(HintHolder.class));
+        world.removeObjects(world.getObjects(Skeleton.class));
         PirateWorld.isHurdle= false;
     }
 }

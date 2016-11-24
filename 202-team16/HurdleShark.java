@@ -14,13 +14,14 @@ public class HurdleShark extends IPlace
     EnemyFactory factory;
     GreenfootSound backgoundSound;
     public HurdleShark(){
-        backgoundSound = new GreenfootSound("sounds/theme.mp3");
+        backgoundSound = new GreenfootSound("sounds/evil.mp3");
     }
 
     public void act() 
     {
         // Add your action code here.
         checkLifeCount();
+        backgoundSound.play();
         if(hurdlecnt < maxhurdle){
             if (Greenfoot.getRandomNumber(300)<3){
                 world.addObject(getEnemy("shark"), 1500,800);

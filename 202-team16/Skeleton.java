@@ -12,6 +12,11 @@ public class Skeleton extends IEnemy
      * Act - do whatever the Skeleton wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+     PirateWorld world ;
+    public Skeleton(){
+        world =  getWorldOfType(PirateWorld.class);  
+    }
+    
     public void act() 
     {
         // Add your action code here.
@@ -24,6 +29,7 @@ public class Skeleton extends IEnemy
         if(pirate != null){
             System.out.println("pirate eaten by skeleton");
             pirate.removeLife();
+            world.removeObject(this);
         }
     }
     
