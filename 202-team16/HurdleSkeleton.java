@@ -59,6 +59,7 @@ public class HurdleSkeleton extends IPlace
         world.setBackground("images/hurdleSkeleton.jpg");
         backgoundSound.play();
         world.showHint3("Kill all to reach next place..");
+
         factory = new EnemyFactory();
     }
 
