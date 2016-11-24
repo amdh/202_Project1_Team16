@@ -11,7 +11,7 @@ Arpita Dixit
 Chaya Malik
 Jay Nirgudkar
 
-Project Description :
+# Project Description :
 
 Design a multiplayer game based on FSA.
 
@@ -29,7 +29,9 @@ image:: https://graphs.waffle.io/amdh/202_Project1_Team16/throughput.svg
  {<img alt='Throughput Graph' src='https://graphs.waffle.io/amdh/202_Project1_Team16/throughput.svg' />}[https://waffle.io/amdh/202_Project1_Team16/metrics/throughput]
  
  
- Discussion on the flow of cloud application:
+# Pirates - Treasure Hunt
+
+
  
 
 ## License
