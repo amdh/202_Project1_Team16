@@ -29,7 +29,7 @@ public class HurdleShark extends IPlace
                 System.out.println(hurdlecnt);
             }
         }
-		
+		backgoundSound.play();
 		
         if(checkHurdleCrossed()){
             cleanPlace();
