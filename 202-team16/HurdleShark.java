@@ -33,7 +33,7 @@ public class HurdleShark extends IPlace
 		
         if(checkHurdleCrossed()){
             cleanPlace();
-            setNextPlace(PirateWorld.firstPlace);
+            setNextPlace(PirateWorld.fifthPlace);
         }
 
         

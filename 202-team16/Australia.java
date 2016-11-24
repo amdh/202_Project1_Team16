@@ -117,7 +117,7 @@ public class Australia extends IPlace
         cleanPlace();
         correctAns.play();
         //audioHint.stop();
-        setNextPlace(PirateWorld.secondPlace);
+        setNextPlace(PirateWorld.hurdleSkeleton);
     }
 
     public  void showHurdle(){}

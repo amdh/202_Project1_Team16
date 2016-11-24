@@ -34,7 +34,7 @@ public class HurdleSkeleton extends IPlace
         }        
         if(checkHurdleCrossed()){
             cleanPlace();
-            setNextPlace(PirateWorld.firstPlace);
+            setNextPlace(PirateWorld.secondPlace);
         }
 
     }  

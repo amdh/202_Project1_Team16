@@ -115,7 +115,7 @@ public class France extends IPlace
         cleanPlace();
         correctAns.play();
         //audioHint.stop();
-        setNextPlace(PirateWorld.fifthPlace);
+        setNextPlace(PirateWorld.hurdleShark);
     }
     public  void showHurdle(){}
     public  void setNextPlace(String placeName){
