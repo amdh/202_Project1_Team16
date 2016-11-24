@@ -21,6 +21,7 @@ public class HurdleShark extends IPlace
     {
         // Add your action code here.
         checkLifeCount();
+        backgoundSound.play();
         if(hurdlecnt < maxhurdle){
             if (Greenfoot.getRandomNumber(300)<3){
                 world.addObject(getEnemy("shark"), 1500,800);
@@ -32,7 +33,7 @@ public class HurdleShark extends IPlace
 		
         if(checkHurdleCrossed()){
             cleanPlace();
-            setNextPlace(PirateWorld.firstPlace);
+            setNextPlace(PirateWorld.fifthPlace);
         }
 
         

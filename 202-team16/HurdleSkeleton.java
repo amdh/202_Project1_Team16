@@ -24,7 +24,7 @@ public class HurdleSkeleton extends IPlace
     {
         // Add your action code here.
         checkLifeCount();
-
+        backgoundSound.play();
         if(hurdlecnt < maxhurdle){
             if (Greenfoot.getRandomNumber(300)<3){
                 world.addObject(getEnemy("skeleton"), 1500,750);
@@ -34,12 +34,12 @@ public class HurdleSkeleton extends IPlace
         }        
         if(checkHurdleCrossed()){
             cleanPlace();
-            setNextPlace(PirateWorld.firstPlace);
+            setNextPlace(PirateWorld.secondPlace);
         }
 
     }  
     public boolean checkHurdleCrossed(){
-        if( maxhurdle == pirate.getSharkKilledCount())
+        if( maxhurdle == pirate.getSkeletonKilledCount())
             return true;
         else
             return false;
@@ -58,6 +58,10 @@ public class HurdleSkeleton extends IPlace
         pirate =  world.getPirate();
         world.setBackground("images/hurdleSkeleton.jpg");
         backgoundSound.play();
+<<<<<<< HEAD
+=======
+        world.showHint3("Kill all to reach next place..");
+>>>>>>> origin/master
         factory = new EnemyFactory();
     }
 
