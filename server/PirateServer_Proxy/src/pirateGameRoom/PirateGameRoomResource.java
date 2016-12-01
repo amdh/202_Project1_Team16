@@ -2,22 +2,20 @@ package pirateGameRoom;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.json.*;
-import org.restlet.representation.*;
-import org.restlet.ext.json.*;
-import org.restlet.resource.*;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.restlet.ext.json.JsonRepresentation;
+import org.restlet.representation.Representation;
 
-public class PirateGameRoomResource extends ServerResource {
+public class PirateGameRoomResource {
 
-	private static int playercnt = 0;
-	private static ConcurrentHashMap<Integer, String> player = new ConcurrentHashMap();
+	
+	private static ConcurrentHashMap<Integer, String> player = new ConcurrentHashMap<Integer, String>();
 	private static final String winner = "WINNER";
 	// playercnt, stagecnt
 
-	
-
-	@Get("status")
 	public Representation get(String status) throws JSONException {
+
 		boolean isWinner = false;
 		JSONObject response = new JSONObject();
 		for (int name : player.keySet()) {
@@ -28,47 +26,46 @@ public class PirateGameRoomResource extends ServerResource {
 				isWinner = true;
 				response.put("player", key);
 				response.put("winner", isWinner);
+
 				break;
 
 			}
 			System.out.println(key + " " + stage);
 
 			response.put("winner", isWinner);
+			response.put("playerCount", player.size());
 		}
 
 		return new JsonRepresentation(response);
 	}
 
-	@Post
 	public Representation post(JsonRepresentation jsonRep) {
 
 		JSONObject json = jsonRep.getJsonObject();
 		String stage = json.getString("stage");
 		System.out.println("satge: " + stage);
 
-		playercnt++;
-		player.put(playercnt, stage);
-
+		player.put(GameRoomAccessProxy.getPlayerCount(), stage);
+		
 		JSONObject response = new JSONObject();
-		response.put("player", playercnt);
+		response.put("player", GameRoomAccessProxy.getPlayerCount());
 		response.put("stage", stage);
 
-		System.out.println("---List of Player-----");
-		for (int name : player.keySet()) {
-
-			int key = name;
-			String value = player.get(name).toString();
-			System.out.println(key + " " + value);
-
-		}
+					System.out.println("---List of Player-----");
+					for (int name : player.keySet()) {
+			
+						int key = name;
+						String value = player.get(name).toString();
+						System.out.println(key + " " + value);
+			
+					}
 		return new JsonRepresentation(response);
 
 	}
 
-	@Put
-	public Representation put(JsonRepresentation jsonRep) {
+	public Representation put(JSONObject json) {
 
-		JSONObject json = jsonRep.getJsonObject();
+		//JSONObject json = jsonRep.getJsonObject();
 		String stage = json.getString("stage");
 		int playernumber = json.getInt("player");
 		System.out.println("stage: " + stage);
@@ -78,16 +75,28 @@ public class PirateGameRoomResource extends ServerResource {
 		player.put(playernumber, stage);
 
 		JSONObject response = new JSONObject();
-		response.put("player", playercnt);
+		response.put("player", playernumber);
 		response.put("stage", stage);
 
 		return new JsonRepresentation(response);
 
 	}
 	
-	public static ConcurrentHashMap<Integer, String> getPlayerMap(){
-			return player;
+	public Representation delete() {
+
+		player.clear();
 		
+		JSONObject response = new JSONObject();
+		response.put("player", GameRoomAccessProxy.getPlayerCount());
+		
+
+		return new JsonRepresentation(response);
+
+	}
+
+	public static ConcurrentHashMap<Integer, String> getPlayerMap() {
+		return player;
+
 	}
 
 }

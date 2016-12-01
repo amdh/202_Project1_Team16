@@ -16,7 +16,7 @@ public class HurdleSkeleton extends IPlace
     GreenfootSound backgoundSound;
 
     public HurdleSkeleton(){
-        backgoundSound = new GreenfootSound("sounds/evil.mp3");
+        backgoundSound = new GreenfootSound("sounds/evil_1.mp3");
         factory = new EnemyFactory();
     }
 

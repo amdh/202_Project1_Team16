@@ -16,8 +16,9 @@ public class GameRoomServer extends Application{
     @Override
     public Restlet createInboundRoot() {
         Router router = new Router(getContext()) ;
-        router.attach("/pirategameroom", PirateGameRoomResource.class); 
+        router.attach("/pirategameroom", GameRoomAccessProxy.class); 
         router.attach("/pirateplayers", PiratePlayers.class); 
+        
         return router;
     }
 }

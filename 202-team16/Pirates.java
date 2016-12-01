@@ -49,7 +49,10 @@ public class Pirates extends Actor
     public void killedByShark(){
         Actor shark = (Shark)getOneObjectAtOffset(0,0,Shark.class);
         if(shark != null){
-            removeLife();           
+            GreenfootSound wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
+            wrongAns.play();
+            removeLife(); 
+            wrongAns.stop();
             world.removeObject(shark);
             HintHolder.incrSharkKilledCount();
             System.out.println("shark pirate killed");
