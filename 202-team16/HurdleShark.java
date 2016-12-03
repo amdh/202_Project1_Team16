@@ -10,7 +10,7 @@ public class HurdleShark extends IPlace
 {
     PirateWorld world;
     Pirates pirate;
-    int hurdlecnt, i= 1000 , maxhurdle = 11;
+    int hurdlecnt, i= 11000 , maxhurdle = 11;
     EnemyFactory factory;
     GreenfootSound backgoundSound;
     public HurdleShark(){
@@ -23,21 +23,18 @@ public class HurdleShark extends IPlace
         checkLifeCount();
         backgoundSound.play();
         if(hurdlecnt < maxhurdle){
-            if (Greenfoot.getRandomNumber(300)<3){
+           if (i%100==0){
                 world.addObject(getEnemy("shark"), 1500,800);
                 hurdlecnt++;
                 System.out.println(hurdlecnt);
             }
         }
-		backgoundSound.play();
-		
+        backgoundSound.play();
         if(checkHurdleCrossed()){
             cleanPlace();
             setNextPlace(PirateWorld.fifthPlace);
         }
-
-        
-
+        i--;
     }  
 
     public boolean checkHurdleCrossed(){

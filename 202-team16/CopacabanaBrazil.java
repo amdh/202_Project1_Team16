@@ -101,9 +101,9 @@ public class CopacabanaBrazil extends IPlace
 
     public  void doIncorrectAnswer(){
          wrongAns.stop();
+         wrongAns.play();
          removeLife();
          hint = hint +1;
-         wrongAns.play();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);

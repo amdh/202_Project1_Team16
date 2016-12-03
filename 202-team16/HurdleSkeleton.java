@@ -11,7 +11,7 @@ public class HurdleSkeleton extends IPlace
 
     PirateWorld world;
     Pirates pirate;
-    int hurdlecnt, i= 1000 , maxhurdle = 7;
+    int hurdlecnt, i= 7000 , maxhurdle = 7;
     EnemyFactory factory;
     GreenfootSound backgoundSound;
 
@@ -26,7 +26,7 @@ public class HurdleSkeleton extends IPlace
         checkLifeCount();
         backgoundSound.play();
         if(hurdlecnt < maxhurdle){
-            if (Greenfoot.getRandomNumber(300)<3){
+            if (i%100==0){
                 world.addObject(getEnemy("skeleton"), 1500,750);
                 hurdlecnt++;
                 System.out.println(hurdlecnt);
@@ -36,7 +36,7 @@ public class HurdleSkeleton extends IPlace
             cleanPlace();
             setNextPlace(PirateWorld.secondPlace);
         }
-
+        i--;
     }  
     public boolean checkHurdleCrossed(){
         if( maxhurdle == pirate.getSkeletonKilledCount())

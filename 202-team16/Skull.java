@@ -25,6 +25,6 @@ public class Skull extends IEnemy
     public void killPirate(){
         System.out.println("pirate eaten by skull");
         pirate.removeLife();
-
+        pirate.setLocation(150,750);
     }
 }
