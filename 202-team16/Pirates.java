@@ -13,10 +13,10 @@ public class Pirates extends Actor
     PirateWorld world;
     GreenfootSound sound = new GreenfootSound("sounds/FireAnchor.mp3");
     HintHolder anchor = new HintHolder();
-
+    GreenfootSound hurt = new GreenfootSound("sounds/Hurt.mp3");
     private String stageName;
     private int pirateId;
-
+    
     public Pirates()
     {
         GreenfootImage image = getImage() ; 
@@ -28,13 +28,11 @@ public class Pirates extends Actor
         LivesLeft.add(new Life());
         LivesLeft.add(new Life());
         LivesLeft.add(new Life());
-
+        GreenfootSound hurt = new GreenfootSound("sounds/Hurt.mp3");
     }
 
     public void act() 
     {
-        
-   
         if(Greenfoot.mouseDragged(this)) {          
             MouseInfo mouse = Greenfoot.getMouseInfo();  
              setLocation(mouse.getX(), mouse.getY());  
@@ -49,10 +47,9 @@ public class Pirates extends Actor
     public void killedByShark(){
         Actor shark = (Shark)getOneObjectAtOffset(0,0,Shark.class);
         if(shark != null){
-            GreenfootSound wrongAns = new GreenfootSound("sounds/WrongAns.mp3");
-            wrongAns.play();
+            hurt.play();
             removeLife(); 
-            wrongAns.stop();
+            hurt.stop();
             world.removeObject(shark);
             HintHolder.incrSharkKilledCount();
             System.out.println("shark pirate killed");
@@ -61,7 +58,9 @@ public class Pirates extends Actor
     public void killedBySkeleton(){
         Actor skeleton = (Skeleton)getOneObjectAtOffset(0,0,Skeleton.class);
         if(skeleton != null){
-            removeLife();           
+            hurt.play();
+            removeLife(); 
+            hurt.stop();           
             world.removeObject(skeleton);
             HintHolder.incrSkeletonKilledCount();
             System.out.println("skeleton pirate killed");

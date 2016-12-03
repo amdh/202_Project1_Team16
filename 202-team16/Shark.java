@@ -9,8 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Shark extends IEnemy
 {
     PirateWorld world ;
+    GreenfootSound hurt;
     public Shark(){
-        world =  getWorldOfType(PirateWorld.class);  
+        world =  getWorldOfType(PirateWorld.class); 
+        hurt = new GreenfootSound("sounds/Hurt.mp3");  
     }
 
     public void act() 
@@ -23,6 +25,8 @@ public class Shark extends IEnemy
         Pirates pirate = (Pirates) getOneObjectAtOffset(0,0,Pirates.class);
 
         if(pirate != null){
+            hurt.stop();
+            hurt.play();
             System.out.println("pirate eaten by shark");
             pirate.removeLife();
             world.removeObject(this);

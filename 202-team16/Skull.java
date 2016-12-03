@@ -10,8 +10,10 @@ public class Skull extends IEnemy
 {
     PirateWorld world ;
     Pirates pirate;
+    GreenfootSound hurt;
     public Skull(){
         world =  getWorldOfType(PirateWorld.class);  
+        hurt = new GreenfootSound("sounds/Hurt.mp3");
     }
 
     public void act() 
@@ -23,6 +25,8 @@ public class Skull extends IEnemy
     }    
 
     public void killPirate(){
+        hurt.stop();
+        hurt.play();
         System.out.println("pirate eaten by skull");
         pirate.removeLife();
         pirate.setLocation(150,750);
