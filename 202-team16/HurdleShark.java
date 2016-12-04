@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class HurdleShark extends IPlace
 {
     PirateWorld world;
-    Pirates pirate;
+    IObserver pirate;
     int hurdlecnt, i= 1000 , maxhurdle = 11;
     EnemyFactory factory;
     GreenfootSound backgoundSound;

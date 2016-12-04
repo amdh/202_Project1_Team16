@@ -28,7 +28,7 @@ public class France extends IPlace
     AnswerOption ansOP4;
     AnswerOption hintImg;
     PirateWorld world;
-    Pirates pirate;
+    IObserver pirate;
 
     public France(){
         backgroundImgPath = "images/France/world_4.jpg";

@@ -31,7 +31,7 @@ public class MumbaiIndia extends IPlace
     AnswerOption ansOP4;
     AnswerOption hintImg;
     PirateWorld world;
-    Pirates pirate;
+    IObserver pirate;
 
     public MumbaiIndia(){
         backgroundImgPath = "images/Mumbai/world_2.jpg";

@@ -26,7 +26,7 @@ public class NewYork extends IPlace
     AnswerOption ansOP4;
     AnswerOption hintImg;
     PirateWorld world ;
-    Pirates pirate;
+    IObserver pirate;
 
     public NewYork(){
        backgroundImgPath = "images/NewYork/world_6.jpg";

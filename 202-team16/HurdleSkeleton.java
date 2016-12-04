@@ -10,7 +10,7 @@ public class HurdleSkeleton extends IPlace
 {
 
     PirateWorld world;
-    Pirates pirate;
+    IObserver pirate;
     int hurdlecnt, i= 1000 , maxhurdle = 7;
     EnemyFactory factory;
     GreenfootSound backgoundSound;

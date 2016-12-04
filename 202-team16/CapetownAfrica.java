@@ -27,7 +27,7 @@ public class CapetownAfrica extends IPlace
     AnswerOption ansOP4;
     AnswerOption hintImg;
      PirateWorld world;
-    Pirates pirate;
+    IObserver pirate;
     
     public CapetownAfrica()
     {

@@ -28,7 +28,7 @@ public class BasePlace extends IPlace
     AnswerOption hintImg;
 
     PirateWorld world;
-    Pirates pirate;
+    IObserver pirate;
     EnemyFactory factory;
     public BasePlace(){
         backgroundImgPath = "images/baseplace/world_0.jpg";
@@ -88,7 +88,7 @@ public class BasePlace extends IPlace
     public void setNextPlace(String placeName){
         world.setPlace(placeName);
     }
-
+ 
     public void doCorrectAnswer(){
         //move to next stage
         correctAns.play();

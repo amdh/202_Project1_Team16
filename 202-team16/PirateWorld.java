@@ -24,21 +24,21 @@ public class PirateWorld extends World
     static final String seventhPlace = "GOLDENGATE";
     static final String hurdleShark= " HURDLESHARK";
     static final String hurdleSkeleton = "HURDLESKELETON";
-
+    
+    ClientAdapter cAdapter; 
+ 
     static boolean multiUser = false;
     static boolean isHurdle = false;
 
-    private static final String URL = "http://localhost:8080/pirategameroom";//"http://pirates-c7d5c1a1-1.4e53aff4.cont.dockerapp.io:8181/pirategameroom";
-
-    private ClientResource client ; 
+    
 
     Button startGame, quit, play, rules;
-    Pirates pirate;
+    IObserver pirate;
     IPlace currentPlace;
     Life pirateBoat;
     Story story;
     DisRule rule; 
-    Message message;
+    Message message; 
     String pirateName;
     int pirateID;
     String winner;
@@ -51,8 +51,8 @@ public class PirateWorld extends World
         super(1500  , 880   , 1);
         setWelcomeScreen(); 
         message = new Message();
-        if(multiUser)
-            client = new ClientResource( URL ); 
+        //if(multiUser)
+               cAdapter = new ClientAdapter(this);
     }
 
     //shows first screen
@@ -60,7 +60,7 @@ public class PirateWorld extends World
         startGame = new StartGame();
         addObject(startGame, 1300,700);
     }
-
+ 
     //shows introduction about game with story, rules and quit play opions
     public void setIntroScreen(){
         play = new Play();
@@ -108,134 +108,32 @@ public class PirateWorld extends World
         }
     }
 
-    //add player into gameroom
-    private void callPOSTAPI(){
-
-        JSONObject json_start = new JSONObject();
-        json_start.put("stage",this.currentPlace.getClass().getName());
-
-        Representation result_string = client.post(new JsonRepresentation(json_start), MediaType.APPLICATION_JSON);
-        try {
-            JSONObject json = new JSONObject( result_string.getText() ) ;
-
-            if(!json.isNull("Error"))
-            {
-                Message msg = new Message();
-                msg.display("Maximum number of players already allocated.");
-                addObject(msg, getWidth()/2, getHeight()/2);
-                Greenfoot.delay(150);
-                System.exit(1);
-            }
-            else
-            {
-                pirateName= "Player"+(int) json.get("player") ;
-                pirateID = (int) json.get("player");
-            }
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage()) ;
-        }  
-        Message player = new Message();
-        player.display(pirateName);
-        addObject(player,1400,50);
-        System.out.println(pirateName);
-
-    }
-
-    //update the player current place
-    private void callPUTAPI(){
-        JSONObject json_update = new JSONObject();
-        json_update.put("player",pirateID);
-        json_update.put("stage",currentPlace.getClass().getName());
-        Representation result_string = client.put(new JsonRepresentation(json_update), MediaType.APPLICATION_JSON);
-    }
-
+    
     //update player with winner when he wins the game
     public void callPUTAPI_WINNER(){
-        JSONObject json_update = new JSONObject();
-        json_update.put("player",pirateID);
-        json_update.put("stage","WINNER");
-        Representation result_string = client.put(new JsonRepresentation(json_update), MediaType.APPLICATION_JSON);
+       cAdapter.callPUTAPI_WINNER();
     }
 
     //update player with dead when players looses game
     public void callPUTAPI_LOOSER(){
-        JSONObject json_update = new JSONObject();
-        json_update.put("player",pirateID);
-        json_update.put("stage","DEAD");
-        Representation result_string = client.put(new JsonRepresentation(json_update), MediaType.APPLICATION_JSON);
+        cAdapter.callPUTAPI_LOOSER();
     }
 
     //returns if there there is any player if yes sets the winner 
     public boolean callGETAPI_ISWINNER(){
         boolean isWinner = false;      
-        Representation result_string = client.get();
-        try {
-            JSONObject json = new JSONObject( result_string.getText() ) ;
-            isWinner= (boolean) json.get("winner") ;
-            winner = json.getString("player");            
-        }
-        catch (Exception e) {
-            winner = e.getMessage() ;
-        } 
+        isWinner = cAdapter.callGETAPI_ISWINNER();
         return isWinner;
     }
 
     //returns total player count
     public int callGETAPI_PLAYERCOUNT(){
         int playerCount = 0;
-        String winner;
-        Representation result_string = client.get();
-        try {
-            JSONObject json = new JSONObject( result_string.getText() ) ;
-            playerCount= (int) json.get("playerCount") ;
-            winner = json.getString("player");            
-        }
-        catch (Exception e) {
-            winner = e.getMessage() ;
-        } 
+        playerCount =  cAdapter.callGETAPI_PLAYERCOUNT();
         return playerCount;
     }
 
-    //check if there is winner else call put to update the player stage
-    private void doPlayAPI(){
-        if(multiUser){
-            if(callGETAPI_ISWINNER()){
-                if(winner.equals(pirateID)){
-                    setWinnerScreen();
-                }else{
-                    setGameOver();
-                }
-            }
-            callPUTAPI();  
-        }
-    }
-
-    // calls post api for entering player into gameroom
-    //if already 5 players error is displayed
-    //if less than 5 playes , waiting messesage is displayed till player count becomes 5
-    //if 5 then proceed
-    private void doEnterAPI(){
-        if(multiUser){ 
-            callPOSTAPI();       
-
-            Message msg = new Message();
-            msg.display("Please wait for all 5 members to join the room.");    
-            addObject(msg, getWidth()/2, getHeight()/2);
-            repaint();//needed to repaint the message before executing the loop
-            do{     
-                int count = callGETAPI_PLAYERCOUNT();
-                if( count == 5){
-                    break;
-                }else if(count < 5){
-                    continue;                     
-                }
-
-            }while(true);
-            removeObject(msg);
-        }
-    }
-
+   
     //sets the current place 
     public void setPlace(String placename)
     {
@@ -247,36 +145,36 @@ public class PirateWorld extends World
         switch(placename.toUpperCase()){
 
             case basePlace:  this.currentPlace = new BasePlace();
-            doEnterAPI();
+            cAdapter.doEnterAPI();
             break;
             case firstPlace: this.currentPlace = new Australia();
-            doPlayAPI();
+            cAdapter.doPlayAPI();
             break;
             case forthPlace: this.currentPlace = new France();
-            doPlayAPI();           
+            cAdapter.doPlayAPI();           
             break;
             case secondPlace: this.currentPlace = new MumbaiIndia();
-            doPlayAPI();
+            cAdapter.doPlayAPI();
             break;
             case thirdPlace: this.currentPlace = new CapetownAfrica();
-            doPlayAPI();
+            cAdapter.doPlayAPI();
             break;
             case fifthPlace: this.currentPlace = new CopacabanaBrazil();
-            doPlayAPI();
+            cAdapter.doPlayAPI();
             break;
             case sixthPlace: this.currentPlace = new NewYork();
-            doPlayAPI();
+            cAdapter.doPlayAPI();
             break;                
             case seventhPlace: this.currentPlace = new GoldenGateBridge();
-            doPlayAPI();
+            cAdapter.doPlayAPI();
             break;
             case hurdleShark: this.currentPlace = new HurdleShark();
             isHurdle = true;
-            doPlayAPI();
+            cAdapter.doPlayAPI();
             break;
             case hurdleSkeleton: this.currentPlace = new HurdleSkeleton();
             isHurdle = true;
-            doPlayAPI();
+            cAdapter.doPlayAPI();
             break;
             default : this.currentPlace = new BasePlace();
 
@@ -300,6 +198,7 @@ public class PirateWorld extends World
     public void setPirate(){
         sound.stop();
         pirate = new Pirates();
+        
         pirateBoat = new Life();
         pirateBoat.getImage().scale(500,400);
         Greenfoot.delay(10);
@@ -311,7 +210,7 @@ public class PirateWorld extends World
         return message;
     }
 
-    public Pirates getPirate()
+    public IObserver getPirate()
     {
         return pirate;
     }

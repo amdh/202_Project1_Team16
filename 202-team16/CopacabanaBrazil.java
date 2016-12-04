@@ -28,7 +28,7 @@ public class CopacabanaBrazil extends IPlace
     AnswerOption ansOP4;
     AnswerOption hintImg;
      PirateWorld world ;
-    Pirates pirate;
+    IObserver pirate;
 
     public CopacabanaBrazil(){
         backgroundImgPath = "images/Copacabana/world_5.jpg";

@@ -25,7 +25,7 @@ public class GoldenGateBridge extends IPlace
     IEnemy skull3;
     PirateWorld world ;
     EnemyFactory factory;
-    Pirates pirate;
+    IObserver pirate;
     Treasure treasure;
     public static int x;
     public static int y;

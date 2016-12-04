@@ -29,7 +29,7 @@ public class Australia extends IPlace
     AnswerOption hintImg;
 
     PirateWorld world;
-    Pirates pirate;
+    IObserver pirate;
 
     public Australia(){
         backgroundImgPath = "images/Australia/world_1.jpg";
