@@ -28,7 +28,7 @@ public class PirateWorld extends World
     static boolean multiUser = false;
     static boolean isHurdle = false;
 
-    private static final String URL = "http://localhost:8080/pirategameroom";//"http://pirates-c7d5c1a1-1.4e53aff4.cont.dockerapp.io:8181/pirategameroom";
+    private static final String URL = "http://pirates-c7d5c1a1-1.4e53aff4.cont.dockerapp.io:8181/pirategameroom";//"http://pirates-c7d5c1a1-1.4e53aff4.cont.dockerapp.io:8181/pirategameroom";
 
     private ClientResource client ; 
 
