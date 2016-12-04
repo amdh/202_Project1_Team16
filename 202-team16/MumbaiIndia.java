@@ -98,9 +98,9 @@ public class MumbaiIndia extends IPlace
     public  void doIncorrectAnswer(){
         //remove life and repaint the screen
              wrongAns.stop();
+             wrongAns.play();
              removeLife();
              hint = hint + 1;
-             wrongAns.play();
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);

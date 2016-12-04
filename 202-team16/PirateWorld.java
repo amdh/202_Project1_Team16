@@ -30,8 +30,7 @@ public class PirateWorld extends World
     static boolean multiUser = false;
     static boolean isHurdle = false;
 
-    
-
+s
     Button startGame, quit, play, rules;
     IObserver pirate;
     IPlace currentPlace;
@@ -103,8 +102,8 @@ public class PirateWorld extends World
             addObject(story, 1250,400);
         }
         else
-        {        rule = new DisRule();
-            addObject(rule, 1250,400);
+        {   rule = new DisRule();
+            addObject(rule, 1250,320);
         }
     }
 
