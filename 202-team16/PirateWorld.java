@@ -103,8 +103,8 @@ public class PirateWorld extends World
             addObject(story, 1250,400);
         }
         else
-        {        rule = new DisRule();
-            addObject(rule, 1250,400);
+        {   rule = new DisRule();
+            addObject(rule, 1250,320);
         }
     }
 

@@ -32,7 +32,11 @@ class.MumbaiIndia.superclass=IPlace
 class.NewYork.superclass=IPlace
 class.PirateWorld.image=HomeScreenBackground.PNG
 class.PirateWorld.superclass=greenfoot.World
+<<<<<<< HEAD
 class.Pirates.image=imageedit_10_8300107855.png
+=======
+class.Pirates.image=pirate_character.png
+>>>>>>> b3f0859847d1e78cca5610d23806256fea56d029
 class.Pirates.superclass=greenfoot.Actor
 class.Place.superclass=greenfoot.Actor
 class.Play.image=playGame.png
@@ -41,7 +45,11 @@ class.Quit.image=Quit.png
 class.Quit.superclass=Button
 class.Rules.image=Rules.png
 class.Rules.superclass=Button
+<<<<<<< HEAD
 class.Shark.image=sahrk.png
+=======
+class.Shark.image=shark.png
+>>>>>>> b3f0859847d1e78cca5610d23806256fea56d029
 class.Shark.superclass=IEnemy
 class.Skeleton.image=skeleton1.png
 class.Skeleton.superclass=IEnemy
@@ -436,6 +444,7 @@ editor.fx.0.height=700
 editor.fx.0.width=700
 editor.fx.0.x=0
 editor.fx.0.y=0
+<<<<<<< HEAD
 editor.swing.0.height=1048
 editor.swing.0.width=1938
 editor.swing.0.x=-9
@@ -444,6 +453,16 @@ mainWindow.height=1038
 mainWindow.width=1932
 mainWindow.x=-8
 mainWindow.y=0
+=======
+editor.swing.0.height=0
+editor.swing.0.width=0
+editor.swing.0.x=0
+editor.swing.0.y=23
+mainWindow.height=821
+mainWindow.width=1440
+mainWindow.x=0
+mainWindow.y=23
+>>>>>>> b3f0859847d1e78cca5610d23806256fea56d029
 package.numDependencies=126
 package.numTargets=33
 project.charset=UTF-8

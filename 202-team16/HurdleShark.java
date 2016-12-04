@@ -10,7 +10,7 @@ public class HurdleShark extends IPlace
 {
     PirateWorld world;
     Pirates pirate;
-    int hurdlecnt, i= 1000 , maxhurdle = 11;
+    int hurdlecnt, i= 11000 , maxhurdle = 11;
     EnemyFactory factory;
     GreenfootSound backgoundSound;
     public HurdleShark(){
@@ -23,21 +23,18 @@ public class HurdleShark extends IPlace
         checkLifeCount();
         backgoundSound.play();
         if(hurdlecnt < maxhurdle){
-            if (Greenfoot.getRandomNumber(300)<3){
+           if (i%100==0){
                 world.addObject(getEnemy("shark"), 1500,800);
                 hurdlecnt++;
                 System.out.println(hurdlecnt);
             }
         }
-		backgoundSound.play();
-		
+        backgoundSound.play();
         if(checkHurdleCrossed()){
             cleanPlace();
             setNextPlace(PirateWorld.fifthPlace);
         }
-
-        
-
+        i--;
     }  
 
     public boolean checkHurdleCrossed(){
@@ -47,21 +44,18 @@ public class HurdleShark extends IPlace
             return false;
     }
     public IEnemy getEnemy(String type){
-
         IEnemy s1 = factory.getEnemy(type);
         s1.getImage().scale(250,300);
         return s1;
     }
 
-    public void draw(){
-        
+    public void draw(){  
         world =  getWorldOfType(PirateWorld.class);        
         pirate =  world.getPirate();
         world.setBackground("images/hurdleShark.jpg");
         backgoundSound.play();
         world.showHint3("Kill all sharks to reach next place..");
-        factory = new EnemyFactory();
-        
+        factory = new EnemyFactory();    
     }
 
     public  void doIncorrectAnswer(){}
@@ -82,8 +76,8 @@ public class HurdleShark extends IPlace
     
      private void cleanPlace(){
          backgoundSound.stop();
-        world.removeObjects(world.getObjects(HintHolder.class));
+         world.removeObjects(world.getObjects(HintHolder.class));
          world.removeObjects(world.getObjects(Shark.class));
-        PirateWorld.isHurdle= false;
+         PirateWorld.isHurdle= false;
     }
 }
