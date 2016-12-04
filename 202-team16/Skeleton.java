@@ -13,8 +13,10 @@ public class Skeleton extends IEnemy
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
      PirateWorld world ;
+     GreenfootSound hurt;
     public Skeleton(){
-        world =  getWorldOfType(PirateWorld.class);  
+        world =  getWorldOfType(PirateWorld.class);
+        hurt = new GreenfootSound("sounds/Hurt.mp3");
     }
     
     public void act() 
@@ -27,6 +29,8 @@ public class Skeleton extends IEnemy
         Pirates pirate = (Pirates) getOneObjectAtOffset(0,0,Pirates.class);
 
         if(pirate != null){
+            hurt.stop();
+            hurt.play();
             System.out.println("pirate eaten by skeleton");
             pirate.removeLife();
             world.removeObject(this);
