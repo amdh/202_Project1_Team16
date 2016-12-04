@@ -258,7 +258,7 @@ public class PirateWorld extends World
     public void showHint2(AnswerOption hintImg, String msg){
         message.display(msg);       
         hintImg.getImage().scale(200,180);
-        addObject(hintImg, 200,400);
+        addObject(hintImg, 360,400);
     }
 
     //shows the third hint for next place
