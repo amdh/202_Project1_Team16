@@ -32,7 +32,7 @@ image:: https://graphs.waffle.io/amdh/202_Project1_Team16/throughput.svg
 # Pirates - Treasure Hunt
 
 
- {<img alt="Welcome to TreasureHunt" src="202-team16/images/HomeScreenBackground.jpg" />}
+ {<img alt="Welcome to TreasureHunt" src="202-team16/images/HomeScreenBackground.PNG" />}
 
 ## License
 
