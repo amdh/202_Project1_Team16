@@ -99,7 +99,7 @@ public class France extends IPlace
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                world.showHint2(hintImg,"Olypmics 2016 were held at?");
+                world.showHint2(hintImg,"Major Sporting Event for 2016 were held at?");
                 //hint = hint +1;                
             }
             else if(hint==3){

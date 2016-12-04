@@ -104,7 +104,7 @@ public class MumbaiIndia extends IPlace
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                world.showHint2(hintImg,"Penguins in Boulder Island...");
+                world.showHint2(hintImg,"Nelson Mandela was incarcerated here");
                 //hint = hint +1;
             }
             else if(hint==3){

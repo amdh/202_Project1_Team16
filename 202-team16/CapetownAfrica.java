@@ -99,7 +99,7 @@ public class CapetownAfrica extends IPlace
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                world.showHint2(hintImg,"Romance Capital");
+                world.showHint2(hintImg,"Romance Capital of the world?");
                 //hint = hint +1;
             }
             else if(hint==3){
@@ -107,7 +107,7 @@ public class CapetownAfrica extends IPlace
                 System.out.println("you are asking for 3rd hint");
                 //hint = hint + 1;
                 world.removeObject(hintImg);
-                world.showHint3("Try to guess from audio..");
+                world.showHint3("Try to guess the place from this audio..");
                 audioHint.play();
             }
     }

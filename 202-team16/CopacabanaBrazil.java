@@ -32,7 +32,7 @@ public class CopacabanaBrazil extends IPlace
 
     public CopacabanaBrazil(){
         backgroundImgPath = "images/Copacabana/world_5.jpg";
-        textHintPath = "City that never sleeps?";
+        textHintPath = "City that never sleeps is?";
         imageHintpath = "images/NewYork/imgHint.jpg";
         answerOption1Path = "images/NewYork/op1.jpg";
         answerOption2Path = "images/NewYork/op2.jpg";
@@ -107,7 +107,7 @@ public class CopacabanaBrazil extends IPlace
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                world.showHint2(hintImg,"Where is this statue......?");
+                world.showHint2(hintImg,"Where is this statue ?");
                 //hint = hint +1;
             }
             else if(hint==3){
@@ -115,7 +115,7 @@ public class CopacabanaBrazil extends IPlace
                 System.out.println("you are asking for 3rd hint");
                 //hint = hint + 1;
                 world.removeObject(hintImg);
-                world.showHint3("Place referenced in the song?");
+                world.showHint3("Place referenced in this song is?");
                 audioHint.play();
             }
     }
