@@ -30,7 +30,7 @@ public class PirateWorld extends World
     static boolean multiUser = false;
     static boolean isHurdle = false;
 
-s
+
     Button startGame, quit, play, rules;
     IObserver pirate;
     IPlace currentPlace;
