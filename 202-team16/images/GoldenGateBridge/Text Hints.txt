@@ -1,0 +1,3 @@
+Text Hint : You can find the world's most crooked street over here!!
+Text to be displayed with image hint: The garden is Japenese but not in Japan!!
+Text to be displayed for audio: Memories of the TV show Full House 
