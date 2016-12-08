@@ -78,10 +78,11 @@ public class PirateWorld extends World
     //shows game over screen
     public void setGameOver(){
 
-        gameOver.play();
+        //gameOver.play();
         Greenfoot.stop();      
         removeObjects(getObjects(null)); //removes all the objects in the world;
         addObject(new GameOver(), getWidth()/2, getHeight()/2); //adds the game over screen in the middle of the world;  
+        //gameOver.stop();
     }
 
     //shows the winner screen
@@ -258,7 +259,7 @@ public class PirateWorld extends World
     public void showHint2(AnswerOption hintImg, String msg){
         message.display(msg);       
         hintImg.getImage().scale(200,180);
-        addObject(hintImg, 200,400);
+        addObject(hintImg, 360,400);
     }
 
     //shows the third hint for next place

@@ -79,13 +79,13 @@ public class Pirates extends IObserver
     }
     public void setLife(){
         world =  getWorldOfType(PirateWorld.class);
-        int x= 1000 , y = 50;
+        int x= 1100 , y = 50;
         ListIterator listIterator = LivesLeft.listIterator();
         while(listIterator.hasNext()){
             Life obj = (Life)listIterator.next();
-            obj.getImage().scale(50,50);
+            obj.getImage().scale(80,60);
             world.addObject(obj,x,y);           
-            x+=60;           
+            x+=75;           
         }
     }
 
@@ -112,6 +112,7 @@ public class Pirates extends IObserver
     public void checkLifeCount(GreenfootSound audio){
         if (LivesLeft.size() == 0)
         {
+            world.setGameOver();
             if(null != audio)
                 audio.stop();
             if(PirateWorld.multiUser)

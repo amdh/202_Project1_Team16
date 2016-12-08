@@ -139,7 +139,7 @@ public class BasePlace extends IPlace
     private void initialize(){
         world =  getWorldOfType(PirateWorld.class);        
         pirate =  world.getPirate();
-        pirate.getImage().scale(225,225);
+        pirate.getImage().scale(200,250);
     }
 
     private void setBackground(String backgroundPath){

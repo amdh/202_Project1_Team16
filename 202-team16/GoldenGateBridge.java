@@ -45,7 +45,7 @@ public class GoldenGateBridge extends IPlace
         id2=0;
         backgroundImgPath = "images/GoldenGateBridge/world_7.jpg";
         treasure = new Treasure();
-        treasure.getImage().scale(100,100);
+        treasure.getImage().scale(200,150);
     }
 
     public void act() 

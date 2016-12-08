@@ -92,7 +92,7 @@ public class NewYork extends IPlace
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                world.showHint2(hintImg,"The garden is Japenese but not in Japan!!");
+                world.showHint2(hintImg,"Where is this Bridge ?");
                
             }
             else if(hint==3){

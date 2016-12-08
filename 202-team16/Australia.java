@@ -107,7 +107,7 @@ public class Australia extends IPlace
             System.out.println("you are asking for 3rd hint");
             //hint = hint + 1;
             world.removeObject(hintImg);
-            world.showHint3("Place referenced in the song?");
+            world.showHint3("Place referenced in this song is?");
             audioHint.play();
         }
     }
