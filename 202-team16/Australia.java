@@ -33,7 +33,7 @@ public class Australia extends IPlace
 
     public Australia(){
         backgroundImgPath = "images/Australia/world_1.jpg";
-        textHintPath = "Bollywood is Here?";
+        textHintPath = "Hint1: Bollywood is Here?";
         imageHintpath = "images/Mumbai/MumbaiImgHint.jpg";
         answerOption1Path = "images/Mumbai/Mumicorrectop3.jpg";
         answerOption2Path = "images/Mumbai/MumIncorrectop2.jpg";
@@ -99,7 +99,7 @@ public class Australia extends IPlace
         if(hint==2){
             System.out.println("you are asking for 2nd hint");
             hintImg = new AnswerOption(imageHintpath);
-            world.showHint2(hintImg,"This famous fast food belongs to?");
+            world.showHint2(hintImg,"Hint2: This famous fast food belongs to?");
             //hint = hint +1;
         }
         else if(hint==3){
@@ -107,7 +107,7 @@ public class Australia extends IPlace
             System.out.println("you are asking for 3rd hint");
             //hint = hint + 1;
             world.removeObject(hintImg);
-            world.showHint3("Place referenced in this song is?");
+            world.showHint3("Hint3: Place referenced in this song is?");
             audioHint.play();
         }
     }

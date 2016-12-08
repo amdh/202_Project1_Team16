@@ -35,7 +35,7 @@ public class MumbaiIndia extends IPlace
 
     public MumbaiIndia(){
         backgroundImgPath = "images/Mumbai/world_2.jpg";
-        textHintPath = "To win there is a cape of good hope";
+        textHintPath = "Hint1: To win there is a cape of good hope";
         soundHintPath="";
         imageHintpath = "images/CapeTownAfrica/hintimg.jpg";
         answerOption1Path = "images/CapeTownAfrica/CapeTownIncorrectOption1.jpg";
@@ -104,7 +104,7 @@ public class MumbaiIndia extends IPlace
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                world.showHint2(hintImg,"Nelson Mandela was incarcerated here");
+                world.showHint2(hintImg,"Hint2: Nelson Mandela was incarcerated here");
                 //hint = hint +1;
             }
             else if(hint==3){
@@ -112,7 +112,7 @@ public class MumbaiIndia extends IPlace
                 System.out.println("you are asking for 3rd hint");
                 //hint = hint + 1;
                 world.removeObject(hintImg);
-                world.showHint3("In the search for the shores of her bay");
+                world.showHint3("Hint3: In the search for the shores of her bay");
                 audioHint.play();
             }
 

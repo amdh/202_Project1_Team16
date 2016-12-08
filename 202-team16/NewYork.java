@@ -30,7 +30,7 @@ public class NewYork extends IPlace
 
     public NewYork(){
        backgroundImgPath = "images/NewYork/world_6.jpg";
-        textHintPath = "World's most crooked street are over here!!";
+        textHintPath = "Hint1: World's most crooked street are over here!!";
         soundHintPath="";
         imageHintpath = "images/GoldenGateBridge/hintImg.jpg";
         answerOption1Path = "images/GoldenGateBridge/op1.jpg";
@@ -92,7 +92,7 @@ public class NewYork extends IPlace
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                world.showHint2(hintImg,"Where is this Bridge ?");
+                world.showHint2(hintImg,"Hint2: Where is this Bridge ?");
                
             }
             else if(hint==3){
@@ -100,7 +100,7 @@ public class NewYork extends IPlace
                 System.out.println("you are asking for 3rd hint");
                 world.removeObject(hintImg);
                 
-                world.showHint3("Place referenced in the song?");
+                world.showHint3("Hint3: Place referenced in the song?");
                 audioHint.play();
             }
     }

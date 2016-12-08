@@ -32,7 +32,7 @@ public class BasePlace extends IPlace
     EnemyFactory factory;
     public BasePlace(){
         backgroundImgPath = "images/baseplace/world_0.jpg";
-        textHintPath = "Smallest continent in the world is?";
+        textHintPath = "Hint1: Smallest continent in the world is?";
         imageHintpath = "images/baseplace/AusHintImage.jpg";
         answerOption1Path = "images/baseplace/AusCorrectop.jpg";
         answerOption2Path = "images/baseplace/Ausincorrectop2.jpg";
@@ -107,13 +107,13 @@ public class BasePlace extends IPlace
         if(hint==2){
             System.out.println("you are asking for 2nd hint");
             hintImg = new AnswerOption(imageHintpath);
-            world.showHint2(hintImg,"This is National animal of which country?");
+            world.showHint2(hintImg,"Hint2: This is National animal of which country?");
         }
         else if(hint==3){
             //playsound
             System.out.println("you are asking for 3rd hint"); 
             world.removeObject(hintImg);
-            world.showHint3("This Song belongs to famous band from?");
+            world.showHint3("Hint3: This Song belongs to famous band from?");
             audioHint.play(); 
         }
     }

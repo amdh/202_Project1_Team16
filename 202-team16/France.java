@@ -32,7 +32,7 @@ public class France extends IPlace
 
     public France(){
         backgroundImgPath = "images/France/world_4.jpg";
-        textHintPath = "World's most famous beach, runs for 3 miles?";
+        textHintPath = "Hint1: World's most famous beach, runs for 3 miles?";
         imageHintpath = "images/copacabana/imgHint.png";
         answerOption1Path = "images/copacabana/ans1.jpg";
         answerOption2Path = "images/copacabana/ans2.jpg";
@@ -99,7 +99,7 @@ public class France extends IPlace
             if(hint==2){
                 System.out.println("you are asking for 2nd hint");
                 hintImg = new AnswerOption(imageHintpath);
-                world.showHint2(hintImg,"Major Sporting Event for 2016 were held at?");
+                world.showHint2(hintImg,"Hint2: Major Sporting Event for 2016 were held at?");
                 //hint = hint +1;                
             }
             else if(hint==3){
@@ -107,7 +107,7 @@ public class France extends IPlace
                 System.out.println("you are asking for 3rd hint");
                 //hint = hint + 1;
                 world.removeObject(hintImg);
-                world.showHint3("Place referenced in the song?");
+                world.showHint3("Hint3: Place referenced in the song?");
                 audioHint.play();
             }
     }
