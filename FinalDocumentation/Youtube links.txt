@@ -1,0 +1,15 @@
+
+
+Game Overview :  https://e.powtoon.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlTQGlPzdJbJHMHGSsHPisBICzadc19NM0NFzdzfN4zamrPPEAfzdGlqRFVXtpKX%3DSSSAT&_ei_=EiwT4nvPqVnq_hUVilXClkY_kQUpYDoINw6eynkL4KDUKPbVfXmup5cFE4yoAWwMcVujCR4vNYs9E9wYiQj378JqWC7OAOTMZ8E9tNVkFaWzn4TnYurm6GS1jt5X4Jagd3c6PvnIMVrCTx1i9_D5Dtp9oB8a-VFcFXIgs5wp0ilWDi_2rajPPCw.
+
+
+Game video + extra credit video : https://www.youtube.com/watch?v=P-tfwVdKaio&feature=youtu.be
+
+
+UML : https://www.youtube.com/watch?v=0v1hCPXQLJM&feature=youtu.be
+
+
+Docker cloud game deployed at : http://piratesv3-fb7fbfa7-1.c43b8203.cont.dockerapp.io:8080/pirateplayers
+
+								http://piratesv3-fb7fbfa7-1.c43b8203.cont.dockerapp.io:8080/pirategameroom
+
