@@ -252,7 +252,7 @@ public class PirateWorld extends World
     public void showHint1(String msg){
         Greenfoot.delay(20);
         message.display(msg);
-        addObject(message,360,250);
+        addObject(message,410,250);
     }
 
     //shows the second hint for next place
