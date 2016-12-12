@@ -11,5 +11,5 @@ UML : https://www.youtube.com/watch?v=0v1hCPXQLJM&feature=youtu.be
 
 Docker cloud game deployed at : http://piratesv3-fb7fbfa7-1.c43b8203.cont.dockerapp.io:8080/pirateplayers
 
-								http://piratesv3-fb7fbfa7-1.c43b8203.cont.dockerapp.io:8080/pirategameroom
+				http://piratesv3-fb7fbfa7-1.c43b8203.cont.dockerapp.io:8080/pirategameroom
 
